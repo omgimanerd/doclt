@@ -1,0 +1,29 @@
+{
+  "name": "docli",
+  "version": "1.0.0",
+  "description": "CLI for Digital Ocean",
+  "bin": {
+    "docli": "src/docli.js"
+  },
+  "main": "src/docli.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omgimanerd/docli.git"
+  },
+  "author": "omgimanerd",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/omgimanerd/docli/issues"
+  },
+  "homepage": "https://github.com/omgimanerd/docli#readme",
+  "dependencies": {
+    "argparse": "^1.0.9",
+    "cli-table": "^0.3.1",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "digitalocean": "^0.8.3"
+  }
+}
