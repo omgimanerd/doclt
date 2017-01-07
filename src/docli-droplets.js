@@ -3,8 +3,9 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Table = require('cli-table2');
+var colors = require('colors');
 var commander = require('commander');
-var Table = require('cli-table');
 var digitalocean = require('digitalocean');
 
 var token = require('./token');
@@ -12,68 +13,86 @@ var client = digitalocean.client(token.get());
 
 var util = require('./util');
 
-commander.usage('<command> [<arguments>] [<options>]');
+commander.version(require('../package.json').version)
+  .usage('<command> [<arguments>] [<options>]');
 
 commander.command('list')
   .description('lists all droplets')
   .action(function() {
     client.droplets.list(function(error, droplets) {
-      if (error) {
-        console.log(error.message.red);
-        console.log('An error occurred! Try again later!'.red);
-        process.exit(1);
-      }
+      util.handleError(error);
       var table = new Table({
         head: ['ID', 'Name', 'IPv4', 'Status']
       });
-      for (var droplet of droplets) {
+      table.push.apply(table, droplets.map((droplet) => {
+        var id = droplet.id.toString().bold.cyan;
         var status = util.parseStatus(droplet.status);
         var networks = droplet.networks.v4.map(
             (network) => network.ip_address).join('\n');
-        table.push([
-          droplet.id, droplet.name, networks, status,
-        ])
-      };
+        return [ id, droplet.name.blue, networks, status ];
+      }))
       console.log(table.toString());
     });
   });
 
-commander.command('info <id>')
+commander.command('info')
   .description('fetches information about a droplet')
-  .action(function(id, options) {
+  .usage('<id> [options]')
+  .option('--all, -a', 'list all information about this droplet')
+  .option('--backups', 'list backups of this droplet')
+  .option('--snapshots', 'list snapshots of this droplet')
+  .option('--volumes', 'list volumes attached to this droplet')
+  .action(function(id) {
+    var context = this;
+    util.ensureArgument(id, () => {
+      context.help();
+    });
     client.droplets.get(id, function(error, droplet) {
-      if (error) {
-        console.log(error.message.red);
-        console.log('An error occurred! Try again later!'.red);
-        process.exit(1);
-      }
+      util.handleError(error);
       var table = new Table({
-        head: [droplet.name, util.parseStatus(droplet.status)]
+        head: [droplet.name.blue, util.parseStatus(droplet.status)]
       });
-      table.push({ 'ID': droplet.id });
-      table.push({ 'Memory': droplet.memory + ' MB' });
-      table.push({ 'Disk Size': droplet.disk + ' GB'});
-      table.push({ 'VCPUs': droplet.vcpus });
-      table.push({ 'Distribution':
-          droplet.image.distribution + ' ' + droplet.image.name });
-      table.push({ 'IPv4': util.defaultJoin(
-          droplet.networks.v4.map((network) => network.ip_address)) });
-      table.push({ 'IPv6': util.defaultJoin(
-          droplet.networks.v6.map((network) => network.ip_address)) });
-      table.push({ 'Tags': util.defaultJoin(droplet.tags) });
-      table.push({ 'Created': new Date(droplet.created_at).toLocaleString() });
+      var kernel = droplet.kernel ? droplet.kernel.name.blue : 'none';
+      table.push(
+        [ 'ID'.red, droplet.id.toString().bold.cyan ],
+        [ 'Memory', droplet.memory + ' MB' ],
+        [ 'Disk Size', droplet.disk + ' GB'],
+        [ 'VCPUs', droplet.vcpus ],
+        [ 'Kernel', kernel ],
+        [ 'Image', droplet.image.distribution + ' ' + droplet.image.name ],
+        [ 'Region', droplet.region.name ],
+        [ 'IPv4', util.defaultJoin( droplet.networks.v4.map((network) => network.ip_address)) ],
+        [ 'IPv6', util.defaultJoin( droplet.networks.v6.map((network) => network.ip_address)) ],
+        [ 'Tags', util.defaultJoin(droplet.tags) ],
+        [ 'Created', new Date(droplet.created_at).toLocaleString() ]);
       console.log(table.toString());
     });
-  })
+  });
 
+commander.command('create <name>')
+  .description('creates a new droplet')
+  .action(function(name, options) {
+  });
+
+/**
+ * This clause catches any commands that are not part of the docli CLI, such as:
+ *   docli droplets asdf
+ *   docli droplets basdf
+ * and outputs the standard help message.
+ */
 commander.command('*')
   .description('**********************')
   .action(function(param) {
-    if (!['list', 'info', 'create'].includes(param)) {
+    if (!commander.commands.map((command) => command._name).includes(param)) {
       commander.help();
     }
   });
 
 commander.parse(process.argv);
 
+/**
+ * This catches the case where no subcommand was specified:
+ *   docli droplets
+ * and outputs the standard help message.
+ */
 if (!commander.args.length) commander.help();
