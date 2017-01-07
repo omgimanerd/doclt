@@ -53,18 +53,21 @@ commander.command('info')
         head: [droplet.name.blue, util.parseStatus(droplet.status)]
       });
       var kernel = droplet.kernel ? droplet.kernel.name.blue : 'none';
-      table.push(
-        [ 'ID'.red, droplet.id.toString().bold.cyan ],
+      table.push.apply(table, [
+        [ 'ID', droplet.id.toString().bold.cyan ],
         [ 'Memory', droplet.memory + ' MB' ],
         [ 'Disk Size', droplet.disk + ' GB'],
         [ 'VCPUs', droplet.vcpus ],
         [ 'Kernel', kernel ],
         [ 'Image', droplet.image.distribution + ' ' + droplet.image.name ],
         [ 'Region', droplet.region.name ],
-        [ 'IPv4', util.defaultJoin( droplet.networks.v4.map((network) => network.ip_address)) ],
-        [ 'IPv6', util.defaultJoin( droplet.networks.v6.map((network) => network.ip_address)) ],
+        [ 'IPv4', util.defaultJoin(
+            droplet.networks.v4.map((network) => network.ip_address)) ],
+        [ 'IPv6', util.defaultJoin(
+            droplet.networks.v6.map((network) => network.ip_address)) ],
         [ 'Tags', util.defaultJoin(droplet.tags) ],
-        [ 'Created', new Date(droplet.created_at).toLocaleString() ]);
+        [ 'Created', new Date(droplet.created_at).toLocaleString() ]
+      ].map((row) => [row[0].red, row[1]] ));
       console.log(table.toString());
     });
   });

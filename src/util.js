@@ -5,6 +5,12 @@
 
 var colors = require('colors');
 
+/**
+ * This function joins a list of values by newlines for display in cli-table2.
+ * If the resulting string is empty, then it returns the string none.
+ * @param {Array.<Object>} dataList A list of objects to display
+ * @return {string}
+ */
 module.exports.defaultJoin = function(dataList) {
   return dataList.join('\n').trim() || 'none';
 };
@@ -24,6 +30,11 @@ module.exports.ensureArgument = function(argument, help) {
   }
 };
 
+/**
+ * If an error occurred in the process of accessing the DigitalOcean API, we
+ * will output it in red to the console and then exit.
+ * @param {?Error} error The error to display
+ */
 module.exports.handleError = function(error) {
   if (error) {
     console.log(error.message.red);
@@ -31,6 +42,11 @@ module.exports.handleError = function(error) {
   }
 };
 
+/**
+ * This takes a droplet status and colorizes it for output.
+ * @param {string} status The droplet status to colorize.
+ * @return {string}
+ */
 module.exports.parseStatus = function(status) {
   switch (status) {
     case 'new':
