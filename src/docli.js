@@ -2,21 +2,27 @@
 
 var program = require('commander');
 
-console.log('baserun');
+program.usage('<command> [<arguments>] [<options>]');
 
 program.version('1.0.0')
   .command('droplets <action> [<arguments>] [<options>]',
            'perform actions on droplets');
 
-program.command('authenticate')
+program.command('token')
   .description('set an auth token')
   .action(function() {
-    console.log('actionable');
+    var token = require('./token');
+    token.set();
   });
 
 program.command('*')
-  .action(function() {
-    program.help();
+  .description('**********************')
+  .action(function(param) {
+    if (!['droplets', 'token'].includes(param)) {
+      program.help();
+    }
   });
 
 program.parse(process.argv);
+
+if (!program.args.length) program.help();

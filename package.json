@@ -20,10 +20,10 @@
   },
   "homepage": "https://github.com/omgimanerd/docli#readme",
   "dependencies": {
-    "argparse": "^1.0.9",
     "cli-table": "^0.3.1",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "digitalocean": "^0.8.3"
+    "digitalocean": "^0.8.3",
+    "prompt": "^1.0.0"
   }
 }
