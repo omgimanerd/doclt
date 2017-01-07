@@ -1,57 +1,79 @@
 /**
- *
+ * @fileoverview Commands for managing droplets.
+ * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var program = require('commander');
+var commander = require('commander');
 var Table = require('cli-table');
 var digitalocean = require('digitalocean');
 
 var token = require('./token');
 var client = digitalocean.client(token.get());
 
-program.usage('<command> [<arguments>] [<options>]');
+var util = require('./util');
 
-program.command('list')
+commander.usage('<command> [<arguments>] [<options>]');
+
+commander.command('list')
   .description('lists all droplets')
   .action(function() {
-    client.droplets.list(function(error, droplets, metadata) {
-      var fields = ['id', 'name', 'memory', 'status'];
-      var table = new Table({ head: fields });
+    client.droplets.list(function(error, droplets) {
+      if (error) {
+        console.log(error.message.red);
+        console.log('An error occurred! Try again later!'.red);
+        process.exit(1);
+      }
+      var table = new Table({
+        head: ['ID', 'Name', 'IPv4', 'Status']
+      });
       for (var droplet of droplets) {
-        table.push(fields.map((field) => droplet[field]));
+        var status = util.parseStatus(droplet.status);
+        var networks = droplet.networks.v4.map(
+            (network) => network.ip_address).join('\n');
+        table.push([
+          droplet.id, droplet.name, networks, status,
+        ])
       };
       console.log(table.toString());
     });
   });
 
-program.command('info <id>')
+commander.command('info <id>')
   .description('fetches information about a droplet')
-  .action(function(id) {
-    var fields = ['id', 'name', 'status', 'created_at'];
-    console.log(arguments);
-    var table = new Table({ head: ["", "Top Header 1", "Top Header 2"] });
-    table.push(
-        { 'Left Header 1': ['Value Row 1 Col 1', 'Value Row 1 Col 2'] }
-      , { 'Left Header 2': ['Value Row 2 Col 1', 'Value Row 2 Col 2'] }
-    );
-
-    console.log(table.toString());
+  .action(function(id, options) {
+    client.droplets.get(id, function(error, droplet) {
+      if (error) {
+        console.log(error.message.red);
+        console.log('An error occurred! Try again later!'.red);
+        process.exit(1);
+      }
+      var table = new Table({
+        head: [droplet.name, util.parseStatus(droplet.status)]
+      });
+      table.push({ 'ID': droplet.id });
+      table.push({ 'Memory': droplet.memory + ' MB' });
+      table.push({ 'Disk Size': droplet.disk + ' GB'});
+      table.push({ 'VCPUs': droplet.vcpus });
+      table.push({ 'Distribution':
+          droplet.image.distribution + ' ' + droplet.image.name });
+      table.push({ 'IPv4': util.defaultJoin(
+          droplet.networks.v4.map((network) => network.ip_address)) });
+      table.push({ 'IPv6': util.defaultJoin(
+          droplet.networks.v6.map((network) => network.ip_address)) });
+      table.push({ 'Tags': util.defaultJoin(droplet.tags) });
+      table.push({ 'Created': new Date(droplet.created_at).toLocaleString() });
+      console.log(table.toString());
+    });
   })
 
-program.command('create <name>')
-  .description('creates a new droplet')
-  .action(function(name) {
-    console.log(name + ' created');
-  });
-
-program.command('*')
+commander.command('*')
   .description('**********************')
   .action(function(param) {
     if (!['list', 'info', 'create'].includes(param)) {
-      program.help();
+      commander.help();
     }
   });
 
-program.parse(process.argv);
+commander.parse(process.argv);
 
-if (!program.args.length) program.help();
+if (!commander.args.length) commander.help();

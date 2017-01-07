@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+var commander = require('commander');
 
-program.usage('<command> [<arguments>] [<options>]');
+commander.usage('<command> [<arguments>] [<options>]');
 
-program.version('1.0.0')
+commander.version('1.0.0')
   .command('droplets <action> [<arguments>] [<options>]',
            'perform actions on droplets');
 
-program.command('token')
+commander.command('token')
   .description('set an auth token')
   .action(function() {
     var token = require('./token');
     token.set();
   });
 
-program.command('*')
+commander.command('*')
   .description('**********************')
   .action(function(param) {
     if (!['droplets', 'token'].includes(param)) {
-      program.help();
+      commander.help();
     }
   });
 
-program.parse(process.argv);
+commander.parse(process.argv);
 
-if (!program.args.length) program.help();
+if (!commander.args.length) commander.help();

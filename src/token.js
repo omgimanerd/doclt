@@ -1,5 +1,7 @@
 /**
- * This module manages getting and setting a DigitalOcean token.
+ * @fileoverview This module manages the fetching and setting of a DigitalOcean
+ *   auth token.
+ * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 var colors = require('colors');
@@ -9,7 +11,7 @@ var prompt = require('prompt');
 
 var tokenFile = path.join(__dirname, '.docli_token');
 
-function get() {
+module.exports.get = function() {
   if (process.env.DOCLI_TOKEN) {
     return process.env.DOCLI_TOKEN;
   }
@@ -18,14 +20,14 @@ function get() {
     process.env.DOCLI_TOKEN = token;
     return token;
   } catch (error) {
-    console.error('DigitalOcean access token not specified!'.red);
+    console.error('DigitalOcean access token not available!'.red);
     console.error('Run "docli token" to set your access token'.red);
     console.error('or set a DOCLI_TOKEN environment variable'.red);
     process.exit(1);
   }
 }
 
-function set() {
+module.exports.set = function() {
   prompt.message = '';
   prompt.delimeter = '';
   prompt.start();
@@ -44,6 +46,3 @@ function set() {
     console.log('DOCLI_TOKEN environment variable'.red)
   });
 }
-
-module.exports.get = get;
-module.exports.set = set;
