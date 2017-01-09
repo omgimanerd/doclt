@@ -5,7 +5,9 @@
 
 exports.command = 'list';
 
-exports.description = 'List all SSH keys'
+exports.aliases = ['ls'];
+
+exports.description = 'List all SSH keys'.yellow;
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');

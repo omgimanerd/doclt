@@ -3,9 +3,11 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-exports.command = 'get <ssh key id>';
+exports.command = 'get <key id>';
 
-exports.description = 'Information about an SSH key';
+exports.aliases = ['info'];
+
+exports.description = 'Information about an SSH key'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('key', {
