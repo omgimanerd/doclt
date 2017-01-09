@@ -3,9 +3,9 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-exports.command = 'info <droplet id>';
+exports.command = 'get <droplet id>';
 
-exports.aliases = ['i', 'get'];
+exports.aliases = ['i', 'info'];
 
 exports.description = 'Information about a droplet'.yellow;
 

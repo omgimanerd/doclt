@@ -5,7 +5,7 @@
 
 exports.command = 'get <key id>';
 
-exports.aliases = ['info'];
+exports.aliases = ['i', 'info'];
 
 exports.description = 'Information about an SSH key'.yellow;
 
