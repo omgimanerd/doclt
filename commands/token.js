@@ -5,11 +5,9 @@
 
 exports.command = 'token <token>';
 
-exports.describe = 'Set the DigitalOcean auth token';
+exports.aliases = ['authenticate'];
 
-exports.builder = (yargs) => {
-  yargs.demandCommand(1);
-};
+exports.describe = 'Set the DigitalOcean auth token'.yellow;
 
 exports.handler = (argv) => {
   var token = require('../lib/token');

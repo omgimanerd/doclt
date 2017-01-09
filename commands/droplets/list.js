@@ -7,7 +7,7 @@ exports.command = 'list';
 
 exports.aliases = ['ls'];
 
-exports.description = 'List all droplets';
+exports.description = 'List all droplets'.yellow;
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');

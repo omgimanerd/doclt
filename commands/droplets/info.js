@@ -7,7 +7,7 @@ exports.command = 'info <droplet id>';
 
 exports.aliases = ['i', 'get'];
 
-exports.description = 'Information about a droplet';
+exports.description = 'Information about a droplet'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('all', {
@@ -23,7 +23,6 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');
-  var colors = require('colors');
   var digitalocean = require('digitalocean');
 
   var token = require('../../lib/token');

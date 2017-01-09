@@ -3,10 +3,11 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-exports.command = 'ssh <command>';
+exports.command = 'ssh';
 
-exports.describe = 'Create, delete, and manage SSH public keys';
+exports.describe = 'Create, delete, and manage SSH public keys'.yellow;
 
 exports.builder = (yargs) => {
-  yargs.commandDir('ssh');
+  yargs.commandDir('ssh')
+    .demandCommand(1);
 };
