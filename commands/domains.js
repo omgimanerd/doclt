@@ -5,6 +5,8 @@
 
 exports.command = 'domains';
 
+exports.aliases = ['domain'];
+
 exports.description = 'Create, delete, and manage domains'.yellow;
 
 exports.builder = (yargs) => {
