@@ -17,7 +17,7 @@ exports.handler = (argv) => {
   var client = digitalocean.client(token.get());
 
   client.domains.create({
-    name: argv.domainname,
+    name: argv.domain,
     ip_address: argv.ip
   }, (error) => {
     util.handleError(error);

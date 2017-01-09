@@ -22,7 +22,7 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  client.domains.get(argv.domainname, (error, domain) => {
+  client.domains.get(argv.domain, (error, domain) => {
     util.handleError(error);
     if (argv.zone) {
       console.log(domain.zone_file);

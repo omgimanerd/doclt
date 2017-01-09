@@ -24,10 +24,10 @@ exports.handler = (argv) => {
     });
     table.push.apply(table, droplets.map((droplet) => {
       var id = droplet.id.toString().bold.cyan;
-      var status = util.parseStatus(droplet.status);
+      var status = util.colorDropletStatus(droplet.status);
       var networks = droplet.networks.v4.map(
           (network) => network.ip_address).join('\n');
-      return [ id, droplet.name.blue, networks, status ];
+      return [id, droplet.name.blue, networks, status];
     }))
     console.log(table.toString());
   });

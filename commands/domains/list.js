@@ -23,7 +23,7 @@ exports.handler = (argv) => {
       head: ['Domain Name', 'TTL']
     });
     table.push.apply(table, domains.map((domain) => {
-      return [ domain.name.blue, domain.ttl ];
+      return [domain.name.blue, domain.ttl];
     }));
     console.log(table.toString());
   });
