@@ -18,7 +18,7 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  client.account.deleteSshKey(argv.sshkeyid, (error, key, headers) => {
+  client.account.deleteSshKey(argv.keyid, (error, key, headers) => {
     util.handleError(error);
     console.log('SSH Key deleted.'.red);
   });

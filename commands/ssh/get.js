@@ -24,7 +24,7 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  client.account.getSshKey(argv.sshkeyid, (error, key) => {
+  client.account.getSshKey(argv.keyid, (error, key) => {
     util.handleError(error);
     if (argv.key) {
       console.log(key.public_key);

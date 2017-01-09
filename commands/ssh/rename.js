@@ -16,9 +16,10 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  console.log(argv);
-
-  // client.account.updateSshKey(argv.sshkeyid, {
-  //   name: argv.newname
-  // })
+  client.account.updateSshKey(argv.keyid, {
+    name: argv.name
+  }, (error) => {
+    util.handleError(error);
+    console.log('SSH Key renamed'.red);
+  });
 }
