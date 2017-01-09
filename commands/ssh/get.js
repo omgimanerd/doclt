@@ -1,5 +1,5 @@
 /**
- * @fileoverview Module handling the SSH key fetching command.
+ * @fileoverview Module handling the SSH key getting command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
@@ -16,7 +16,6 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var digitalocean = require('digitalocean');
 
   var token = require('../../lib/token');

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Module handling the droplet listing command.
+ * @fileoverview Module handling the droplet getting command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
