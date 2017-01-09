@@ -7,8 +7,6 @@ exports.command = 'list';
 
 exports.description = 'List all droplets';
 
-exports.builder = {};
-
 exports.handler = (argv) => {
   var Table = require('cli-table2');
   var colors = require('colors');
@@ -21,7 +19,7 @@ exports.handler = (argv) => {
   client.droplets.list(function(error, droplets) {
     util.handleError(error);
     var table = new Table({
-      head: ['ID', 'Name', 'IPv4', 'Status']
+      head: ['Droplet ID', 'Droplet Name', 'IPv4', 'Status']
     });
     table.push.apply(table, droplets.map((droplet) => {
       var id = droplet.id.toString().bold.cyan;
