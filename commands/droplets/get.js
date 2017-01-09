@@ -7,11 +7,11 @@ exports.command = 'get <droplet id>';
 
 exports.aliases = ['i', 'info'];
 
-exports.description = 'Information about a droplet'.yellow;
+exports.description = 'Info about a droplet'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('all', {
-    description: 'Show all information'
+    description: 'Show all Info'
   }).option('backups', {
     description: 'Show IDs of backups'
   }).option('snapshots', {

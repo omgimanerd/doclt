@@ -7,7 +7,7 @@ exports.command = 'get <domain name>';
 
 exports.aliases = ['i', 'info'];
 
-exports.description = 'Information about a domain name'.yellow;
+exports.description = 'Info about a domain name'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('zone', {

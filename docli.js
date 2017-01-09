@@ -7,7 +7,7 @@ var yargs = require('yargs');
 
 yargs.commandDir('commands')
   .demandCommand(1)
-  .epilogue('See \'docli help <command\' for more information.')
+  .epilogue('See \'docli help <command\' for more info.')
   .recommendCommands()
   .version(() => require('./package.json').version)
   .wrap(72)

@@ -7,7 +7,7 @@ exports.command = 'get <key id>';
 
 exports.aliases = ['i', 'info'];
 
-exports.description = 'Information about an SSH key'.yellow;
+exports.description = 'Info about an SSH key'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('key', {
