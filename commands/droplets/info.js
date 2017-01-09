@@ -42,6 +42,7 @@ exports.handler = (argv) => {
       [ 'VCPUs', droplet.vcpus ],
       [ 'Kernel', kernel ],
       [ 'Image', droplet.image.distribution + ' ' + droplet.image.name ],
+      [ 'Features', util.defaultJoin(droplet.features) ],
       [ 'Region', droplet.region.name ],
       [ 'IPv4', util.defaultJoin(
           droplet.networks.v4.map((network) => network.ip_address)) ],
