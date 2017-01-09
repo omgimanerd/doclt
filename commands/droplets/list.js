@@ -5,6 +5,8 @@
 
 exports.command = 'list';
 
+exports.aliases = ['ls'];
+
 exports.description = 'List all droplets';
 
 exports.handler = (argv) => {

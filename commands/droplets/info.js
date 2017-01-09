@@ -5,6 +5,8 @@
 
 exports.command = 'info <droplet id>';
 
+exports.aliases = ['i', 'get'];
+
 exports.description = 'Information about a droplet';
 
 exports.builder = (yargs) => {
