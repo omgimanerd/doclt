@@ -17,7 +17,7 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  client.droplets.list(function(error, droplets) {
+  client.droplets.list((error, droplets) => {
     util.handleError(error);
     var table = new Table({
       head: ['Droplet ID', 'Droplet Name', 'IPv4', 'Status']
