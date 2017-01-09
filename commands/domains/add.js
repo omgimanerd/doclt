@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-exports.command = 'add <domain name> <ip>';
+exports.command = 'add <domain> <ip>';
 
 exports.aliases = ['create'];
 
@@ -19,8 +19,8 @@ exports.handler = (argv) => {
   client.domains.create({
     name: argv.domainname,
     ip_address: argv.ip
-  }, (error, data) => {
+  }, (error) => {
     util.handleError(error);
-    console.log('New Domain Name added.'.red);
+    console.log('New domain name added.'.red);
   });
 };

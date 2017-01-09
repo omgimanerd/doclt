@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-exports.command = 'get <domain name>';
+exports.command = 'get <domain>';
 
 exports.aliases = ['i', 'info'];
 
