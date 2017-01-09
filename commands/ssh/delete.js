@@ -3,8 +3,6 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var colors = require('colors');
-
 exports.command = 'delete <key id>';
 
 exports.aliases = ['remove', 'del', 'rm'];

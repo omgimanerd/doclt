@@ -17,7 +17,6 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');
-  var colors = require('colors');
   var digitalocean = require('digitalocean');
 
   var token = require('../../lib/token');
