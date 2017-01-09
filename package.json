@@ -22,8 +22,8 @@
   "dependencies": {
     "cli-table2": "^0.2.0",
     "colors": "^1.1.2",
-    "commander": "^2.9.0",
     "digitalocean": "^0.8.3",
-    "prompt": "^1.0.0"
+    "prompt": "^1.0.0",
+    "yargs": "^6.6.0"
   }
 }
