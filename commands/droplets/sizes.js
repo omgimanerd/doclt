@@ -5,6 +5,8 @@
 
 exports.command = 'sizes';
 
+exports.aliases = ['size'];
+
 exports.description = 'Lists the possible droplet sizes'.yellow;
 
 exports.handler = (argv) => {

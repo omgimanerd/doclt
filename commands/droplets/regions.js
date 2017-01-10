@@ -5,6 +5,8 @@
 
 exports.command = 'regions';
 
+exports.aliases = ['region'];
+
 exports.description = 'Lists the possible droplet regions'.yellow;
 
 exports.handler = (argv) => {
