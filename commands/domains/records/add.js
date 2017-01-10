@@ -18,7 +18,6 @@ exports.handler = (argv) => {
   var client = digitalocean.client(token.get());
 
   prompt.message = '';
-  prompt.message = '';
   prompt.start();
   var types = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'SRV', 'NS'];
   prompt.get({

@@ -10,5 +10,5 @@ yargs.commandDir('commands')
   .epilogue('See \'docli help <command\' for more info.')
   .recommendCommands()
   .version(() => require('./package.json').version)
-  .wrap(process.stdout.columns)
+  .wrap(process.stdout.columns || 80)
   .argv;
