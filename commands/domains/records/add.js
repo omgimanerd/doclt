@@ -20,12 +20,13 @@ exports.handler = (argv) => {
   prompt.message = '';
   prompt.message = '';
   prompt.start();
+  var types = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'SRV', 'NS'];
   prompt.get({
     properties: {
       type: {
         description: 'Domain Type',
         type: 'string',
-        pattern: /^(A|AAAA|CNAME|MX|TXT|SRV|NS)$/,
+        conform: (value) => types.includes(value),
         message: 'Domain type must be A, AAAA, CNAME, MX, TXT, SRV, or NS',
         required: true
       }
