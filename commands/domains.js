@@ -11,5 +11,6 @@ exports.description = 'Create, delete, and manage domains'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('domains')
+    .epilogue('See \'docli <command> --help\' for more info.')
     .demandCommand(1);
 };

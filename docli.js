@@ -7,8 +7,8 @@ var yargs = require('yargs');
 
 yargs.commandDir('commands')
   .demandCommand(1)
-  .epilogue('See \'docli help <command\' for more info.')
+  .epilogue('See \'docli <command> --help\' for more info.')
   .recommendCommands()
   .version(() => require('./package.json').version)
-  .wrap(process.stdout.columns || 80)
+  .wrap(80)
   .argv;

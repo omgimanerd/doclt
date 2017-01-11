@@ -11,5 +11,6 @@ exports.description = 'Create, delete, and manage droplets'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('droplets')
+    .epilogue('See \'docli <command> --help\' for more info.')
     .demandCommand(1);
 };
