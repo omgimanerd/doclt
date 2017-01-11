@@ -9,6 +9,14 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all images';
 
+exports.builder = (yargs) => {
+  yargs.option('type', {
+    alias: 'string',
+    choices: ['application', 'distribution', 'private'],
+    description: 'The type of images to fetch'
+  });
+};
+
 exports.handler = (argv) => {
   var Table = require('cli-table2');
   var digitalocean = require('digitalocean');
@@ -17,11 +25,23 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  client.images.list(1, 9999, (error, images) => {
+  var query = {};
+  if (argv.type === 'private') {
+    query.private = true;
+  } else if (['application', 'distribution'].includes(argv.type)) {
+    query.type = argv.type;
+  } else {
+    query.page = 1;
+    query.per_page = Number.MAX_SAFE_INTEGER;
+  }
+  client.images.list(query, (error, images) => {
     util.handleError(error);
     var table = new Table({
-      head: ['ID', 'Distribution', 'Min Size'],
-      colWidths: [null, 56, null]
+      head: [
+        'ID',
+        'Distribution (' + 'PUBLIC'.green + ') (' + 'PRIVATE'.blue + ')',
+        'Min Size'
+      ]
     });
     images.sort((a, b) => {
       a = a.distribution + a.name;
@@ -30,7 +50,11 @@ exports.handler = (argv) => {
     });
     table.push.apply(table, images.map((image) => {
       var distro = image.distribution + ' ' + image.name;
-      return [image.id.toString().bold.cyan, distro, image.min_disk_size];
+      return [
+        image.id.toString().bold.cyan,
+        image.public ? distro.green : distro.blue,
+        image.min_disk_size
+      ];
     }));
     console.log(table.toString());
   });
