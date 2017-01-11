@@ -7,7 +7,7 @@ exports.command = 'list';
 
 exports.aliases = ['ls'];
 
-exports.description = 'List all images';
+exports.description = 'List images on your account'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('type', {
