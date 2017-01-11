@@ -7,7 +7,7 @@ exports.command = 'delete <domain> <record id>';
 
 exports.aliases = ['remove', 'del', 'rm'];
 
-exports.description = 'Delete a domain record'.yellow;
+exports.description = 'Delete a record'.yellow;
 
 exports.handler = (argv) => {
   var digitalocean = require('digitalocean');

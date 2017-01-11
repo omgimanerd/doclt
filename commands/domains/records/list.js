@@ -7,7 +7,7 @@ exports.command = 'list <domain>';
 
 exports.aliases = ['ls'];
 
-exports.description = 'List all domain records'.yellow;
+exports.description = 'List all records for a domain'.yellow;
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');

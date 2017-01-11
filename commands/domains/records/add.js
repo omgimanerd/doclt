@@ -7,7 +7,7 @@ exports.command = 'add <domain>';
 
 exports.aliases = ['create'];
 
-exports.description = 'Add a domain record to a domain'.yellow;
+exports.description = 'Add a record to a domain'.yellow;
 
 exports.handler = (argv) => {
   var digitalocean = require('digitalocean');
