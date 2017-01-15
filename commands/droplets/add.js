@@ -66,9 +66,10 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    client.droplets.create(result, (error, data) => {
+    client.droplets.create(result, (error, droplet) => {
       util.handleError(error);
       console.log('Droplet created.'.red);
+      console.log('Droplet ID: '.red + droplet.id.toString().bold.cyan);
     });
   });
 };
