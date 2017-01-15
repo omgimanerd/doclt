@@ -23,11 +23,11 @@ exports.handler = (argv) => {
     properties: {
       name: { description: 'Droplet name', required: true },
       region: {
-        description: 'Region ID ("docli droplets regions" to list regions)',
+        description: 'Region ID ("docli regions" to list regions)',
         required: true,
       },
       size: {
-        description: 'Size ID ("docli droplets sizes" to list sizes)',
+        description: 'Size ID ("docli sizes" to list sizes)',
         required: true
       },
       image: { description: 'Image ID or slug identifier', required: true },
