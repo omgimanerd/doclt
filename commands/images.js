@@ -3,6 +3,8 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../lib/util');
+
 exports.command = 'images';
 
 exports.aliases = ['image'];
@@ -11,6 +13,6 @@ exports.description = 'Create, delete, and manage images'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('images')
-    .epilogue('See \'docli <command> --help\' for more info.')
     .demandCommand(1);
+  util.globalConfig(yargs);
 };

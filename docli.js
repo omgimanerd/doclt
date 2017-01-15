@@ -8,12 +8,8 @@ var yargs = require('yargs');
 yargs.commandDir('commands')
   .demandCommand(1)
   .epilogue('See \'docli <command> --help\' for more info.')
-  .option('json', {
-    description: 'Output results as JSON'
-  })
-  .option('no-color', {
-    description: 'Disable colors'
-  })
+  .option('json', { description: 'Output results as JSON' })
+  .option('no-color', { description: 'Disable colors' })
   .recommendCommands()
   .version(() => require('./package.json').version)
   .wrap(80)

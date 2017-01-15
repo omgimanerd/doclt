@@ -23,7 +23,7 @@ exports.handler = (argv) => {
       head: ['ID', 'Type', 'Name', 'Data']
     });
     table.push.apply(table, records.map((record) => {
-      var type = util.parseDomainType(record.type);
+      var type = util.colorDomainType(record.type);
       return [record.id.toString().bold.cyan, type, record.name, record.data];
     }));
     console.log(table.toString());

@@ -3,12 +3,14 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../lib/util');
+
 exports.command = 'ssh';
 
 exports.description = 'Create, delete, and manage SSH public keys'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('ssh')
-    .epilogue('See \'docli <command> --help\' for more info.')
     .demandCommand(1);
+  util.globalConfig(yargs);
 };
