@@ -7,7 +7,7 @@ exports.command = 'sizes';
 
 exports.aliases = ['size'];
 
-exports.description = 'Lists the possible droplet sizes'.yellow;
+exports.description = 'Lists the available droplet sizes'.yellow;
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');

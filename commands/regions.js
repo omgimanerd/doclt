@@ -7,7 +7,7 @@ exports.command = 'regions';
 
 exports.aliases = ['region'];
 
-exports.description = 'Lists the possible droplet regions'.yellow;
+exports.description = 'Lists the available regions'.yellow;
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');
