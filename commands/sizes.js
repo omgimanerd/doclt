@@ -13,8 +13,8 @@ exports.handler = (argv) => {
   var Table = require('cli-table2');
   var digitalocean = require('digitalocean');
 
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
+  var token = require('../lib/token');
+  var util = require('../lib/util');
   var client = digitalocean.client(token.get());
 
   client.sizes.list((error, sizes) => {

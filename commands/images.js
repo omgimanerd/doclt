@@ -1,5 +1,5 @@
 /**
- * @fileoverview Module handling the image commands.
+ * @fileoverview Module handling the image subcommands.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
