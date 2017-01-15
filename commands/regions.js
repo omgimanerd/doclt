@@ -22,6 +22,9 @@ exports.handler = (argv) => {
     var table = new Table({
       head: ['ID', 'Name', 'Sizes', 'Features', 'Available']
     });
+    regions.sort((a, b) => {
+      return a.slug.localeCompare(b.slug);
+    });
     table.push.apply(table, regions.map((region) => {
       return [
         region.slug.bold.cyan,
