@@ -12,5 +12,5 @@ yargs.commandDir('commands')
   .option('no-color', { description: 'Disable colors' })
   .recommendCommands()
   .version(() => require('./package.json').version)
-  .wrap(80)
+  .wrap(yargs.terminalWidth())
   .argv;
