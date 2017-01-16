@@ -31,16 +31,15 @@ exports.handler = (argv) => {
 
   client.droplets.get(argv.dropletid, (error, droplet) => {
     util.handleError(error);
-    var table = new Table({
-      head: [droplet.name.blue, util.colorDropletStatus(droplet.status)]
-    });
-    var kernel = droplet.kernel ? droplet.kernel.name.blue : 'none';
+    var table = new Table();
     table.push.apply(table, [
       ['ID', droplet.id.toString().bold.cyan],
+      ['Name', droplet.name.blue],
+      ['Status', util.colorDropletStatus(droplet.status)],
       ['Memory', droplet.memory + ' MB'],
       ['Disk Size', droplet.disk + ' GB'],
       ['VCPUs', droplet.vcpus],
-      ['Kernel', kernel],
+      ['Kernel', droplet.kernel ? droplet.kernel.name.blue : 'none'],
       ['Image', droplet.image.distribution + ' ' + droplet.image.name],
       ['Features', util.defaultJoin(droplet.features)],
       ['Region', droplet.region.name],

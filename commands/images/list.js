@@ -10,9 +10,12 @@ exports.aliases = ['ls'];
 exports.description = 'List images on your account'.yellow;
 
 exports.builder = (yargs) => {
-  yargs.option('type', {
-    choices: ['application', 'distribution', 'private'],
-    description: 'The type of images to fetch'
+  yargs.option('application', {
+    description: 'Fetch application based images'
+  }).option('distribution', {
+    description: 'Fetch distribution based images'
+  }).option('private', {
+    description: 'Fetch private user images'
   });
 };
 
@@ -25,10 +28,12 @@ exports.handler = (argv) => {
   var client = digitalocean.client(token.get());
 
   var query = {};
-  if (argv.type === 'private') {
+  if (argv.private) {
     query.private = true;
-  } else if (['application', 'distribution'].includes(argv.type)) {
-    query.type = argv.type;
+  } else if (argv.application) {
+    query.type = 'application';
+  } else if (argv.distribution) {
+    query.type = 'distribution';
   } else {
     query.page = 1;
     query.per_page = Number.MAX_SAFE_INTEGER;
@@ -52,7 +57,7 @@ exports.handler = (argv) => {
       return [
         image.id.toString().bold.cyan,
         image.public ? distro.green : distro.blue,
-        image.min_disk_size
+        image.min_disk_size + ' GB'
       ];
     }));
     console.log(table.toString());
