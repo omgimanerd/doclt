@@ -17,8 +17,17 @@ exports.handler = (argv) => {
   var util = require('../../lib/util');
   var client = digitalocean.client(token.get());
 
-  // client.snapshots.list((error, snapshots) => {
-  //   util.handleError(error);
-  //   console.log(snapshots);
-  // });
+  client.snapshots.list((error, snapshots) => {
+    util.handleError(error);
+    var table = new Table({ head: ['ID', 'Name', 'Min Size'] });
+    snapshots.sort((a, b) => a.name.localeCompare(b.name));
+    table.push.apply(table, snapshots.map((snapshot) => {
+      return [
+        snapshot.id.toString().bold.cyan,
+        snapshot.name.blue,
+        snapshot.min_disk_size + ' GB'
+      ];
+    }));
+    console.log(table.toString());
+  });
 };
