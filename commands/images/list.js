@@ -11,7 +11,6 @@ exports.description = 'List images on your account'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('type', {
-    alias: 'string',
     choices: ['application', 'distribution', 'private'],
     description: 'The type of images to fetch'
   });
