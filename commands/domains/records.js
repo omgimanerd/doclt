@@ -12,7 +12,6 @@ exports.aliases = ['record'];
 exports.description = 'Create, delete, and manage domain records'.yellow;
 
 exports.builder = (yargs) => {
-  yargs.commandDir('records')
-    .demandCommand(1);
+  yargs.commandDir('records');
   util.globalConfig(yargs);
 };
