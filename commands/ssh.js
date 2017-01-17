@@ -5,11 +5,11 @@
 
 var util = require('../lib/util');
 
-exports.command = 'ssh';
+exports.command = 'ssh <command> [arguments..]';
 
 exports.description = 'Create, delete, and manage SSH public keys'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('ssh');
-  util.globalConfig(yargs);
+  util.globalConfig(yargs, exports.command);
 };

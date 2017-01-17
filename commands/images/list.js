@@ -3,6 +3,8 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../../lib/util');
+
 exports.command = 'list';
 
 exports.aliases = ['ls'];
@@ -17,15 +19,12 @@ exports.builder = (yargs) => {
   }).option('private', {
     description: 'Fetch private user images'
   });
+  util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');
-  var digitalocean = require('digitalocean');
-
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   var query = {};
   if (argv.private) {

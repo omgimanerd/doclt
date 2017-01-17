@@ -3,18 +3,20 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../../lib/util');
+
 exports.command = 'delete <key id>';
 
 exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete an SSH key'.yellow;
 
-exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
 
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+exports.handler = (argv) => {
+  var client = util.getClient();
 
   client.account.deleteSshKey(argv.keyid, (error, key, headers) => {
     util.handleError(error);

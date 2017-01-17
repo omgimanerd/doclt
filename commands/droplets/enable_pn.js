@@ -3,18 +3,20 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-exports.command = 'enable_private_networking <droplet id>';
+var util = require('../../lib/util');
 
-exports.aliases = ['enable_pn'];
+exports.command = 'enable_pn <droplet id>';
+
+exports.aliases = ['enable_private_networking'];
 
 exports.description = 'Enable private networking on a droplet.'.yellow;
 
-exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
 
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+exports.handler = (argv) => {
+  var client = util.getClient();
 
   client.droplets.enablePrivateNetworking(argv.dropletid, (error) => {
     util.handleError(error);

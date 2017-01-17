@@ -3,19 +3,22 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var prompt = require('prompt');
+
+var util = require('../../../lib/util');
+
 exports.command = 'add <domain>';
 
 exports.aliases = ['create'];
 
 exports.description = 'Add a record to a domain'.yellow;
 
-exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
-  var prompt = require('prompt');
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
 
-  var token = require('../../../lib/token');
-  var util = require('../../../lib/util');
-  var client = digitalocean.client(token.get());
+exports.handler = (argv) => {
+  var client = util.getClient();
 
   prompt.message = '';
   prompt.start();

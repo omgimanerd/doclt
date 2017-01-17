@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'droplets';
+exports.command = 'droplets <command> [arguments..]';
 
 exports.aliases = ['droplet'];
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage droplets'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('droplets');
-  util.globalConfig(yargs);
+  util.globalConfig(yargs, exports.command);
 };

@@ -3,6 +3,8 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../../lib/util');
+
 exports.command = 'get <droplet id>';
 
 exports.aliases = ['i', 'info'];
@@ -19,15 +21,12 @@ exports.builder = (yargs) => {
   }).option('volumes', {
     description: 'Show IDs of attached volumes'
   });
+  util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
   var Table = require('cli-table2');
-  var digitalocean = require('digitalocean');
-
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   client.droplets.get(argv.dropletid, (error, droplet) => {
     util.handleError(error);

@@ -3,6 +3,8 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../../lib/util');
+
 exports.command = 'get <domain>';
 
 exports.aliases = ['i', 'info'];
@@ -10,21 +12,18 @@ exports.aliases = ['i', 'info'];
 exports.description = 'Info about a domain name'.yellow;
 
 exports.builder = (yargs) => {
-  yargs.option('zone', {
+  yargs.option('zone-file', {
     description: 'Show only the zone file'
   });
+  util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
-
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   client.domains.get(argv.domain, (error, domain) => {
     util.handleError(error);
-    if (argv.zone) {
+    if (argv.zoneFile) {
       console.log(domain.zone_file);
     } else {
       console.log('Domain Name: '.red + domain.name);

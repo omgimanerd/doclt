@@ -3,6 +3,8 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../../lib/util');
+
 exports.command = 'get <key id>';
 
 exports.aliases = ['i', 'info'];
@@ -13,14 +15,11 @@ exports.builder = (yargs) => {
   yargs.option('key', {
     description: 'Show only the public key'
   });
+  util.globalconfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
-
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   client.account.getSshKey(argv.keyid, (error, key) => {
     util.handleError(error);

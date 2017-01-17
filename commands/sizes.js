@@ -3,19 +3,21 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../lib/util');
+
 exports.command = 'sizes';
 
 exports.aliases = ['size'];
 
 exports.description = 'Lists the available droplet sizes'.yellow;
 
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
+
 exports.handler = (argv) => {
   var Table = require('cli-table2');
-  var digitalocean = require('digitalocean');
-
-  var token = require('../lib/token');
-  var util = require('../lib/util');
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   client.sizes.list((error, sizes) => {
     util.handleError(error);

@@ -3,19 +3,22 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var fs = require('fs');
+
+var util = require('../../lib/util');
+
 exports.command = 'add <name> <keyfile>';
 
 exports.aliases = ['create'];
 
 exports.description = 'Add an SSH key'.yellow;
 
-exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
-  var fs = require('fs');
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
 
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+exports.handler = (argv) => {
+  var client = util.getClient();
 
   try {
     client.account.createSshKey({

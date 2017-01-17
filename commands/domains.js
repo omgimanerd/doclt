@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'domains';
+exports.command = 'domains <command> [arguments..]';
 
 exports.aliases = ['domain'];
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage domains'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('domains');
-  util.globalConfig(yargs);
+  util.globalConfig(yargs, exports.command);
 };

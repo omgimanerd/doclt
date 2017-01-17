@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'snapshots';
+exports.command = 'snapshots <command> [arguments..]';
 
 exports.aliases = ['snapshot'];
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage snapshots'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('snapshots');
-  util.globalConfig(yargs);
+  util.globalConfig(yargs, exports.command);
 };

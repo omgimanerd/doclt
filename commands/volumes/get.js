@@ -3,19 +3,21 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var util = require('../../lib/util');
+
 exports.command = 'get <volume id>';
 
 exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a volume'.yellow;
 
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
+
 exports.handler = (argv) => {
   var Table = require('cli-table2');
-  var digitalocean = require('digitalocean');
-
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   client.volumes.get(argv.volumeid, (error, volume) => {
     util.handleError(error);

@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'images';
+exports.command = 'images <commands> [arguments..]';
 
 exports.aliases = ['image'];
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage images'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('images');
-  util.globalConfig(yargs);
+  util.globalConfig(yargs, exports.command);
 };

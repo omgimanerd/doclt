@@ -3,18 +3,21 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var prompt = require('prompt');
+
+var util = require('../../lib/util');
+
 exports.command = 'add';
 
 exports.aliases = ['create'];
 
 exports.description = 'Create a new droplet'.yellow;
 
-exports.handler = (argv) => {
-  var digitalocean = require('digitalocean');
-  var prompt = require('prompt');
+exports.builder = (yargs) => {
+  util.globalConfig(yargs, exports.command);
+};
 
-  var token = require('../../lib/token');
-  var util = require('../../lib/util');
+exports.handler = (argv) => {
   var client = digitalocean.client(token.get());
 
   prompt.message = '';

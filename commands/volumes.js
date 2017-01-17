@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'volumes';
+exports.command = 'volumes <command> [arguments..]';
 
 exports.aliases = ['volume'];
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage volumes'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('volumes');
-  util.globalConfig(yargs);
+  util.globalConfig(yargs, exports.command);
 };
