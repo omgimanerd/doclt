@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage droplets'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('droplets');
-  util.globalConfig(yargs, exports.command);
+  util.globalConfig(yargs, exports.command, true);
 };

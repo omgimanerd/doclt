@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage images'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('images');
-  util.globalConfig(yargs, exports.command);
+  util.globalConfig(yargs, exports.command, true);
 };
