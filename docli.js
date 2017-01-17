@@ -6,7 +6,7 @@ var colors = require('colors');
 var yargs = require('yargs');
 
 yargs.commandDir('commands')
-  .demandCommand(1)
+  .demandCommand(1, '')
   .epilogue('See \'docli <command> --help\' for more info.')
   .option('json', { description: 'Output results as JSON' })
   .option('no-color', { description: 'Disable colors' })

@@ -29,9 +29,7 @@ exports.handler = (argv) => {
         ['Name', volume.name.blue],
         ['Size', volume.size_gigabytes + ' GB'],
         ['Region', volume.region.slug],
-        ['Attached to', util.defaultJoin(volume.droplet_ids).bold.cyan],
-        ['Description', volume.description || 'none'],
-        ['Created', new Date(volume.created_at).toLocaleString()]
+        ['Attached to', util.defaultJoin(volume.droplet_ids).bold.cyan]
       ].map((row) => [row[0].red, row[1]]));
     });
     console.log(table.toString());
