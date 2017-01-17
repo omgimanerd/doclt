@@ -12,5 +12,6 @@ yargs.commandDir('commands')
   .option('no-color', { description: 'Disable colors' })
   .recommendCommands()
   .version(() => require('./package.json').version)
+  .usage('Usage:\n  docli <command> [arguments]')
   .wrap(yargs.terminalWidth())
   .argv;
