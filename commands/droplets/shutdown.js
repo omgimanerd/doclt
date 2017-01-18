@@ -14,7 +14,7 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var client = digitalocean.client(token.get());
+  var client = util.getClient();
 
   client.droplets.shutdown(argv.dropletid, (error, action) => {
     util.handleError(error);
