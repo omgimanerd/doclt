@@ -65,7 +65,7 @@ $ docli images list --distribution --no-color
 ```
 
 ## Installation
-Docli is built with node.js and released using npm.
+Docli is built with node.js and released on npm.
 ```
 npm install -g docli
 ```
@@ -84,7 +84,7 @@ Every command is documented by the tool itself. Run `docli <command> --help`
 for details about using any command.
 ```
 Usage:
-  docli <command> [arguments]
+  docli.js  <command> [arguments..] [options..]
 
 Commands:
   domains        Create, delete, and manage domains  [aliases: domain]
@@ -94,13 +94,14 @@ Commands:
   sizes          Lists the available droplet sizes  [aliases: size]
   snapshots      Create, delete, and manage snapshots  [aliases: snapshot]
   ssh            Create, delete, and manage SSH public keys
-  token <token>  Set the DigitalOcean auth token  [aliases: authenticate]
+  token <token>  Set the DigitalOcean auth token  [aliases: auth, authenticate]
   volumes        Create, delete, and manage volumes  [aliases: volume]
 
 Options:
+  --help      Show help  [boolean]
   --json      Output results as JSON
   --no-color  Disable colors
   --version   Show version number  [boolean]
 
-See 'docli <command> --help' for more info.
+See 'docli.js <command> --help' for more info.
 ```
