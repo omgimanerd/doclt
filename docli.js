@@ -9,4 +9,8 @@ var util = require('./lib/util');
 
 yargs.commandDir('commands');
 util.globalConfig(yargs, '\b', true);
-yargs.argv;
+var argv = yargs.argv;
+
+if (argv.color) {
+  console.log('Invoking --color does nothing you idiot!'.bold.red.bgWhite);
+}
