@@ -1,3 +1,3 @@
 node_modules/
 setup
-src/.docli_token
+lib/.docli_token
