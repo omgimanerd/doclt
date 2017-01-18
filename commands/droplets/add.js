@@ -24,7 +24,10 @@ exports.handler = (argv) => {
   prompt.start();
   prompt.get({
     properties: {
-      name: { description: 'Droplet name', required: true },
+      name: {
+        description: 'Droplet name',
+        required: true
+      },
       region: {
         description: 'Region ID ("docli regions" to list regions)',
         required: true,
@@ -33,9 +36,12 @@ exports.handler = (argv) => {
         description: 'Size ID ("docli sizes" to list sizes)',
         required: true
       },
-      image: { description: 'Image ID or slug identifier', required: true },
+      image: {
+        description: 'Image ID or slug identifier',
+        required: true
+      },
       ssh_keys: {
-        description: 'SSH Key IDs (comma separated)',
+        description: 'SSH Key IDs (comma separated) (optional)',
         before: util.csvToArray
       },
       backups: {
@@ -58,7 +64,9 @@ exports.handler = (argv) => {
         required: true,
         type: 'boolean'
       },
-      user_data: { description: 'Desired user data (optional)' },
+      user_data: {
+        description: 'Desired user data (optional)'
+      },
       volume: {
         description: 'Volume IDs to attach (comma separated) (optional)',
         before: util.csvToArray,
@@ -69,6 +77,7 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
+    util.handleError(error);
     client.droplets.create(result, (error, droplet) => {
       util.handleError(error);
       console.log('Droplet created.'.red);
