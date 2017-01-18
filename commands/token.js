@@ -7,7 +7,7 @@ var util = require('../lib/util');
 
 exports.command = 'token <token>';
 
-exports.aliases = ['authenticate'];
+exports.aliases = ['auth', 'authenticate'];
 
 exports.description = 'Set the DigitalOcean auth token'.yellow;
 

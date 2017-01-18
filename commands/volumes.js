@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'volumes <command> [arguments..]';
+exports.command = 'volumes';
 
 exports.aliases = ['volume'];
 

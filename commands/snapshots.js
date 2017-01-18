@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'snapshots <command> [arguments..]';
+exports.command = 'snapshots';
 
 exports.aliases = ['snapshot'];
 

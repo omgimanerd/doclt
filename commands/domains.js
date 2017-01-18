@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'domains <command> [arguments..]';
+exports.command = 'domains';
 
 exports.aliases = ['domain'];
 

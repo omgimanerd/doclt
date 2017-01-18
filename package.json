@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "CLI for Digital Ocean",
   "bin": {
-    "docli": "src/docli.js"
+    "docli": "docli.js"
   },
-  "main": "src/docli.js",
+  "main": "docli.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node docli.js"
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'images <commands> [arguments..]';
+exports.command = 'images';
 
 exports.aliases = ['image'];
 

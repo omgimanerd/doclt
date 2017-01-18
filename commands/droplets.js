@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'droplets <command> [arguments..]';
+exports.command = 'droplets';
 
 exports.aliases = ['droplet'];
 

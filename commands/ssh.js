@@ -5,7 +5,7 @@
 
 var util = require('../lib/util');
 
-exports.command = 'ssh <command> [arguments..]';
+exports.command = 'ssh';
 
 exports.description = 'Create, delete, and manage SSH public keys'.yellow;
 

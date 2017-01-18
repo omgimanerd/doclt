@@ -58,13 +58,13 @@ exports.handler = (argv) => {
         required: true,
         type: 'boolean'
       },
-      user_data: { description: 'Desired user data' },
+      user_data: { description: 'Desired user data (optional)' },
       volume: {
-        description: 'Volume IDs to attach (comma separated)',
+        description: 'Volume IDs to attach (comma separated) (optional)',
         before: util.csvToArray,
       },
       tags: {
-        description: 'Tags (comma separated)',
+        description: 'Tags (comma separated) (optional)',
         before: util.csvToArray
       }
     }

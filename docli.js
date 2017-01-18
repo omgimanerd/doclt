@@ -8,5 +8,5 @@ var yargs = require('yargs');
 var util = require('./lib/util');
 
 yargs.commandDir('commands');
-util.globalConfig(yargs, '<command> [arguments..]', true);
-yargs.wrap(yargs.terminalWidth()).argv;
+util.globalConfig(yargs, '\b', true);
+yargs.argv;

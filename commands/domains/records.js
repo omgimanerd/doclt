@@ -5,7 +5,7 @@
 
 var util = require('../../lib/util');
 
-exports.command = 'records <command> [arguments..]';
+exports.command = 'records';
 
 exports.aliases = ['record'];
 
