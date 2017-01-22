@@ -84,7 +84,7 @@ Every command is documented by the tool itself. Run `docli <command> --help`
 for details about using any command.
 ```
 Usage:
-  docli.js  <command> [arguments..] [options..]
+  docli.js <command> [arguments..] [options..]
 
 Commands:
   domains        Create, delete, and manage domains  [aliases: domain]
