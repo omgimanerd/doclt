@@ -16,18 +16,22 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.domains.listRecords(argv.domain, (error, records) => {
-    util.handleError(error);
-    var table = new Table({
-      head: ['ID', 'Type', 'Name', 'Data']
-    });
-    table.push.apply(table, records.map((record) => {
-      var type = util.colorDomainType(record.type);
-      return [record.id.toString().bold.cyan, type, record.name, record.data];
-    }));
-    console.log(table.toString());
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(records);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table({
+        head: ['ID', 'Type', 'Name', 'Data']
+      });
+      table.push.apply(table, records.map((record) => {
+        var type = util.colorDomainType(record.type);
+        return [record.id.toString().bold.cyan, type, record.name, record.data];
+      }));
+      console.log(table.toString());
+    }
   });
 };

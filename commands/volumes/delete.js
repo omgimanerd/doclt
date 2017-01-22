@@ -19,7 +19,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.volumes.delete(argv.volumeid, (error) => {
-    util.handleError(error);
-    console.log('Volume deleted.'.red);
+    util.handleError(error, argv.json);
+    var message = 'Volume deleted.';
+    if (argv.json) {
+      console.log({ message: message });
+    } else {      
+      console.log(message.red);
+    }
   });
 };

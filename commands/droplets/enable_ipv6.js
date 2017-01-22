@@ -19,7 +19,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.droplets.enableIpv6(argv.dropletid, (error) => {
-    util.handleError(error);
-    console.log('IPv6 enabled.'.red);
+    util.handleError(error, argv.json);
+    var message = 'IPv6 enabled';
+    if (argv.json) {
+      console.log({ message: message });
+    } else {
+      console.log(message.red);
+    }
   });
 };

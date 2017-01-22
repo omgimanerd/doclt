@@ -21,25 +21,29 @@ exports.builder = (yargs) => {
 exports.description = 'List all actions performed on a droplet'.yellow;
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.droplets.listActions(argv.dropletid, (error, actions) => {
-    util.handleError(error);
-    var table = new Table({
-      head: ['ID', 'Status', 'Type', 'Completed']
-    });
-    if (typeof(argv.limit) === 'number') {
-      actions = actions.slice(0, argv.limit);
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(actions);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table({
+        head: ['ID', 'Status', 'Type', 'Completed']
+      });
+      if (typeof(argv.limit) === 'number') {
+        actions = actions.slice(0, argv.limit);
+      }
+      table.push.apply(table, actions.map((action) => {
+        return [
+          action.id.toString().bold.cyan,
+          util.colorActionStatus(action.status),
+          action.type,
+          new Date(action.completed_at).toLocaleString()
+        ];
+      }));
+      console.log(table.toString());
     }
-    table.push.apply(table, actions.map((action) => {
-      return [
-        action.id.toString().bold.cyan,
-        util.colorActionStatus(action.status),
-        action.type,
-        new Date(action.completed_at).toLocaleString()
-      ];
-    }));
-    console.log(table.toString());
   });
 };

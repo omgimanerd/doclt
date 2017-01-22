@@ -25,12 +25,16 @@ exports.handler = (argv) => {
       name: argv.name,
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
-      util.handleError(error);
-      console.log('New SSH Key added.'.red);
-      console.log('SSH Key ID: '.red + key.id);
-      console.log('SSH Key Fingerprint: '.red + key.fingerprint);
+      util.handleError(error, argv.json);
+      if (argv.json) {
+        console.log(key);
+      } else {
+        console.log('New SSH Key added.'.red);
+        console.log('SSH Key ID: '.red + key.id);
+        console.log('SSH Key Fingerprint: '.red + key.fingerprint);
+      }
     });
   } catch (error) {
-    util.handleError(error);
+    util.handleError(error, argv.json);
   }
 };

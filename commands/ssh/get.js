@@ -22,8 +22,10 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.account.getSshKey(argv.keyid, (error, key) => {
-    util.handleError(error);
-    if (argv.key) {
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(key);
+    } else if (argv.key) {
       console.log(key.public_key);
     } else {
       console.log('SSH Key Name: '.red + key.name);

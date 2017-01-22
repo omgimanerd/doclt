@@ -22,8 +22,10 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.domains.get(argv.domain, (error, domain) => {
-    util.handleError(error);
-    if (argv.zoneFile) {
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(domain);
+    } else if (argv.zoneFile) {
       console.log(domain.zone_file);
     } else {
       console.log('Domain Name: '.red + domain.name);

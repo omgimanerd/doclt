@@ -16,24 +16,28 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.volumes.get(argv.volumeid, (error, volume) => {
-    util.handleError(error);
-    var table = new Table();
-    table.push([{
-      colSpan: 2,
-      content: 'ID: '.red + volume.id.toString().bold.cyan
-    }]);
-    table.push.apply(table, [
-      ['Name', volume.name.blue],
-      ['Size', volume.size_gigabytes + ' GB'],
-      ['Region', volume.region.slug],
-      ['Attached to', util.defaultJoin(volume.droplet_ids).bold.cyan],
-      ['Description', volume.description || 'none'],
-      ['Created at', new Date(volume.created_at).toLocaleString()]
-    ].map((row) => [row[0].red, row[1]]));
-    console.log(table.toString());
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(volume);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table();
+      table.push([{
+        colSpan: 2,
+        content: 'ID: '.red + volume.id.toString().bold.cyan
+      }]);
+      table.push.apply(table, [
+        ['Name', volume.name.blue],
+        ['Size', volume.size_gigabytes + ' GB'],
+        ['Region', volume.region.slug],
+        ['Attached to', util.defaultJoin(volume.droplet_ids).bold.cyan],
+        ['Description', volume.description || 'none'],
+        ['Created at', new Date(volume.created_at).toLocaleString()]
+      ].map((row) => [row[0].red, row[1]]));
+      console.log(table.toString());
+    }
   });
 };

@@ -19,13 +19,17 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.domains.getRecord(argv.domain, argv.recordid, (error, record) => {
-    util.handleError(error);
-    console.log('Domain Record ID: '.red + record.id);
-    console.log('Domain Record Type: '.red + record.type);
-    console.log('Domain Record Name: '.red + record.name);
-    console.log('Domain Record Data: '.red + record.data);
-    console.log('Domain Record Priority: '.red + record.priority);
-    console.log('Domain Record Port: '.red + record.port);
-    console.log('Domain Record Weight: '.red + record.weight);
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(record);
+    } else {
+      console.log('Domain Record ID: '.red + record.id);
+      console.log('Domain Record Type: '.red + record.type);
+      console.log('Domain Record Name: '.red + record.name);
+      console.log('Domain Record Data: '.red + record.data);
+      console.log('Domain Record Priority: '.red + record.priority);
+      console.log('Domain Record Port: '.red + record.port);
+      console.log('Domain Record Weight: '.red + record.weight);
+    }
   });
 };

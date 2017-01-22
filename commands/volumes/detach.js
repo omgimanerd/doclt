@@ -17,7 +17,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.volumes.detach(argv.volumeid, (error) => {
-    util.handleError(error);
-    console.log('Volume detached.'.red);
+    util.handleError(error, argv.json);
+    var message = 'Volume detached.';
+    if (argv.json) {
+      console.log({ message: message });
+    } else {
+      console.log(message.red);
+    }
   });
 };

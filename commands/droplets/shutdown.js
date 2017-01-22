@@ -17,8 +17,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.droplets.shutdown(argv.dropletid, (error, action) => {
-    util.handleError(error);
-    console.log('Shutting down droplet.'.red);
-    console.log('Action ID: '.red + action.id.toString().bold.cyan);
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(action);
+    } else {
+      console.log('Shutting down droplet.'.red);
+      console.log('Action ID: '.red + action.id.toString().bold.cyan);
+    }
   });
 };

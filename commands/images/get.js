@@ -16,24 +16,28 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.images.get(argv.imageid, (error, image) => {
-    util.handleError(error);
-    var table = new Table();
-    table.push.apply(table, [
-      ['ID', image.id.toString().bold.cyan],
-      ['Name', image.name.blue],
-      ['Distribution', image.distribution],
-      ['Type', image.type],
-      ['Slug', image.slug || 'none'],
-      ['Public', image.public],
-      ['Regions', util.defaultJoin(image.regions)],
-      ['Created at', new Date(image.created_at).toLocaleString()],
-      ['Size', image.size_gigabytes + ' GB'],
-      ['Min Size', image.min_disk_size + ' GB']
-    ].map((row) => [row[0].red, row[1]]));
-    console.log(table.toString());
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(image);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table();
+      table.push.apply(table, [
+        ['ID', image.id.toString().bold.cyan],
+        ['Name', image.name.blue],
+        ['Distribution', image.distribution],
+        ['Type', image.type],
+        ['Slug', image.slug || 'none'],
+        ['Public', image.public],
+        ['Regions', util.defaultJoin(image.regions)],
+        ['Created at', new Date(image.created_at).toLocaleString()],
+        ['Size', image.size_gigabytes + ' GB'],
+        ['Min Size', image.min_disk_size + ' GB']
+      ].map((row) => [row[0].red, row[1]]));
+      console.log(table.toString());
+    }
   });
 };

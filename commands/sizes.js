@@ -16,25 +16,29 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.sizes.list((error, sizes) => {
-    util.handleError(error);
-    var table = new Table({
-      head: ['ID', 'Memory', 'VCPUs', 'Disk Space', 'Transfer\nBandwidth',
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(sizes);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table({
+        head: ['ID', 'Memory', 'VCPUs', 'Disk Space', 'Transfer\nBandwidth',
         'Price/Month']
-    });
-    table.push.apply(table, sizes.map((size) => {
-      return [
-        size.slug.bold.cyan,
-        size.memory + ' MB',
-        size.vcpus,
-        size.disk + ' GB',
-        size.transfer + ' TB',
-        '$' + size.price_monthly
-      ];
-    }));
-    console.log(table.toString());
+      });
+      table.push.apply(table, sizes.map((size) => {
+        return [
+          size.slug.bold.cyan,
+          size.memory + ' MB',
+          size.vcpus,
+          size.disk + ' GB',
+          size.transfer + ' TB',
+          '$' + size.price_monthly
+        ];
+      }));
+      console.log(table.toString());
+    }
   });
 };

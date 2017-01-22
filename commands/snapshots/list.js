@@ -16,20 +16,24 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.snapshots.list((error, snapshots) => {
-    util.handleError(error);
-    var table = new Table({ head: ['ID', 'Name', 'Min Size'] });
-    snapshots.sort((a, b) => a.name.localeCompare(b.name));
-    table.push.apply(table, snapshots.map((snapshot) => {
-      return [
-        snapshot.id.toString().bold.cyan,
-        snapshot.name.blue,
-        snapshot.min_disk_size + ' GB'
-      ];
-    }));
-    console.log(table.toString());
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(snapshots);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table({ head: ['ID', 'Name', 'Min Size'] });
+      snapshots.sort((a, b) => a.name.localeCompare(b.name));
+      table.push.apply(table, snapshots.map((snapshot) => {
+        return [
+          snapshot.id.toString().bold.cyan,
+          snapshot.name.blue,
+          snapshot.min_disk_size + ' GB'
+        ];
+      }));
+      console.log(table.toString());
+    }
   });
 };

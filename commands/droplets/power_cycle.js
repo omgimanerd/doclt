@@ -19,8 +19,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.droplets.powerCycle(argv.dropletid, (error, action) => {
-    util.handleError(error);
-    console.log('Power cycling droplet.'.red);
-    console.log('Action ID: '.red + action.id.toString().bold.cyan);
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(action);
+    } else {
+      console.log('Power cycling droplet.'.red);
+      console.log('Action ID: '.red + action.id.toString().bold.cyan);
+    }
   });
 };

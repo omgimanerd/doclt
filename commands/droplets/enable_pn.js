@@ -19,7 +19,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.droplets.enablePrivateNetworking(argv.dropletid, (error) => {
-    util.handleError(error);
-    console.log('Private networking enabled.'.red);
+    util.handleError(error, argv.json);
+    var message = 'Private networking enabled.';
+    if (argv.json) {
+      console.log({ message: message });
+    } else {
+      console.log(message.red);
+    }
   });
 };

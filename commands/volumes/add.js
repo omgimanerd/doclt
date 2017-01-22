@@ -44,11 +44,15 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    util.handleError(error);
+    util.handleError(error, argv.json);
     client.volumes.create(result, (error, volume) => {
-      util.handleError(error);
-      console.log('Volume created,'.red);
-      console.log('Volume ID: '.red + volume.id.toString().bold.cyan);
+      util.handleError(error, argv.json);
+      if (argv.json) {
+        console.log(volume);
+      } else {
+        console.log('Volume created,'.red);
+        console.log('Volume ID: '.red + volume.id.toString().bold.cyan);
+      }
     });
   })
 };

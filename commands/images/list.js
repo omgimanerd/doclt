@@ -23,7 +23,6 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   var query = {};
@@ -38,27 +37,32 @@ exports.handler = (argv) => {
     query.per_page = Number.MAX_SAFE_INTEGER;
   }
   client.images.list(query, (error, images) => {
-    util.handleError(error);
-    var table = new Table({
-      head: [
-        'ID',
-        'Distribution (' + 'PUBLIC'.green + ') (' + 'PRIVATE'.blue + ')',
-        'Min Size'
-      ]
-    });
-    images.sort((a, b) => {
-      a = a.distribution + a.name;
-      b = b.distribution + b.name;
-      return a.localeCompare(b);
-    });
-    table.push.apply(table, images.map((image) => {
-      var distro = image.distribution + ' ' + image.name;
-      return [
-        image.id.toString().bold.cyan,
-        image.public ? distro.green : distro.blue,
-        image.min_disk_size + ' GB'
-      ];
-    }));
-    console.log(table.toString());
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(images);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table({
+        head: [
+          'ID',
+          'Distribution (' + 'PUBLIC'.green + ') (' + 'PRIVATE'.blue + ')',
+          'Min Size'
+        ]
+      });
+      images.sort((a, b) => {
+        a = a.distribution + a.name;
+        b = b.distribution + b.name;
+        return a.localeCompare(b);
+      });
+      table.push.apply(table, images.map((image) => {
+        var distro = image.distribution + ' ' + image.name;
+        return [
+          image.id.toString().bold.cyan,
+          image.public ? distro.green : distro.blue,
+          image.min_disk_size + ' GB'
+        ];
+      }));
+      console.log(table.toString());
+    }
   });
 };

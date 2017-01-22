@@ -16,21 +16,25 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var Table = require('cli-table2');
   var client = util.getClient();
 
   client.droplets.list((error, droplets) => {
-    util.handleError(error);
-    var table = new Table({
-      head: ['Droplet ID', 'Droplet Name', 'IPv4', 'Status']
-    });
-    table.push.apply(table, droplets.map((droplet) => {
-      var id = droplet.id.toString().bold.cyan;
-      var status = util.colorDropletStatus(droplet.status);
-      var networks = droplet.networks.v4.map(
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(droplets);
+    } else {
+      var Table = require('cli-table2');
+      var table = new Table({
+        head: ['Droplet ID', 'Droplet Name', 'IPv4', 'Status']
+      });
+      table.push.apply(table, droplets.map((droplet) => {
+        var id = droplet.id.toString().bold.cyan;
+        var status = util.colorDropletStatus(droplet.status);
+        var networks = droplet.networks.v4.map(
           (network) => network.ip_address).join('\n');
-      return [id, droplet.name.blue, networks, status];
-    }))
-    console.log(table.toString());
+          return [id, droplet.name.blue, networks, status];
+      }));
+      console.log(table.toString());
+    }
   });
 };

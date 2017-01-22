@@ -17,7 +17,12 @@ exports.handler = (argv) => {
   var client = util.getClient();
 
   client.volumes.attach(argv.volumeid, argv.dropletid, (error) => {
-    util.handleError(error);
-    console.log('Volume attached.'.red);
+    util.handleError(error, argv.json);
+    var message = 'Volume attached';
+    if (argv.json) {
+      console.log({ message: message });
+    } else {
+      console.log(message.red);
+    }
   });
 };

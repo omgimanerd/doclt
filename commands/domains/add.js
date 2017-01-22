@@ -21,8 +21,12 @@ exports.handler = (argv) => {
   client.domains.create({
     name: argv.domain,
     ip_address: argv.ip
-  }, (error) => {
-    util.handleError(error);
-    console.log('New domain name added.'.red);
+  }, (error, domain) => {
+    util.handleError(error, argv.json);
+    if (argv.json) {
+      console.log(domain);
+    } else {
+      console.log('New domain name added.'.red);
+    }
   });
 };
