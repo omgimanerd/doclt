@@ -16,11 +16,10 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = util.getClient();
 
-  client.volumes.detach(argv.volumeid, (error) => {
+  client.volumes.detach(argv.volumeid, (error, action) => {
     util.handleError(error, argv.json);
-    var message = 'Volume detached.';
     if (argv.json) {
-      console.log({ message: message });
+      console.log(action);
     } else {
       console.log(message.red);
     }

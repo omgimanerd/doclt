@@ -16,13 +16,13 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = util.getClient();
 
-  client.volumes.attach(argv.volumeid, argv.dropletid, (error) => {
+  client.volumes.attach(argv.volumeid, argv.dropletid, (error, action) => {
     util.handleError(error, argv.json);
-    var message = 'Volume attached';
     if (argv.json) {
-      console.log({ message: message });
+      console.log(action);
     } else {
-      console.log(message.red);
+      console.log('Volume attached'.red);
+      console.log('Action ID: '.red + action.id);
     }
   });
 };
