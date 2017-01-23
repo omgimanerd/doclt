@@ -65,11 +65,13 @@ $ docli images list --distribution --no-color
 ```
 
 ## Installation
-Docli is built with node.js and released on npm.
+Docli is built with node.js and released on npm. It should work with any
+version above 4.3.2. Install it via npm.
 ```
 npm install -g docli
 ```
-Simple as that.
+Simple as that. You can also clone this GitHub repository and create a symlink
+to docli.js if you want, but that's just extra effort.
 
 ## Usage
 Before using docli, you must set your
@@ -77,7 +79,7 @@ Before using docli, you must set your
 Get one from Digital Ocean and run:
 ```
 docli token <YOUR TOKEN HERE>
-# Example: docli token abcdefghijk
+# Example: docli token abcdefghijk1234567890
 ```
 
 Every command is documented by the tool itself. Run `docli <command> --help`
@@ -105,3 +107,11 @@ Options:
 
 See 'docli.js <command> --help' for more info.
 ```
+
+## Contributing
+Fork this repository and push changes to your own fork. Then send me a pull
+request. You should probably open an issue and discuss it with me before you
+do anything though.
+
+## Creators
+  - Alvin Lin (omgimanerd)
