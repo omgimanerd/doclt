@@ -18,13 +18,16 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = util.getClient();
 
-  client.account.updateSshKey(argv.keyid, { name: argv.name }, (error) => {
+  client.account.updateSshKey(argv.keyid, { name: argv.name }, (error, key) => {
     util.handleError(error, argv.json);
-    var message = 'SSH Key renamed';
     if (argv.json) {
-      console.log({ message: message }) ;
+      console.log(key) ;
     } else {
-      console.log(message.red);
+      console.log('SSH Key renamed.'.red);
+      console.log('SSH Key Name: '.red + key.name);
+      console.log('SSH Key ID: '.red + key.id);
+      console.log('SSH Key Fingerprint: '.red + key.fingerprint);
+      console.log('SSH Public Key: '.red + key.public_key);
     }
   });
 }

@@ -21,7 +21,8 @@ exports.handler = (argv) => {
     if (argv.json) {
       console.log(action);
     } else {
-      console.log(message.red);
+      console.log('Volume detached.'.red);
+      console.log('Action ID: '.red + action.id.toString().bold.cyan);
     }
   });
 };

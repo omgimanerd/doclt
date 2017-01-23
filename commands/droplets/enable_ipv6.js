@@ -18,13 +18,13 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = util.getClient();
 
-  client.droplets.enableIpv6(argv.dropletid, (error) => {
+  client.droplets.enableIpv6(argv.dropletid, (error, action) => {
     util.handleError(error, argv.json);
-    var message = 'IPv6 enabled';
     if (argv.json) {
-      console.log({ message: message });
+      console.log(action);
     } else {
-      console.log(message.red);
+      console.log('IPv6 enabled'.red);
+      console.log('Action ID: '.red + action.id.toString().bold.cyan);
     }
   });
 };

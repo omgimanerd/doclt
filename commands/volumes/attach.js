@@ -21,8 +21,8 @@ exports.handler = (argv) => {
     if (argv.json) {
       console.log(action);
     } else {
-      console.log('Volume attached'.red);
-      console.log('Action ID: '.red + action.id);
+      console.log('Volume attached.'.red);
+      console.log('Action ID: '.red + action.id.toString().bold.cyan);
     }
   });
 };

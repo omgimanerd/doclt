@@ -25,7 +25,7 @@ exports.handler = (argv) => {
         console.log(action);
       } else {
         console.log('Volume resized.'.red);
-        console.log('Action ID: '.red + action.id);
+        console.log('Action ID: '.red + action.id.toString().bold.cyan);
       }
     });
   });

@@ -18,13 +18,13 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = util.getClient();
 
-  client.droplets.enablePrivateNetworking(argv.dropletid, (error) => {
+  client.droplets.enablePrivateNetworking(argv.dropletid, (error, action) => {
     util.handleError(error, argv.json);
-    var message = 'Private networking enabled.';
     if (argv.json) {
-      console.log({ message: message });
+      console.log(action);
     } else {
-      console.log(message.red);
+      console.log('Private networking enabled.'.red);
+      console.log('Action ID: '.red + action.id.toString().bold.cyan);
     }
   });
 };
