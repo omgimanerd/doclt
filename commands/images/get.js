@@ -26,7 +26,7 @@ exports.handler = (argv) => {
       var Table = require('cli-table2');
       var table = new Table();
       table.push.apply(table, [
-        ['ID', image.id.toString().bold.cyan],
+        ['ID', util.colorID(image.id)],
         ['Name', image.name.blue],
         ['Distribution', image.distribution],
         ['Type', image.type],

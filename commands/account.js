@@ -27,7 +27,7 @@ exports.handler = (argv) => {
       var table = new Table();
       table.push([{
         colSpan: 2,
-        content: 'UUID: '.red + account.uuid.toString().bold.cyan
+        content: 'UUID: '.red + util.colorID(account.uuid)
       }]);
       table.push.apply(table, [
         ['Status', util.colorAccountStatus(account.status)],

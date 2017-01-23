@@ -28,7 +28,7 @@ exports.handler = (argv) => {
         head: ['Droplet ID', 'Droplet Name', 'IPv4', 'Status']
       });
       table.push.apply(table, droplets.map((droplet) => {
-        var id = droplet.id.toString().bold.cyan;
+        var id = util.colorID(droplet.id);
         var status = util.colorDropletStatus(droplet.status);
         var networks = droplet.networks.v4.map(
           (network) => network.ip_address).join('\n');

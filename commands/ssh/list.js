@@ -28,7 +28,7 @@ exports.handler = (argv) => {
         head: ['SSH Key Name', 'SSH Key ID']
       });
       table.push.apply(table, keys.map((key) => {
-        return [key.name.blue, key.id.toString().bold.cyan];
+        return [key.name.blue, util.colorID(key.id)];
       }));
       console.log(table.toString());
     }

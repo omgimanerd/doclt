@@ -37,7 +37,7 @@ exports.handler = (argv) => {
       }
       table.push.apply(table, actions.map((action) => {
         return [
-          action.id.toString().bold.cyan,
+          util.colorID(action.id),
           util.colorActionStatus(action.status),
           action.type,
           new Date(action.completed_at).toLocaleString()

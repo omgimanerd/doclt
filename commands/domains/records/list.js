@@ -29,7 +29,7 @@ exports.handler = (argv) => {
       });
       table.push.apply(table, records.map((record) => {
         var type = util.colorDomainType(record.type);
-        return [record.id.toString().bold.cyan, type, record.name, record.data];
+        return [util.colorID(record.id), type, record.name, record.data];
       }));
       console.log(table.toString());
     }

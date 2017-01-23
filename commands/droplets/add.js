@@ -84,7 +84,7 @@ exports.handler = (argv) => {
         console.log(droplet);
       } else {
         console.log('Droplet created.'.red);
-        console.log('Droplet ID: '.red + droplet.id.toString().bold.cyan);
+        console.log('Droplet ID: '.red + util.colorID(droplet.id));
       }
     });
   });

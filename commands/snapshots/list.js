@@ -28,7 +28,7 @@ exports.handler = (argv) => {
       snapshots.sort((a, b) => a.name.localeCompare(b.name));
       table.push.apply(table, snapshots.map((snapshot) => {
         return [
-          snapshot.id.toString().bold.cyan,
+          util.colorID(snapshot.id),
           snapshot.name.blue,
           snapshot.min_disk_size + ' GB'
         ];

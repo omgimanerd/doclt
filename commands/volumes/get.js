@@ -27,7 +27,7 @@ exports.handler = (argv) => {
       var table = new Table();
       table.push([{
         colSpan: 2,
-        content: 'ID: '.red + volume.id.toString().bold.cyan
+        content: 'ID: '.red + util.colorID(volume.id)
       }]);
       table.push.apply(table, [
         ['Name', volume.name.blue],

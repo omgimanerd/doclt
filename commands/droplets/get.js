@@ -35,7 +35,7 @@ exports.handler = (argv) => {
       var Table = require('cli-table2');
       var table = new Table();
       table.push.apply(table, [
-        ['ID', droplet.id.toString().bold.cyan],
+        ['ID', util.colorID(droplet.id)],
         ['Name', droplet.name.blue],
         ['Status', util.colorDropletStatus(droplet.status)],
         ['Memory', droplet.memory + ' MB'],

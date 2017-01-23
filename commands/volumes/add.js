@@ -51,7 +51,7 @@ exports.handler = (argv) => {
         console.log(volume);
       } else {
         console.log('Volume created,'.red);
-        console.log('Volume ID: '.red + volume.id.toString().bold.cyan);
+        console.log('Volume ID: '.red + util.colorID(volume.id));
       }
     });
   })

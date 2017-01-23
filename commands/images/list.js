@@ -57,7 +57,7 @@ exports.handler = (argv) => {
       table.push.apply(table, images.map((image) => {
         var distro = image.distribution + ' ' + image.name;
         return [
-          image.id.toString().bold.cyan,
+          util.colorID(image.id),
           image.public ? distro.green : distro.blue,
           image.min_disk_size + ' GB'
         ];
