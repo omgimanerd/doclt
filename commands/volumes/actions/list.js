@@ -1,15 +1,15 @@
 /**
- * @fileoverview Module handling the droplet action listing command.
+ * @fileoverview Module handling the volume action listing command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 var util = require('../../../lib/util');
 
-exports.command = 'list <droplet id>';
+exports.command = 'list <volume id>';
 
 exports.aliases = ['ls'];
 
-exports.description = 'List all actions performed on a droplet'.yellow;
+exports.description = 'List all actions performed on a volume'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('limit', {
@@ -17,13 +17,12 @@ exports.builder = (yargs) => {
     description: 'The maximum number of actions to fetch',
     number: true
   });
-  util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
   var client = util.getClient();
 
-  client.droplets.listActions(argv.dropletid, (error, actions) => {
+  client.volumes.listActions(argv.volumeid, (error, actions) => {
     util.handleError(error, argv.json);
     if (argv.json) {
       console.log(actions);
