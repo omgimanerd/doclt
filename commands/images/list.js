@@ -17,7 +17,7 @@ exports.builder = (yargs) => {
   }).option('distribution', {
     description: 'Fetch distribution based images'
   }).option('private', {
-    description: 'Fetch private user images'
+    description: 'Fetch all private user images'
   });
   util.globalConfig(yargs, exports.command);
 };
@@ -45,7 +45,7 @@ exports.handler = (argv) => {
       var table = new Table({
         head: [
           'ID',
-          'Distribution (' + 'PUBLIC'.green + ') (' + 'PRIVATE'.blue + ')',
+          'Name (' + 'PUBLIC'.green + ') (' + 'PRIVATE'.blue + ')',
           'Min Size'
         ]
       });
