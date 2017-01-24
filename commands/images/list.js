@@ -46,7 +46,7 @@ exports.handler = (argv) => {
         head: [
           'ID',
           'Name (' + 'PUBLIC'.green + ') (' + 'PRIVATE'.blue + ')',
-          'Min Size'
+          'Minimum Size'
         ]
       });
       images.sort((a, b) => {

@@ -35,7 +35,7 @@ exports.handler = (argv) => {
         ['Region', volume.region.slug],
         ['Attached to', util.defaultJoin(volume.droplet_ids).bold.cyan],
         ['Description', volume.description || 'none'],
-        ['Created at', new Date(volume.created_at).toLocaleString()]
+        ['Created At', new Date(volume.created_at).toLocaleString()]
       ].map((row) => [row[0].red, row[1]]));
       console.log(table.toString());
     }

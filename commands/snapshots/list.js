@@ -24,13 +24,13 @@ exports.handler = (argv) => {
       console.log(snapshots);
     } else {
       var Table = require('cli-table2');
-      var table = new Table({ head: ['ID', 'Name', 'Min Size'] });
+      var table = new Table({ head: ['ID', 'Name', 'Created At'] });
       snapshots.sort((a, b) => a.name.localeCompare(b.name));
       table.push.apply(table, snapshots.map((snapshot) => {
         return [
           util.colorID(snapshot.id),
           snapshot.name.blue,
-          snapshot.min_disk_size + ' GB'
+          new Date(snapshot.created_at).toLocaleString()
         ];
       }));
       console.log(table.toString());

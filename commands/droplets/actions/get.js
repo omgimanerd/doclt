@@ -29,8 +29,8 @@ exports.handler = (argv) => {
         ['Action ID', util.colorID(action.id)],
         ['Action Status', util.colorActionStatus(action.status)],
         ['Action Type', action.type],
-        ['Started at', new Date(action.started_at).toLocaleString()],
-        ['Completed at', new Date(action.completed_at).toLocaleString()],
+        ['Started At', new Date(action.started_at).toLocaleString()],
+        ['Completed At', new Date(action.completed_at).toLocaleString()],
         ['Resource Type', action.resource_type],
         ['Resource ID', util.colorID(action.resource_id)],
         ['Resource Region', action.region_slug]

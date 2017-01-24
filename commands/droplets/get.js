@@ -50,7 +50,7 @@ exports.handler = (argv) => {
         ['IPv6', util.defaultJoin(
             droplet.networks.v6.map((network) => network.ip_address))],
         ['Tags', util.defaultJoin(droplet.tags)],
-        ['Created at', new Date(droplet.created_at).toLocaleString()]
+        ['Created At', new Date(droplet.created_at).toLocaleString()]
       ].map((row) => [row[0].red, row[1]]));
       if (argv.all || argv.backups) {
         table.push([{

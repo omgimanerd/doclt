@@ -25,7 +25,7 @@ exports.handler = (argv) => {
     } else {
       var Table = require('cli-table2');
       var table = new Table({
-        head: ['ID', 'Name', 'Created at']
+        head: ['ID', 'Name', 'Created At']
       });
       table.push.apply(table, backups.map((backup) => {
         return [

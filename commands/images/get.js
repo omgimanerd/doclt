@@ -31,11 +31,11 @@ exports.handler = (argv) => {
         ['Distribution', image.distribution],
         ['Type', image.type],
         ['Slug', image.slug || 'none'],
-        ['Public', image.public],
+        ['Public', image.public ? 'yes'.green : 'no'.red],
         ['Regions', util.defaultJoin(image.regions)],
-        ['Created at', new Date(image.created_at).toLocaleString()],
+        ['Created At', new Date(image.created_at).toLocaleString()],
         ['Size', image.size_gigabytes + ' GB'],
-        ['Min Size', image.min_disk_size + ' GB']
+        ['Minimum Disk Size', image.min_disk_size + ' GB']
       ].map((row) => [row[0].red, row[1]]));
       console.log(table.toString());
     }
