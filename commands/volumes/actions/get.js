@@ -1,16 +1,16 @@
 /**
- * @fileoverview Module handling the droplet action getting command.
+ * @fileoverview Module handling the volume action getting command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 var Display = require('../../../lib/Display');
 var Util = require('../../../lib/Util');
 
-exports.command = 'get <droplet id> <action id>';
+exports.command = 'get <volume id> <action id>';
 
 exports.aliases = ['i', 'info'];
 
-exports.description = 'Info about a droplet action'.yellow;
+exports.description = 'Info about a volume action'.yellow;
 
 exports.builder = (yargs) => {
   Util.globalConfig(yargs, exports.command);
@@ -18,6 +18,5 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.droplets.getAction(
-      argv.dropletid, argv.actionid, Display.displayAction);
+  client.volumes.getAction(argv.volumeid, argv.actionid, Display.displayAction);
 };
