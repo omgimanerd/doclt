@@ -23,9 +23,7 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.droplets.listActions(argv.dropletid, (error, actions) => {
-    Util.handleError(error);
-    Display.displayActions(actions, argv.limit);
+    Display.displayActions(error, actions, argv.limit);
   });
 };
