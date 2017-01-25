@@ -5,6 +5,7 @@
 
 var prompt = require('prompt');
 
+var Display = require('../../../lib/Display');
 var Util = require('../../../lib/Util');
 
 exports.command = 'add <domain>';
@@ -88,19 +89,8 @@ exports.handler = (argv) => {
       Util.handleError(error);
       result.type = type;
       client.domains.createRecord(argv.domain, result, (error, record) => {
-        Util.handleError(error);
-        if (argv.json) {
-          console.log(record);
-        } else {
-          console.log('New domain record added.'.red);
-          console.log('Domain Record ID: '.red + record.id);
-          console.log('Domain Record Type: '.red + record.type);
-          console.log('Domain Record Name: '.red + record.name);
-          console.log('Domain Record Data: '.red + record.data);
-          console.log('Domain Record Priority: '.red + record.priority);
-          console.log('Domain Record Port: '.red + record.port);
-          console.log('Domain Record Weight: '.red + record.weight);
-        }
+        Display.displayDomainRecord(error, record);
+        console.log('New domain record added.'.red);
       });
     });
   });

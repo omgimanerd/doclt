@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../../lib/Display');
 var Util = require('../../../lib/Util');
 
 exports.command = 'delete <domain> <record id>';
@@ -19,12 +20,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.domains.deleteRecord(argv.domain, argv.recordid, (error) => {
-    Util.handleError(error);
-    var message = 'Domain record deleted';
-    if (argv.json) {
-      console.log({ message: message });
-    } else {
-      console.log(message.red);
-    }
+    Display.displayMessage('Domain record deleted');
   });
 };

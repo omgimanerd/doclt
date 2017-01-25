@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../../lib/Display');
 var Util = require('../../../lib/Util');
 
 exports.command = 'list <domain>';
@@ -17,21 +18,5 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
-  client.domains.listRecords(argv.domain, (error, records) => {
-    Util.handleError(error);
-    if (argv.json) {
-      console.log(records);
-    } else {
-      var Table = require('cli-table2');
-      var table = new Table({
-        head: ['ID', 'Type', 'Name', 'Data']
-      });
-      table.push.apply(table, records.map((record) => {
-        var type = Util.colorDomainType(record.type);
-        return [Util.colorID(record.id), type, record.name, record.data];
-      }));
-      console.log(table.toString());
-    }
-  });
+  client.domains.listRecords(argv.domain, Display.displayDomainRecords);
 };
