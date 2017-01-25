@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../../lib/util');
+var Util = require('../../../lib/Util');
 
 exports.command = 'list <droplet id>';
 
@@ -12,14 +12,14 @@ exports.aliases = ['ls'];
 exports.description = 'List snapshots made of a droplet'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.droplets.snapshots(argv.dropletid, (error, snapshots) => {
-    util.handleError(error);
+    Util.handleError(error);
     if (argv.json) {
       console.log(snapshots);
     } else {
@@ -27,7 +27,7 @@ exports.handler = (argv) => {
       var table = new Table({ head: ['ID', 'Name', 'Created At'] });
       table.push.apply(table, snapshots.map((snapshot) => {
         return [
-          util.colorID(snapshot.id),
+          Util.colorID(snapshot.id),
           snapshot.name.blue,
           new Date(snapshot.created_at).toLocaleString()
         ];

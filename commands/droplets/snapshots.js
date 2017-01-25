@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'snapshots';
 
@@ -13,5 +13,5 @@ exports.description = 'List and take snapshots of a droplet'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('snapshots');
-  util.globalConfig(yargs, exports.command, true);
+  Util.globalConfig(yargs, exports.command, true);
 };

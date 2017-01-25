@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../../lib/util');
+var Util = require('../../../lib/Util');
 
 exports.command = 'list <domain>';
 
@@ -12,14 +12,14 @@ exports.aliases = ['ls'];
 exports.description = 'List all records for a domain'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.domains.listRecords(argv.domain, (error, records) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(records);
     } else {
@@ -28,8 +28,8 @@ exports.handler = (argv) => {
         head: ['ID', 'Type', 'Name', 'Data']
       });
       table.push.apply(table, records.map((record) => {
-        var type = util.colorDomainType(record.type);
-        return [util.colorID(record.id), type, record.name, record.data];
+        var type = Util.colorDomainType(record.type);
+        return [Util.colorID(record.id), type, record.name, record.data];
       }));
       console.log(table.toString());
     }

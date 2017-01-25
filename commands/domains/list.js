@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'list';
 
@@ -12,14 +12,14 @@ exports.aliases = ['ls'];
 exports.description = 'List all domain names'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.domains.list((error, domains) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(domains);
     } else {

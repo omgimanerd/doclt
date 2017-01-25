@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../../lib/util');
+var Util = require('../../../lib/Util');
 
 exports.command = 'list <droplet id>';
 
@@ -17,14 +17,14 @@ exports.builder = (yargs) => {
     description: 'The maximum number of actions to fetch',
     number: true
   });
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.droplets.listActions(argv.dropletid, (error, actions) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(actions);
     } else {
@@ -37,8 +37,8 @@ exports.handler = (argv) => {
       }
       table.push.apply(table, actions.map((action) => {
         return [
-          util.colorID(action.id),
-          util.colorActionStatus(action.status),
+          Util.colorID(action.id),
+          Util.colorActionStatus(action.status),
           action.type,
           new Date(action.completed_at).toLocaleString()
         ];

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../../lib/util');
+var Util = require('../../../lib/Util');
 
 exports.command = 'list <droplet id>';
 
@@ -12,14 +12,14 @@ exports.aliases = ['ls'];
 exports.description = 'List all backups of a droplet'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.droplets.backups(argv.dropletid, (error, backups) => {
-    util.handleError(error);
+    Util.handleError(error);
     if (argv.json) {
       console.log(backups);
     } else {
@@ -29,7 +29,7 @@ exports.handler = (argv) => {
       });
       table.push.apply(table, backups.map((backup) => {
         return [
-          util.colorID(backup.id),
+          Util.colorID(backup.id),
           backup.name.blue,
           new Date(backup.created_at).toLocaleString()
         ];

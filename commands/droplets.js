@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../lib/util');
+var Util = require('../lib/Util');
 
 exports.command = 'droplets';
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage droplets'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('droplets');
-  util.globalConfig(yargs, exports.command, true);
+  Util.globalConfig(yargs, exports.command, true);
 };

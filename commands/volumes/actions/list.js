@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../../lib/util');
+var Util = require('../../../lib/Util');
 
 exports.command = 'list <volume id>';
 
@@ -20,10 +20,10 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.volumes.listActions(argv.volumeid, (error, actions) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(actions);
     } else {
@@ -36,8 +36,8 @@ exports.handler = (argv) => {
       }
       table.push.apply(table, actions.map((action) => {
         return [
-          util.colorID(action.id),
-          util.colorActionStatus(action.status),
+          Util.colorID(action.id),
+          Util.colorActionStatus(action.status),
           action.type,
           new Date(action.completed_at).toLocaleString()
         ];

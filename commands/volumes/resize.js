@@ -3,29 +3,29 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'resize <volume id> <size>';
 
 exports.description = 'Resize a volume'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.volumes.get(argv.volumeid, (error, volume) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     var region = volume.region.slug;
     client.volumes.resize(argv.volumeid, argv.size, region, (error, action) => {
-      util.handleError(error, argv.json);
+      Util.handleError(error, argv.json);
       if (argv.json) {
         console.log(action);
       } else {
         console.log('Volume resized.'.red);
-        console.log('Action ID: '.red + util.colorID(action.id));
+        console.log('Action ID: '.red + Util.colorID(action.id));
       }
     });
   });

@@ -5,7 +5,7 @@
 
 var prompt = require('prompt');
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'add';
 
@@ -14,11 +14,11 @@ exports.aliases = ['create'];
 exports.description = 'Create a new volume'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   prompt.message = '';
   prompt.start();
@@ -44,14 +44,14 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     client.volumes.create(result, (error, volume) => {
-      util.handleError(error, argv.json);
+      Util.handleError(error, argv.json);
       if (argv.json) {
         console.log(volume);
       } else {
         console.log('Volume created,'.red);
-        console.log('Volume ID: '.red + util.colorID(volume.id));
+        console.log('Volume ID: '.red + Util.colorID(volume.id));
       }
     });
   })

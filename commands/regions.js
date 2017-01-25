@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../lib/util');
+var Util = require('../lib/Util');
 
 exports.command = 'regions';
 
@@ -12,14 +12,14 @@ exports.aliases = ['region'];
 exports.description = 'Lists the available regions'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.regions.list((error, regions) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(regions);
     } else {
@@ -34,8 +34,8 @@ exports.handler = (argv) => {
         return [
           region.slug.bold.cyan,
           region.name.blue,
-          util.defaultJoin(region.sizes),
-          util.defaultJoin(region.features),
+          Util.defaultJoin(region.sizes),
+          Util.defaultJoin(region.features),
           region.available ? 'yes'.green : 'no'.red
         ];
       }));

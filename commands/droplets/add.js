@@ -5,7 +5,7 @@
 
 var prompt = require('prompt');
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'add';
 
@@ -14,11 +14,11 @@ exports.aliases = ['create'];
 exports.description = 'Create a new droplet'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   prompt.message = '';
   prompt.start();
@@ -42,7 +42,7 @@ exports.handler = (argv) => {
       },
       ssh_keys: {
         description: 'SSH Key IDs (comma separated) (optional)',
-        before: util.csvToArray
+        before: Util.csvToArray
       },
       backups: {
         description: 'Enable backups? (true/false)',
@@ -69,22 +69,22 @@ exports.handler = (argv) => {
       },
       volume: {
         description: 'Volume IDs to attach (comma separated) (optional)',
-        before: util.csvToArray,
+        before: Util.csvToArray,
       },
       tags: {
         description: 'Tags (comma separated) (optional)',
-        before: util.csvToArray
+        before: Util.csvToArray
       }
     }
   }, (error, result) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     client.droplets.create(result, (error, droplet) => {
-      util.handleError(error, argv.json);
+      Util.handleError(error, argv.json);
       if (argv.json) {
         console.log(droplet);
       } else {
         console.log('Droplet created.'.red);
-        console.log('Droplet ID: '.red + util.colorID(droplet.id));
+        console.log('Droplet ID: '.red + Util.colorID(droplet.id));
       }
     });
   });

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'list';
 
@@ -19,11 +19,11 @@ exports.builder = (yargs) => {
   }).option('private', {
     description: 'Fetch all private user images'
   });
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   var query = {};
   if (argv.private) {
@@ -37,7 +37,7 @@ exports.handler = (argv) => {
     query.per_page = Number.MAX_SAFE_INTEGER;
   }
   client.images.list(query, (error, images) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(images);
     } else {
@@ -57,7 +57,7 @@ exports.handler = (argv) => {
       table.push.apply(table, images.map((image) => {
         var distro = image.distribution + ' ' + image.name;
         return [
-          util.colorID(image.id),
+          Util.colorID(image.id),
           image.public ? distro.green : distro.blue,
           image.min_disk_size + ' GB'
         ];

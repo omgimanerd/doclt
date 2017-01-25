@@ -5,10 +5,10 @@
 var colors = require('colors');
 var yargs = require('yargs');
 
-var util = require('./lib/util');
+var Util = require('./lib/Util');
 
 yargs.commandDir('commands');
-util.globalConfig(yargs, '\b', true);
+Util.globalConfig(yargs, '\b', true);
 var argv = yargs.argv;
 
 if (argv.color) {

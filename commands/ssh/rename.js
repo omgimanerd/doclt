@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'rename <key id> <name>';
 
@@ -12,14 +12,14 @@ exports.aliases = ['update'];
 exports.description = 'Rename an SSH key'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.account.updateSshKey(argv.keyid, { name: argv.name }, (error, key) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(key) ;
     } else {

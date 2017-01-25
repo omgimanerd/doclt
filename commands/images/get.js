@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'get <image id>';
 
@@ -12,27 +12,27 @@ exports.aliases = ['i', 'info'];
 exports.description = 'Info about an image'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.images.get(argv.imageid, (error, image) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(image);
     } else {
       var Table = require('cli-table2');
       var table = new Table();
       table.push.apply(table, [
-        ['ID', util.colorID(image.id)],
+        ['ID', Util.colorID(image.id)],
         ['Name', image.name.blue],
         ['Distribution', image.distribution],
         ['Type', image.type],
         ['Slug', image.slug || 'none'],
         ['Public', image.public ? 'yes'.green : 'no'.red],
-        ['Regions', util.defaultJoin(image.regions)],
+        ['Regions', Util.defaultJoin(image.regions)],
         ['Created At', new Date(image.created_at).toLocaleString()],
         ['Size', image.size_gigabytes + ' GB'],
         ['Minimum Disk Size', image.min_disk_size + ' GB']

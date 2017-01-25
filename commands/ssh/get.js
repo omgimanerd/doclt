@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'get <key id>';
 
@@ -15,14 +15,14 @@ exports.builder = (yargs) => {
   yargs.option('key', {
     description: 'Show only the public key'
   });
-  util.globalconfig(yargs, exports.command);
+  Util.globalconfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.account.getSshKey(argv.keyid, (error, key) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(key);
     } else if (argv.key) {

@@ -5,7 +5,7 @@
 
 var fs = require('fs');
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'add <name> <keyfile>';
 
@@ -14,18 +14,18 @@ exports.aliases = ['create'];
 exports.description = 'Add an SSH key'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   try {
     client.account.createSshKey({
       name: argv.name,
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
-      util.handleError(error, argv.json);
+      Util.handleError(error, argv.json);
       if (argv.json) {
         console.log(key);
       } else {
@@ -35,6 +35,6 @@ exports.handler = (argv) => {
       }
     });
   } catch (error) {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
   }
 };

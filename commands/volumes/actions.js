@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../../lib/util');
+var Util = require('../../lib/Util');
 
 exports.command = 'actions';
 
@@ -13,5 +13,5 @@ exports.description = 'List and fetch volume actions'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('actions');
-  util.globalConfig(yargs, exports.command, true);
+  Util.globalConfig(yargs, exports.command, true);
 };

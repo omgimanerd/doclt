@@ -5,7 +5,7 @@
 
 var prompt = require('prompt');
 
-var util = require('../../../lib/util');
+var Util = require('../../../lib/Util');
 
 exports.command = 'add <domain>';
 
@@ -14,11 +14,11 @@ exports.aliases = ['create'];
 exports.description = 'Add a record to a domain'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   prompt.message = '';
   prompt.start();
@@ -34,7 +34,7 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     var schema = { properties: {} };
     var property = (description, required) => {
       return {
@@ -85,10 +85,10 @@ exports.handler = (argv) => {
         break;
     }
     prompt.get(schema, (error, result) => {
-      util.handleError(error, argv.json);
+      Util.handleError(error, argv.json);
       result.type = type;
       client.domains.createRecord(argv.domain, result, (error, record) => {
-        util.handleError(error, argv.json);
+        Util.handleError(error, argv.json);
         if (argv.json) {
           console.log(record);
         } else {

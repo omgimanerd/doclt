@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../lib/util');
+var Util = require('../lib/Util');
 
 exports.command = 'account';
 
@@ -12,14 +12,14 @@ exports.aliases = ['acc'];
 exports.description = 'Display account information'.yellow;
 
 exports.builder = (yargs) => {
-  util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, exports.command);
 };
 
 exports.handler = (argv) => {
-  var client = util.getClient();
+  var client = Util.getClient();
 
   client.account.get((error, account) => {
-    util.handleError(error, argv.json);
+    Util.handleError(error, argv.json);
     if (argv.json) {
       console.log(account);
     } else {
@@ -27,10 +27,10 @@ exports.handler = (argv) => {
       var table = new Table();
       table.push([{
         colSpan: 2,
-        content: 'UUID: '.red + util.colorID(account.uuid)
+        content: 'UUID: '.red + Util.colorID(account.uuid)
       }]);
       table.push.apply(table, [
-        ['Status', util.colorAccountStatus(account.status)],
+        ['Status', Util.colorAccountStatus(account.status)],
         ['Status message', account.status_message || 'none'],
         ['Email', account.email],
         ['Email verified', account.email_verified ? 'yes'.green : 'no'.red],

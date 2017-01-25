@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var util = require('../lib/util');
+var Util = require('../lib/Util');
 
 exports.command = 'ssh';
 
@@ -11,5 +11,5 @@ exports.description = 'Create, delete, and manage SSH public keys'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('ssh');
-  util.globalConfig(yargs, exports.command, true);
+  Util.globalConfig(yargs, exports.command, true);
 };
