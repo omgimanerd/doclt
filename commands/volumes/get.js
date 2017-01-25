@@ -19,7 +19,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.volumes.get(argv.volumeid, (error, volume) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(volume);
     } else {

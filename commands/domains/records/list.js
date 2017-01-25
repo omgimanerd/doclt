@@ -19,7 +19,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.domains.listRecords(argv.domain, (error, records) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(records);
     } else {

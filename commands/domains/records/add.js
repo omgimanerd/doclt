@@ -34,7 +34,7 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     var schema = { properties: {} };
     var property = (description, required) => {
       return {
@@ -85,10 +85,10 @@ exports.handler = (argv) => {
         break;
     }
     prompt.get(schema, (error, result) => {
-      Util.handleError(error, argv.json);
+      Util.handleError(error);
       result.type = type;
       client.domains.createRecord(argv.domain, result, (error, record) => {
-        Util.handleError(error, argv.json);
+        Util.handleError(error);
         if (argv.json) {
           console.log(record);
         } else {

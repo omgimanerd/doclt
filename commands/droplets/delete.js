@@ -19,7 +19,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.droplets.delete(argv.dropletid, (error) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     var message = 'Droplet deleted.';
     if (argv.json) {
       console.log({ message: message });

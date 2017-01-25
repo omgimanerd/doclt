@@ -77,9 +77,9 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     client.droplets.create(result, (error, droplet) => {
-      Util.handleError(error, argv.json);
+      Util.handleError(error);
       if (argv.json) {
         console.log(droplet);
       } else {

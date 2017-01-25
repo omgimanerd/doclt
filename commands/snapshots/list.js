@@ -19,7 +19,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.snapshots.list((error, snapshots) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(snapshots);
     } else {

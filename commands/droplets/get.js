@@ -28,7 +28,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.droplets.get(argv.dropletid, (error, droplet) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(droplet);
     } else {

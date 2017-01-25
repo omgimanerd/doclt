@@ -19,7 +19,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.domains.delete(argv.domain, (error) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     var message = 'Domain name deleted.';
     if (argv.json) {
       console.log({ message: message });

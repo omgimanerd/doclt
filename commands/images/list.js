@@ -37,7 +37,7 @@ exports.handler = (argv) => {
     query.per_page = Number.MAX_SAFE_INTEGER;
   }
   client.images.list(query, (error, images) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(images);
     } else {

@@ -25,7 +25,7 @@ exports.handler = (argv) => {
       name: argv.name,
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
-      Util.handleError(error, argv.json);
+      Util.handleError(error);
       if (argv.json) {
         console.log(key);
       } else {
@@ -35,6 +35,6 @@ exports.handler = (argv) => {
       }
     });
   } catch (error) {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
   }
 };

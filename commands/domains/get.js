@@ -22,7 +22,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.domains.get(argv.domain, (error, domain) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(domain);
     } else if (argv.zoneFile) {

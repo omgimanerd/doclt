@@ -19,7 +19,7 @@ exports.handler = (argv) => {
   var client = Util.getClient();
 
   client.account.deleteSshKey(argv.keyid, (error, key, headers) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     var message = 'SSH Key deleted.';
     if (argv.json) {
       console.log({ message: message });

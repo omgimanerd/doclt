@@ -22,7 +22,7 @@ exports.handler = (argv) => {
     name: argv.domain,
     ip_address: argv.ip
   }, (error, domain) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     if (argv.json) {
       console.log(domain);
     } else {

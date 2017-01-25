@@ -44,9 +44,9 @@ exports.handler = (argv) => {
       }
     }
   }, (error, result) => {
-    Util.handleError(error, argv.json);
+    Util.handleError(error);
     client.volumes.create(result, (error, volume) => {
-      Util.handleError(error, argv.json);
+      Util.handleError(error);
       if (argv.json) {
         console.log(volume);
       } else {
