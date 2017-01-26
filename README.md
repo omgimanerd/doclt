@@ -1,6 +1,6 @@
 # docli
 Docli is a command line interface for interacting with Digital Ocean. It will
-present information in Terminal in a neat and tidy way.
+present information in Terminal in a neat, tidy, and visually appealing way.
 
 ## Installation
 Docli is built with node.js and released on npm. It should work with any
