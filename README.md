@@ -2,6 +2,17 @@
 Docli is a command line interface for interacting with Digital Ocean. It will
 present information in Terminal in a neat and tidy way.
 
+## Installation
+Docli is built with node.js and released on npm. It should work with any
+version above 4.3.2. Install it via npm.
+```
+npm install -g docli
+```
+Simple as that.
+
+If you want to build from source, you can clone this GitHub repository and
+create a symlink to docli.js.
+
 ## Examples
 Listing droplets:
 ```
@@ -64,15 +75,6 @@ $ docli images list --distribution --no-color
 └──────────┴─────────────────────────────────┴──────────┘
 ```
 
-## Installation
-Docli is built with node.js and released on npm. It should work with any
-version above 4.3.2. Install it via npm.
-```
-npm install -g docli
-```
-Simple as that. You can also clone this GitHub repository and create a symlink
-to docli.js if you want, but that's just extra effort.
-
 ## Usage
 Before using docli, you must set your
 [Digital Ocean auth token](https://cloud.digitalocean.com/settings/api/tokens).
@@ -86,9 +88,10 @@ Every command is documented by the tool itself. Run `docli <command> --help`
 for details about using any command.
 ```
 Usage:
-  docli.js <command> [arguments..] [options..]
+  docli.js <command> [arguments..] [options..]
 
 Commands:
+  account        Display account information  [aliases: acc]
   domains        Create, delete, and manage domains  [aliases: domain]
   droplets       Create, delete, and manage droplets  [aliases: droplet]
   images         Create, delete, and manage images  [aliases: image]
@@ -101,11 +104,12 @@ Commands:
 
 Options:
   --help      Show help  [boolean]
-  --json      Output results as JSON
-  --no-color  Disable colors
+  --json      Output results as JSON  [boolean]
+  --no-color  Disable colors  [boolean]
+  --color     Invoking this does nothing
   --version   Show version number  [boolean]
 
-See 'docli.js <command> --help' for more info.
+  See 'docli.js <command> --help' for more info.
 ```
 
 ## Contributing
