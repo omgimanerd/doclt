@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/**
+ * @fileoverview Main executable file for the docli CLI.
+ * @author alvin@omgimanerd.tech (Alvin Lin)
+ */
 
 // Importing colors here will allow us to use it everywhere else since it
 // extends String.prototype.
