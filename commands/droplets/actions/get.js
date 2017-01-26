@@ -18,6 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.droplets.getAction(
-      argv.dropletid, argv.actionid, Display.displayAction);
+  client.droplets.getAction(argv.dropletid, argv.actionid, (error, action) => {
+    Util.handleError(error);
+    Display.displayAction(action);
+  });
 };

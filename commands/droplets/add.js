@@ -5,6 +5,7 @@
 
 var prompt = require('prompt');
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'add';
@@ -19,7 +20,6 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   prompt.message = '';
   prompt.start();
   prompt.get({
@@ -80,12 +80,7 @@ exports.handler = (argv) => {
     Util.handleError(error);
     client.droplets.create(result, (error, droplet) => {
       Util.handleError(error);
-      if (argv.json) {
-        console.log(droplet);
-      } else {
-        console.log('Droplet created.'.red);
-        console.log('Droplet ID: '.red + Util.colorID(droplet.id));
-      }
+      Display.displayDroplet(droplet, 'Droplet created.');
     });
   });
 };

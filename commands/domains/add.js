@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'add <domain> <ip>';
@@ -23,10 +24,6 @@ exports.handler = (argv) => {
     ip_address: argv.ip
   }, (error, domain) => {
     Util.handleError(error);
-    if (argv.json) {
-      console.log(domain);
-    } else {
-      console.log('New domain name added.'.red);
-    }
+    Display.displayDomain(domain, false, 'New domain name added.');
   });
 };

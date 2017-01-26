@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'delete <domain>';
@@ -20,11 +21,6 @@ exports.handler = (argv) => {
 
   client.domains.delete(argv.domain, (error) => {
     Util.handleError(error);
-    var message = 'Domain name deleted.';
-    if (argv.json) {
-      console.log({ message: message });
-    } else {
-      console.log(message.red);
-    }
+    Display.displayMessage('Domain name deleted.');
   });
 };

@@ -18,8 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.domains.deleteRecord(argv.domain, argv.recordid, (error) => {
+    Util.handleError(error);
     Display.displayMessage('Domain record deleted');
   });
 };

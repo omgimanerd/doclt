@@ -19,7 +19,7 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.enableBackups(argv.dropletid, (error, action) => {
-    Display.displayActionID(error, action);
-    console.log('Automatic backups enabled.'.red);
+    Util.handleError(error);
+    Display.displayActionID(action, 'Automatic backups enabled.');
   });
 };

@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'delete <key id>';
@@ -17,14 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
-  client.account.deleteSshKey(argv.keyid, (error, key, headers) => {
+  client.account.deleteSshKey(argv.keyid, (error) => {
     Util.handleError(error);
-    var message = 'SSH Key deleted.';
-    if (argv.json) {
-      console.log({ message: message });
-    } else {
-      console.log(message.red); 
-    }
+    Display.displayMessage('SSH Key deleted.');
   });
 };

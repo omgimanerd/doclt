@@ -5,6 +5,7 @@
 
 var fs = require('fs');
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'add <name> <keyfile>';
@@ -19,20 +20,13 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   try {
     client.account.createSshKey({
       name: argv.name,
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
       Util.handleError(error);
-      if (argv.json) {
-        console.log(key);
-      } else {
-        console.log('New SSH Key added.'.red);
-        console.log('SSH Key ID: '.red + key.id);
-        console.log('SSH Key Fingerprint: '.red + key.fingerprint);
-      }
+      Display.displaySshKey(key, false, 'New SSH Key added.');
     });
   } catch (error) {
     Util.handleError(error);

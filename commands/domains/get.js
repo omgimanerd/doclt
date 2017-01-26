@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'get <domain>';
@@ -20,17 +21,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.domains.get(argv.domain, (error, domain) => {
     Util.handleError(error);
-    if (argv.json) {
-      console.log(domain);
-    } else if (argv.zoneFile) {
-      console.log(domain.zone_file);
-    } else {
-      console.log('Domain Name: '.red + domain.name);
-      console.log('TTL: '.red + domain.ttl);
-      console.log('Zone File:\n'.red + domain.zone_file);
-    }
+    Display.displayDomain(domain, argv.zoneFile);
   });
 };

@@ -14,9 +14,13 @@ exports.aliases = ['off'];
 exports.description = 'Disable automatic backups for a droplet'.yellow;
 
 exports.builder = (yargs) => {
+  Util.globalConfig(yargs, exports.command);
+};
+
+exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.disableBackups(argv.dropletid, (error, action) => {
-    Display.displayActionID(error, action);
-    console.log('Automatic backups disabled.'.red);
+    Util.handleError(error);
+    Display.displayActionID(action, 'Automatic backups disabled.');
   });
 };

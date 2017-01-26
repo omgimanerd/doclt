@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../lib/Display');
 var Util = require('../lib/Util');
 
 exports.command = 'account';
@@ -17,27 +18,5 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
-  client.account.get((error, account) => {
-    Util.handleError(error);
-    if (argv.json) {
-      console.log(account);
-    } else {
-      var Table = require('cli-table2');
-      var table = new Table();
-      table.push([{
-        colSpan: 2,
-        content: 'UUID: '.red + Util.colorID(account.uuid)
-      }]);
-      table.push.apply(table, [
-        ['Status', Util.colorAccountStatus(account.status)],
-        ['Status message', account.status_message || 'none'],
-        ['Email', account.email],
-        ['Email verified', account.email_verified ? 'yes'.green : 'no'.red],
-        ['Droplet Limit', account.droplet_limit],
-        ['Floating IP Limit', account.floating_ip_limit]
-      ].map((row) => [row[0].red, row[1]]));
-      console.log(table.toString());
-    }
-  });
+  client.account.get(Display.displayAccount);
 };

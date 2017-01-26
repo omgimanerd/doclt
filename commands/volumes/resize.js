@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'resize <volume id> <size>';
@@ -15,18 +16,12 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.volumes.get(argv.volumeid, (error, volume) => {
     Util.handleError(error);
     var region = volume.region.slug;
     client.volumes.resize(argv.volumeid, argv.size, region, (error, action) => {
       Util.handleError(error);
-      if (argv.json) {
-        console.log(action);
-      } else {
-        console.log('Volume resized.'.red);
-        console.log('Action ID: '.red + Util.colorID(action.id));
-      }
+      Display.displayAction(action, 'Volume resized.');
     });
   });
 };

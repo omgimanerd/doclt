@@ -18,5 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.volumes.getAction(argv.volumeid, argv.actionid, Display.displayAction);
+  client.volumes.getAction(argv.volumeid, argv.actionid, (error, action) => {
+    Util.handleError(error);
+    Display.displayAction(action);
+  });
 };

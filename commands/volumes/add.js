@@ -5,6 +5,7 @@
 
 var prompt = require('prompt');
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'add';
@@ -19,7 +20,6 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   prompt.message = '';
   prompt.start();
   prompt.get({
@@ -47,12 +47,7 @@ exports.handler = (argv) => {
     Util.handleError(error);
     client.volumes.create(result, (error, volume) => {
       Util.handleError(error);
-      if (argv.json) {
-        console.log(volume);
-      } else {
-        console.log('Volume created,'.red);
-        console.log('Volume ID: '.red + Util.colorID(volume.id));
-      }
+      Display.displayVolume(volume, 'Volume created.');
     });
   })
 };

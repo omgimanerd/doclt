@@ -18,5 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.domains.listRecords(argv.domain, Display.displayDomainRecords);
+  client.domains.listRecords(argv.domain, (error, records) => {
+    Util.handleError(error);
+    Display.displayDomainRecords(records);
+  });
 };

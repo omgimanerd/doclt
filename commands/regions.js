@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../lib/Display');
 var Util = require('../lib/Util');
 
 exports.command = 'regions';
@@ -17,29 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.regions.list((error, regions) => {
     Util.handleError(error);
-    if (argv.json) {
-      console.log(regions);
-    } else {
-      var Table = require('cli-table2');
-      var table = new Table({
-        head: ['ID', 'Name', 'Sizes', 'Features', 'Available']
-      });
-      regions.sort((a, b) => {
-        return a.slug.localeCompare(b.slug);
-      });
-      table.push.apply(table, regions.map((region) => {
-        return [
-          region.slug.bold.cyan,
-          region.name.blue,
-          Util.defaultJoin(region.sizes),
-          Util.defaultJoin(region.features),
-          region.available ? 'yes'.green : 'no'.red
-        ];
-      }));
-      console.log(table.toString());
-    }
+    Display.displayRegions(regions);
   });
 };

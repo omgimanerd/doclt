@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'enable_ipv6 <droplet id>';
@@ -17,14 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.droplets.enableIpv6(argv.dropletid, (error, action) => {
     Util.handleError(error);
-    if (argv.json) {
-      console.log(action);
-    } else {
-      console.log('IPv6 enabled'.red);
-      console.log('Action ID: '.red + Util.colorID(action.id));
-    }
+    Display.displayActionID(action, 'IPv6 enabled.');
   });
 };

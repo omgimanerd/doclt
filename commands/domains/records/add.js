@@ -89,8 +89,8 @@ exports.handler = (argv) => {
       Util.handleError(error);
       result.type = type;
       client.domains.createRecord(argv.domain, result, (error, record) => {
-        Display.displayDomainRecord(error, record);
-        console.log('New domain record added.'.red);
+        Util.handleError(error);
+        Display.displayDomainRecord(record, 'New domain record added.');
       });
     });
   });

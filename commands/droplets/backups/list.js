@@ -18,5 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.droplets.backups(argv.dropletid, Display.displayImages);
+  client.droplets.backups(argv.dropletid, (error, backups) => {
+    Util.handleError(error);
+    Display.displayImages(backups);
+  });
 };

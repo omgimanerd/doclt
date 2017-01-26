@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../../lib/Display');
 var Util = require('../../../lib/Util');
 
 exports.command = 'list <droplet id>';
@@ -17,22 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.droplets.snapshots(argv.dropletid, (error, snapshots) => {
     Util.handleError(error);
-    if (argv.json) {
-      console.log(snapshots);
-    } else {
-      var Table = require('cli-table2');
-      var table = new Table({ head: ['ID', 'Name', 'Created At'] });
-      table.push.apply(table, snapshots.map((snapshot) => {
-        return [
-          Util.colorID(snapshot.id),
-          snapshot.name.blue,
-          new Date(snapshot.created_at).toLocaleString()
-        ];
-      }));
-      console.log(table.toString());
-    }
+    Display.displayImages(snapshots);
   });
 };

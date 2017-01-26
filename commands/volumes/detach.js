@@ -3,6 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
+var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
 exports.command = 'detach <volume id>';
@@ -15,14 +16,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
   client.volumes.detach(argv.volumeid, (error, action) => {
     Util.handleError(error);
-    if (argv.json) {
-      console.log(action);
-    } else {
-      console.log('Volume detached.'.red);
-      console.log('Action ID: '.red + Util.colorID(action.id));
-    }
+    Display.displayAction(action, 'Volume detached.');
   });
 };

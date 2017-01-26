@@ -18,9 +18,7 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var token = require('../lib/token');
   token.set(argv.token, (error) => {
-    if (error) {
-      Util.handleError(error);
-    }
+    Util.handleError(error);
     console.log('Token supplied!'.green);
     console.log('This will have no effect if you have supplied a '.red +
         'DOCLI_TOKEN environment variable'.red);
