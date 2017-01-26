@@ -14,10 +14,9 @@ exports.description = 'List all actions performed on a volume'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('limit', {
-    alias: 'number',
     description: 'The maximum number of actions to fetch',
     number: true
-  });
+  }).group(['limit'], 'Volume Action Options:');
   Util.globalConfig(yargs, 2, exports.command);
 };
 

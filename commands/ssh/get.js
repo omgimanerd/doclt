@@ -15,7 +15,7 @@ exports.description = 'Info about an SSH key'.yellow;
 exports.builder = (yargs) => {
   yargs.option('key', {
     description: 'Show only the public key'
-  });
+  }).group(['key'], 'SSH Key Options:');
   Util.globalConfig(yargs, 1, exports.command);
 };
 
