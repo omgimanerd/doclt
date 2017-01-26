@@ -8,7 +8,7 @@ var yargs = require('yargs');
 var Util = require('./lib/Util');
 
 yargs.commandDir('commands');
-Util.globalConfig(yargs, '\b', true);
+Util.globalConfig(yargs, 0, '\b', true);
 var argv = yargs.argv;
 
 if (argv.color) {

@@ -14,7 +14,7 @@ exports.description = 'Rename an SSH key'.yellow;
 
 exports.builder = (yargs) => {
   console.log(Util);
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

@@ -13,7 +13,7 @@ exports.aliases = ['i', 'info'];
 exports.description = 'Info about a volume'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

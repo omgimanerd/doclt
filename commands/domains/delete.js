@@ -13,7 +13,7 @@ exports.aliases = ['remove', 'del', 'rm'];
 exports.description = 'Delete a domain name'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

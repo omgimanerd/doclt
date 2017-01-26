@@ -13,7 +13,7 @@ exports.aliases = ['powercycle'];
 exports.description = 'Power cycle a droplet (hard reset)'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

@@ -13,7 +13,7 @@ exports.aliases = ['ls'];
 exports.description = 'List all SSH keys'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

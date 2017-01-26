@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage volumes'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('volumes');
-  Util.globalConfig(yargs, exports.command, true);
+  Util.globalConfig(yargs, 0, exports.command, true);
 };

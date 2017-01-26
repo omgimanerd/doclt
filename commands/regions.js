@@ -13,7 +13,7 @@ exports.aliases = ['region'];
 exports.description = 'Lists the available regions'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 0, exports.command);
 };
 
 exports.handler = (argv) => {

@@ -13,10 +13,13 @@ exports.aliases = ['acc'];
 exports.description = 'Display account information'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 0, exports.command);
 };
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.account.get(Display.displayAccount);
+  client.account.get((error, account) => {
+    Util.handleError(error);
+    Display.displayAccount(account);
+  });
 };

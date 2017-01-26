@@ -13,7 +13,7 @@ exports.aliases = ['enable_private_networking'];
 exports.description = 'Enable private networking on a droplet.'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

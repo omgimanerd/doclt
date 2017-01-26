@@ -16,7 +16,7 @@ exports.builder = (yargs) => {
   yargs.option('key', {
     description: 'Show only the public key'
   });
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

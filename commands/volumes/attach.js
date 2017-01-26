@@ -11,7 +11,7 @@ exports.command = 'attach <volume id> <droplet id>';
 exports.description = 'Attach a volume'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

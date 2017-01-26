@@ -18,6 +18,7 @@ exports.builder = (yargs) => {
     description: 'The maximum number of actions to fetch',
     number: true
   });
+  Util.globalConfig(yargs, 2, exports.command);
 };
 
 exports.handler = (argv) => {
