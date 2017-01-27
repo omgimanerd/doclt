@@ -19,6 +19,10 @@ exports.builder = (yargs) => {
 exports.handler = (argv) => {
   var client = Util.getClient();
   client.tags.tag(argv.tag, [{
-
-  }])
+    resource_type: argv.resourcetype,
+    resource_id: argv.resourceid
+  }], (error) => {
+    Util.handleError(error);
+    Display.displayMessage('Tag applied.');
+  });
 };

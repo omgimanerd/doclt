@@ -6,7 +6,7 @@
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'rename <name> <new name>';
+exports.command = 'rename <tag> <new tag>';
 
 exports.aliases = ['update'];
 
@@ -18,7 +18,7 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.tags.update(argv.name, { name: argv.newname }, (error, tag) => {
+  client.tags.update(argv.tag, { name: argv.newtag }, (error, tag) => {
     Util.handleError(error);
     Display.displayTag(tag, 'Tag renamed.');
   });

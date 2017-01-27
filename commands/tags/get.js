@@ -6,7 +6,7 @@
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'get <name>';
+exports.command = 'get <tag>';
 
 exports.aliases = ['i', 'info'];
 
@@ -18,7 +18,7 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.tags.get(argv.name, (error, tag) => {
+  client.tags.get(argv.tag, (error, tag) => {
     Util.handleError(error);
     Display.displayTag(tag);
   });

@@ -6,7 +6,7 @@
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'delete <name>';
+exports.command = 'delete <tag>';
 
 exports.aliases = ['remove', 'del', 'rm'];
 
@@ -18,7 +18,7 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.tags.delete(argv.name, (error) => {
+  client.tags.delete(argv.tag, (error) => {
     Util.handleError(error);
     Display.displayMessage('Tag deleted.');
   });

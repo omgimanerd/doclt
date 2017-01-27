@@ -6,7 +6,7 @@
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'add <name>';
+exports.command = 'add <tag>';
 
 exports.aliases = ['create'];
 
@@ -18,7 +18,7 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.tags.create({ name: argv.name }, (error, tag) => {
+  client.tags.create({ name: argv.tag }, (error, tag) => {
     Util.handleError(error);
     Display.displayTag(tag);
   });
