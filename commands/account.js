@@ -13,7 +13,7 @@ exports.aliases = ['acc'];
 exports.description = 'Display account information'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 0, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

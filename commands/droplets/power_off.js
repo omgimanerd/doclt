@@ -13,7 +13,7 @@ exports.aliases = ['poweroff', 'off'];
 exports.description = 'Power off a droplet (hard)'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 1, exports.command);
+  Util.globalConfig(yargs, 2, exports.command);
 };
 
 exports.handler = (argv) => {

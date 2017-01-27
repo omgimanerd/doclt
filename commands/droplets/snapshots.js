@@ -13,5 +13,5 @@ exports.description = 'List and take snapshots of a droplet'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('snapshots');
-  Util.globalConfig(yargs, 1, exports.command, true);
+  Util.globalConfig(yargs, 2, exports.command, true);
 };

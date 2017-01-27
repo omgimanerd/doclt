@@ -1,16 +1,16 @@
 /**
- * @fileoverview Module handling the tag listing command.
+ * @fileoverview Module handling the tagging of a resource.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'list';
+exports.command = 'tag <resource type> <resource id> <tag>';
 
-exports.aliases = ['ls'];
+exports.aliases = ['apply'];
 
-exports.description = 'List all tags'.yellow;
+exports.description = 'Tag a resource'.yellow;
 
 exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
@@ -18,8 +18,7 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.tags.list((error, tags) => {
-    Util.handleError(error);
-    Display.displayTags(tags);
-  });
+  client.tags.tag(argv.tag, [{
+
+  }])
 };

@@ -11,5 +11,5 @@ exports.description = 'Create, delete, and manage SSH public keys'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('ssh');
-  Util.globalConfig(yargs, 0, exports.command, true);
+  Util.globalConfig(yargs, 1, exports.command, true);
 };

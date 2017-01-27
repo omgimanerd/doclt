@@ -13,7 +13,7 @@ exports.aliases = ['ls'];
 exports.description = 'List all backups of a droplet'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 2, exports.command);
+  Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {

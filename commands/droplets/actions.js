@@ -13,5 +13,5 @@ exports.description = 'List and fetch droplet actions'.yellow;
 
 exports.builder = (yargs) => {
   yargs.commandDir('actions');
-  Util.globalConfig(yargs, 1, exports.command, true);
+  Util.globalConfig(yargs, 2, exports.command, true);
 };

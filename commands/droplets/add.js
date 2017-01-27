@@ -15,7 +15,7 @@ exports.aliases = ['create'];
 exports.description = 'Create a new droplet'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 1, exports.command);
+  Util.globalConfig(yargs, 2, exports.command);
 };
 
 exports.handler = (argv) => {

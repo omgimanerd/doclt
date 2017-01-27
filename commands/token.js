@@ -12,7 +12,7 @@ exports.aliases = ['auth', 'authenticate'];
 exports.description = 'Set the DigitalOcean auth token'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 0, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

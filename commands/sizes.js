@@ -13,7 +13,7 @@ exports.aliases = ['size'];
 exports.description = 'Lists the available droplet sizes'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 0, exports.command);
+  Util.globalConfig(yargs, 1, exports.command);
 };
 
 exports.handler = (argv) => {

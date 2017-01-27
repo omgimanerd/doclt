@@ -20,7 +20,7 @@ exports.builder = (yargs) => {
   }).option('private', {
     description: 'Show all private user images'
   }).group(['application', 'distribution', 'private'], 'Image Options:');
-  Util.globalConfig(yargs, 1, exports.command);
+  Util.globalConfig(yargs, 2, exports.command);
 };
 
 exports.handler = (argv) => {

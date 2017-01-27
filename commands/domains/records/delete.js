@@ -13,7 +13,7 @@ exports.aliases = ['remove', 'del', 'rm'];
 exports.description = 'Delete a record'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 2, exports.command);
+  Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {

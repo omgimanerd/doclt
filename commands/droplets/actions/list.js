@@ -17,7 +17,7 @@ exports.builder = (yargs) => {
     description: 'The maximum number of actions to fetch',
     number: true
   }).group(['limit'], 'Droplet Actions Options:');
-  Util.globalConfig(yargs, 2, exports.command);
+  Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {
