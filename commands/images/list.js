@@ -38,6 +38,6 @@ exports.handler = (argv) => {
   }
   client.images.list(query, (error, images) => {
     Util.handleError(error);
-    Display.displayImages(images, true, true);
+    Display.displayImages(images);
   });
 };

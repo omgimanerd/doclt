@@ -20,6 +20,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
   client.snapshots.list((error, snapshots) => {
     Util.handleError(error);
-    Display.displayImages(snapshots, false, false);
+    Display.displaySnapshots(snapshots);
   });
 };
