@@ -1,6 +1,6 @@
 # docli
-Docli is a command line interface for interacting with Digital Ocean. It will
-present information in Terminal in a neat, tidy, and visually appealing way.
+Docli is a command line interface for interacting with Digital Ocean. It
+presents information in Terminal in a neat, tidy, and visually appealing way.
 
 ## Installation
 Docli is built with node.js and released on npm. It should work with any
@@ -30,49 +30,49 @@ $ docli droplets list --no-color
 Listing image types:
 ```
 $ docli images list --distribution --no-color
-┌──────────┬──────────────────────────┬──────────────┬─────────────────────────┐
-│ ID       │ Name                     │ Minimum Size │ Created At              │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 20625985 │ CentOS 5.11 x32          │ 20 GB        │ 10/31/2016, 1:27:47 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 20625979 │ CentOS 5.11 x64          │ 20 GB        │ 10/31/2016, 1:27:26 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 22236119 │ CentOS 6.8 x32           │ 20 GB        │ 1/17/2017, 12:11:22 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 22099398 │ CoreOS 1235.6.0 (stable) │ 20 GB        │ 1/10/2017, 10:06:26 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 22100001 │ CoreOS 1248.4.0 (beta)   │ 20 GB        │ 1/10/2017, 10:26:27 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21419789 │ Debian 7.11 x32          │ 20 GB        │ 12/9/2016, 11:19:04 AM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21419458 │ Debian 7.11 x64          │ 20 GB        │ 12/9/2016, 10:22:42 AM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 22235142 │ Debian 8.7 x32           │ 20 GB        │ 1/17/2017, 9:10:26 AM   │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 22235108 │ Debian 8.7 x64           │ 20 GB        │ 1/17/2017, 9:03:16 AM   │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 18027532 │ Fedora 24 x64            │ 20 GB        │ 6/21/2016, 6:36:10 PM   │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21190386 │ Fedora 25 x64            │ 20 GB        │ 11/28/2016, 9:06:44 AM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 19103923 │ FreeBSD 10.3             │ 20 GB        │ 8/16/2016, 3:11:09 PM   │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 18818640 │ FreeBSD 10.3 zfs         │ 20 GB        │ 8/1/2016, 10:42:12 PM   │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 20199958 │ FreeBSD 11.0             │ 20 GB        │ 10/10/2016, 12:23:13 PM │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 20199928 │ FreeBSD 11.0 zfs         │ 20 GB        │ 10/10/2016, 12:17:29 PM │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21399414 │ Ubuntu 14.04.5 x32       │ 20 GB        │ 12/8/2016, 12:52:42 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21399384 │ Ubuntu 14.04.5 x64       │ 20 GB        │ 12/8/2016, 12:47:32 PM  │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21669479 │ Ubuntu 16.04.1 x32       │ 20 GB        │ 12/21/2016, 11:56:09 AM │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21669205 │ Ubuntu 16.04.1 x64       │ 20 GB        │ 12/21/2016, 11:06:27 AM │
-├──────────┼──────────────────────────┼──────────────┼─────────────────────────┤
-│ 21385718 │ Ubuntu 16.10 x32         │ 20 GB        │ 12/7/2016, 7:36:11 PM   │
-└──────────┴──────────────────────────┴──────────────┴─────────────────────────┘
+┌──────────┬─────────────────────────────────┬──────────────┐
+│ ID       │ Distribution (PUBLIC) (PRIVATE) │ Minimum Size │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 20625985 │ CentOS 5.11 x32                 │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 20625979 │ CentOS 5.11 x64                 │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 22236119 │ CentOS 6.8 x32                  │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 22099398 │ CoreOS 1235.6.0 (stable)        │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 22100001 │ CoreOS 1248.4.0 (beta)          │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21419789 │ Debian 7.11 x32                 │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21419458 │ Debian 7.11 x64                 │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 22235142 │ Debian 8.7 x32                  │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 22235108 │ Debian 8.7 x64                  │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 18027532 │ Fedora 24 x64                   │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21190386 │ Fedora 25 x64                   │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 19103923 │ FreeBSD 10.3                    │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 18818640 │ FreeBSD 10.3 zfs                │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 20199958 │ FreeBSD 11.0                    │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 20199928 │ FreeBSD 11.0 zfs                │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21399414 │ Ubuntu 14.04.5 x32              │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21399384 │ Ubuntu 14.04.5 x64              │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21669479 │ Ubuntu 16.04.1 x32              │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21669205 │ Ubuntu 16.04.1 x64              │ 20 GB        │
+├──────────┼─────────────────────────────────┼──────────────┤
+│ 21385718 │ Ubuntu 16.10 x32                │ 20 GB        │
+└──────────┴─────────────────────────────────┴──────────────┘
 ```
 
 ## Usage
@@ -88,7 +88,7 @@ Every command is documented by the tool itself. Run `docli <command> --help`
 for details about using any command.
 ```
 Usage:
-  docli.js <command> [arguments..] [options..]
+  docli.js <command> [arguments..] [options..]
 
 Commands:
   account        Display account information  [aliases: acc]
@@ -97,8 +97,8 @@ Commands:
   images         Create, delete, and manage images  [aliases: image]
   regions        Lists the available regions  [aliases: region]
   sizes          Lists the available droplet sizes  [aliases: size]
-  snapshots      Create, delete, and manage snapshots  [aliases: snapshot]
   ssh            Create, delete, and manage SSH public keys
+  tags           Create, delete, and manage tags  [aliases: tag]
   token <token>  Set the DigitalOcean auth token  [aliases: auth, authenticate]
   volumes        Create, delete, and manage volumes  [aliases: volume]
 
@@ -106,16 +106,30 @@ Options:
   --help      Show help  [boolean]
   --json      Output results as JSON  [boolean]
   --no-color  Disable colors  [boolean]
-  --color     Invoking this does nothing
+  --color     Invoking this does nothing  [boolean]
   --version   Show version number  [boolean]
 
-  See 'docli.js <command> --help' for more info.
+See 'docli.js <command> --help' for more info.
 ```
 
 ## Contributing
-Fork this repository and push changes to your own fork. Then send me a pull
-request. You should probably open an issue and discuss it with me before you
-do anything though.
+Open issues to discuss any feature requests or changes that you would like to
+make. Fork this repository and push changes to your own fork. Then send me a
+pull request.
+```
+git clone git@github.com/your-username/docli
+cd docli
+git checkout -b feature-name
+# Make changes
+git commit
+git push origin feature-name
+```
+After the pull request is accepted, you can fetch those changes back to your
+master branch.
+```
+git remote add upstream git@github.com:omgimanerd/docli
+git pull upstream master
+```
 
 ## Creators
   - Alvin Lin (omgimanerd)
