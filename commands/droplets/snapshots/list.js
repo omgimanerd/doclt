@@ -20,6 +20,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.snapshots(argv.dropletid, (error, snapshots) => {
     Util.handleError(error);
-    Display.displayImages(snapshots);
+    Display.displayImages(snapshots, false, false);
   });
 };
