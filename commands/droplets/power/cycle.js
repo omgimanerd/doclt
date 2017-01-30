@@ -3,17 +3,15 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+var Display = require('../../../lib/Display');
+var Util = require('../../../lib/Util');
 
-exports.command = 'power_cycle <droplet id>';
-
-exports.aliases = ['powercycle'];
+exports.command = 'cycle <droplet id>';
 
 exports.description = 'Power cycle a droplet (hard reset)'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 2, exports.command);
+  Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {

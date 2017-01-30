@@ -3,8 +3,8 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+var Display = require('../../../lib/Display');
+var Util = require('../../../lib/Util');
 
 exports.command = 'reboot <droplet id>';
 
@@ -13,7 +13,7 @@ exports.aliases = ['restart'];
 exports.description = 'Gracefully reboot a droplet'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 2, exports.command);
+  Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {

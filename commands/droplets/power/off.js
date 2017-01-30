@@ -3,17 +3,15 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+var Display = require('../../../lib/Display');
+var Util = require('../../../lib/Util');
 
-exports.command = 'power_off <droplet id>';
+exports.command = 'off <droplet id>';
 
-exports.aliases = ['poweroff', 'off'];
-
-exports.description = 'Power off a droplet (hard)'.yellow;
+exports.description = 'Power off a droplet (hard shutdown)'.yellow;
 
 exports.builder = (yargs) => {
-  Util.globalConfig(yargs, 2, exports.command);
+  Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {
