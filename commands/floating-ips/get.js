@@ -1,16 +1,16 @@
 /**
- * @fileoverview Module handling the floating-ip listing command.
+ * @fileoverview Module handling the floating-ips get command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'list';
+exports.command = 'get <floating ip>';
 
-exports.aliases = ['ls'];
+exports.aliases = ['i', 'info'];
 
-exports.description = 'List all floating IPs'.yellow;
+exports.description = 'Info about a floating IP'.yellow;
 
 exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
@@ -18,8 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.floatingIps.list((error, ips) => {
+  client.floatingIps.get(argv.floatingip, (error, ip) => {
     Util.handleError(error);
-    Display.displayFloatingIps(ips);
+    Display.displayFloatingIp(ip);
   });
 };

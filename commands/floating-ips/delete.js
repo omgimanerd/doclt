@@ -1,16 +1,16 @@
 /**
- * @fileoverview Module handling the floating-ip listing command.
+ * @fileoverview Module handling the floating-ip delete command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'list';
+exports.command = 'delete <floating ip>';
 
-exports.aliases = ['ls'];
+exports.aliases = ['remove', 'del', 'rm'];
 
-exports.description = 'List all floating IPs'.yellow;
+exports.description = 'Delete a floating IP'.yellow;
 
 exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
@@ -18,8 +18,8 @@ exports.builder = (yargs) => {
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-  client.floatingIps.list((error, ips) => {
+  client.floatingIps.delete(argv.floatingip, (error) => {
     Util.handleError(error);
-    Display.displayFloatingIps(ips);
+    Display.displayMessage('Floating IP deleted.');
   });
 };
