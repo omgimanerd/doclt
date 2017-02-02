@@ -18,6 +18,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.powerCycle(argv.dropletid, (error, action) => {
     Util.handleError(error);
-    Display.displayActionID(action, 'Power cycling droplet.');
+    Display.displayActionID(action, 'Power cycling droplet...');
   });
 };

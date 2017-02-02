@@ -18,6 +18,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.shutdown(argv.dropletid, (error, action) => {
     Util.handleError(error);
-    Display.displayActionID(action, 'Shutting down droplet.');
+    Display.displayActionID(action, 'Shutting down droplet...');
   });
 };

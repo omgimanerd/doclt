@@ -20,6 +20,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.reboot(argv.dropletid, (error, action) => {
     Util.handleError(error);
-    Display.displayActionID(action, 'Rebooting droplet.');
+    Display.displayActionID(action, 'Rebooting droplet...');
   });
 };

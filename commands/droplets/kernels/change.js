@@ -1,5 +1,5 @@
 /**
- * @fileoverview Module handling the kernel changing command.
+ * @fileoverview Module handling the droplet kernel changing command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
@@ -20,6 +20,6 @@ exports.handler = (argv) => {
   var kernelid = argv.kernelid;
   client.droplets.changeKernel(dropletid, kernelid, (error, action) => {
     Util.handleError(error);
-    Display.displayActionID(action);
+    Display.displayActionID(action, 'Changing droplet kernel...');
   });
 };

@@ -20,6 +20,6 @@ exports.handler = (argv) => {
   var client = Util.getClient();
   client.droplets.passwordReset(argv.dropletid, (error, action) => {
     Util.handleError(error);
-    Display.displayActionID(action, 'Resetting droplet password.');
+    Display.displayActionID(action, 'Droplet password reset.');
   });
 };
