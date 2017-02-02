@@ -1,5 +1,5 @@
 /**
- * @fileoverview Module handling the domain commands.
+ * @fileoverview Module handling the domain subcommands.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
