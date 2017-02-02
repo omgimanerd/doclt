@@ -4,9 +4,6 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-// Importing colors here will allow us to use it everywhere else since it
-// extends String.prototype.
-var colors = require('colors');
 var yargs = require('yargs');
 
 var Util = require('./lib/Util');
