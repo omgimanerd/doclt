@@ -6,7 +6,7 @@
 var Display = require('../../lib/Display');
 var Util = require('../../lib/Util');
 
-exports.command = 'restore <droplet id> <backup id>'.yellow;
+exports.command = 'restore <droplet id> <backup id>';
 
 exports.description = 'Restore a droplet from a backup'.yellow;
 
