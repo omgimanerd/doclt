@@ -1,5 +1,5 @@
 /**
- * @fileoverview Module handling the renaming of an SSH key.
+ * @fileoverview Module handling the SSH key rename command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
