@@ -66,11 +66,11 @@ exports.handler = (argv) => {
         required: true
       },
       region: {
-        description: 'Region ID ("docli regions" to list regions)',
+        description: 'Region ID ("doclt regions" to list regions)',
         required: true,
       },
       size: {
-        description: 'Size slug ("docli sizes" to list sizes)',
+        description: 'Size slug ("doclt sizes" to list sizes)',
         required: true
       },
       image: {

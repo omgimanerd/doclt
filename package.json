@@ -1,24 +1,24 @@
 {
-  "name": "docli",
+  "name": "doclt",
   "version": "1.0.0",
-  "description": "CLI for Digital Ocean",
+  "description": "Digital Ocean Command Line Tool",
   "bin": {
-    "docli": "docli.js"
+    "doclt": "doclt.js"
   },
-  "main": "docli.js",
+  "main": "doclt.js",
   "scripts": {
-    "test": "node docli.js"
+    "test": "node doclt.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omgimanerd/docli.git"
+    "url": "git+https://github.com/omgimanerd/doclt.git"
   },
   "author": "omgimanerd",
-  "license": "WTFPL",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/omgimanerd/docli/issues"
+    "url": "https://github.com/omgimanerd/doclt/issues"
   },
-  "homepage": "https://github.com/omgimanerd/docli#readme",
+  "homepage": "https://github.com/omgimanerd/doclt#readme",
   "dependencies": {
     "cli-table2": "^0.2.0",
     "colors": "^1.1.2",

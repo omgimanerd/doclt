@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @fileoverview Main executable file for the docli CLI.
+ * @fileoverview Main executable file for the doclt CLI.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 

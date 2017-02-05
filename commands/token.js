@@ -21,6 +21,6 @@ exports.handler = (argv) => {
     Util.handleError(error);
     console.log('Token supplied!'.green);
     console.log('This will have no effect if you have supplied a '.red +
-        'DOCLI_TOKEN environment variable'.red);
+        'doclt_TOKEN environment variable'.red);
   });
 };
