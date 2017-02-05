@@ -14,11 +14,11 @@ exports.description = 'List images on your account'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('application', {
-    description: 'Show application based images'
+    description: 'Show application based images'.yellow
   }).option('distribution', {
-    description: 'Show distribution based images'
+    description: 'Show distribution based images'.yellow
   }).option('private', {
-    description: 'Show all private user images'
+    description: 'Show all private user images'.yellow
   }).group(['application', 'distribution', 'private'], 'Image Options:');
   Util.globalConfig(yargs, 2, exports.command);
 };

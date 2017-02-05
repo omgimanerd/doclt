@@ -14,7 +14,7 @@ exports.description = 'Info about a domain name'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('zone-file', {
-    description: 'Show only the zone file'
+    description: 'Show only the zone file'.yellow
   }).group(['zone-file'], 'Domain Options:');
   Util.globalConfig(yargs, 2, exports.command);
 };

@@ -12,7 +12,7 @@ exports.description = 'Perform actions on droplets by tag'.yellow;
 
 exports.builder = (yargs) => {
   yargs.option('action', {
-    description: 'The action to perform on the droplets',
+    description: 'The action to perform on the droplets'.yellow,
     required: true,
     choices: [
       'delete', 'power_cycle', 'power_on', 'shutdown',

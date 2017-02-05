@@ -18,18 +18,18 @@ exports.builder = (yargs) => {
   var options = [
       'name', 'size_gigabytes', 'description', 'region', 'snapshot_id'];
   yargs.option('name', {
-    description: 'Set the volume name',
+    description: 'Set the volume name'.yellow,
   }).option('size_gigabytes', {
     alias: ['size'],
-    description: 'Set the volume size in gigabytes',
+    description: 'Set the volume size in gigabytes'.yellow,
     number: true
   }).option('description', {
-    description: 'Set the volume description'
+    description: 'Set the volume description'.yellow
   }).option('region', {
-    description: 'Set a volume region slug (do not specify a snapshot)'
+    description: 'Set a volume region slug (do not specify a snapshot)'.yellow
   }).option('snapshot_id', {
     alias: ['snapshot', 'snapshots'],
-    description: 'Set a volume snapshot ID (do not specify a region)'
+    description: 'Set a volume snapshot ID (do not specify a region)'.yellow
   }).group(options, 'Volume Attributes:');
   Util.globalConfig(yargs, 2, exports.command);
 };
@@ -42,7 +42,7 @@ exports.handler = (argv) => {
   prompt.get({
     properties: {
       name: {
-        description: 'Volume name',
+        description: 'Volume name'.yellow,
         required: true
       },
       size_gigabytes: {
