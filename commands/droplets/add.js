@@ -15,12 +15,49 @@ exports.aliases = ['create'];
 exports.description = 'Create a new droplet'.yellow;
 
 exports.builder = (yargs) => {
+  yargs.option('name', {
+    description: 'Set the droplet name'
+  }).option('region', {
+    description: 'Set the droplet region ID'
+  }).option('size', {
+    description: 'Set the droplet size slug'
+  }).option('image', {
+    description: 'Set the droplet base image ID or slug identifier'
+  }).option('ssh_keys', {
+    alias: ['ssh'],
+    description: 'Set the droplet SSH keys (space separated)',
+    array: true
+  }).option('backups', {
+    description: 'Enable backups',
+    boolean: true
+  }).option('ipv6', {
+    description: 'Enable IPv6',
+    boolean: true
+  }).option('private_networking', {
+    description: 'Enable private networking',
+    boolean: true
+  }).option('monitoring', {
+    description: 'Enable monitoring',
+    boolean: true
+  }).option('user_data', {
+    description: 'Custom user data'
+  }).option('volume', {
+    description: 'Volume IDs to attach (space separated)',
+    array: true
+  }).option('tags', {
+    description: 'Tags (comma separated)',
+    array: true
+  }).group([
+    'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
+    'private_networking', 'monitoring', 'user_data', 'volume', 'tags'
+  ], 'Droplet Attributes:');
   Util.globalConfig(yargs, 2, exports.command);
 };
 
 exports.handler = (argv) => {
   var client = Util.getClient();
   prompt.message = '';
+  prompt.override = argv;
   prompt.start();
   prompt.get({
     properties: {
@@ -33,11 +70,11 @@ exports.handler = (argv) => {
         required: true,
       },
       size: {
-        description: 'Size ID ("docli sizes" to list sizes)',
+        description: 'Size slug ("docli sizes" to list sizes)',
         required: true
       },
       image: {
-        description: 'Image ID or slug identifier',
+        description: 'Base image ID or slug identifier',
         required: true
       },
       ssh_keys: {

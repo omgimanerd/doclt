@@ -15,12 +15,28 @@ exports.aliases = ['create'];
 exports.description = 'Add a record to a domain'.yellow;
 
 exports.builder = (yargs) => {
+  yargs.option('type', {
+    description: 'Set the domain record type',
+    choices: ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV']
+  }).option('name', {
+    description: 'Set the domain record hostname, alias, or service'
+  }).option('data', {
+    description: 'Set the domain record data'
+  }).option('priority', {
+    description: 'Set the domain record priority'
+  }).option('port', {
+    description: 'Set the domain record port'
+  }).option('weight', {
+    description: 'Set the domain record weight'
+  }).group([
+    'type', 'name', 'data', 'priority', 'port', 'weight'
+  ], 'Domain Record Attributes:')
   Util.globalConfig(yargs, 3, exports.command);
 };
 
 exports.handler = (argv) => {
   var client = Util.getClient();
-
+  prompt.override = argv;
   prompt.message = '';
   prompt.start();
   var types = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'SRV', 'NS'];

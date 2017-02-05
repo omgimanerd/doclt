@@ -15,12 +15,29 @@ exports.aliases = ['create'];
 exports.description = 'Create a new volume'.yellow;
 
 exports.builder = (yargs) => {
+  var options = [
+      'name', 'size_gigabytes', 'description', 'region', 'snapshot_id'];
+  yargs.option('name', {
+    description: 'Set the volume name',
+  }).option('size_gigabytes', {
+    alias: ['size'],
+    description: 'Set the volume size in gigabytes',
+    number: true
+  }).option('description', {
+    description: 'Set the volume description'
+  }).option('region', {
+    description: 'Set a volume region slug (do not specify a snapshot)'
+  }).option('snapshot_id', {
+    alias: ['snapshot', 'snapshots'],
+    description: 'Set a volume snapshot ID (do not specify a region)'
+  }).group(options, 'Volume Attributes:');
   Util.globalConfig(yargs, 2, exports.command);
 };
 
 exports.handler = (argv) => {
   var client = Util.getClient();
   prompt.message = '';
+  prompt.override = argv;
   prompt.start();
   prompt.get({
     properties: {
@@ -37,10 +54,10 @@ exports.handler = (argv) => {
         description: 'Description (optional)',
       },
       region: {
-        description: 'Region ID (optional, cannot be specified with a snapshot)'
+        description: 'Region slug (cannot be specified with a snapshot)'
       },
       snapshot_id: {
-        description: 'Snapshot ID (optional, cannot be specified with a region)'
+        description: 'Base snapshot ID (cannot be specified with a region)'
       }
     }
   }, (error, result) => {
