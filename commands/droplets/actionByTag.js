@@ -19,7 +19,7 @@ exports.builder = (yargs) => {
       'enable_private_networking', 'enable_ipv6', 'enable_backups',
       'disable_backups', 'snapshot'
     ]
-  })
+  }).group(['action'], 'Droplet Actions:');
   Util.globalConfig(yargs, 2, exports.command);
 };
 
