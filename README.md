@@ -7,7 +7,6 @@
 
 [![GitHub watchers](https://img.shields.io/github/watchers/omgimanerd/doclt.svg?style=social&label=Watch)](https://github.com/omgimanerd/doclt/watchers)
 [![GitHub forks](https://img.shields.io/github/forks/omgimanerd/doclt.svg?style=social&label=Fork)](https://github.com/omgimanerd/doclt/fork)
-[![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/omgimanerd)
 
 doclt is a command line tool for interacting with Digital Ocean. It
 presents information in Terminal in a neat, tidy, and visually appealing way.
