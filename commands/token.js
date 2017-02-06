@@ -16,11 +16,11 @@ exports.builder = (yargs) => {
 };
 
 exports.handler = (argv) => {
-  var token = require('../lib/token');
-  token.set(argv.token, (error) => {
+  var config = require('../lib/config');
+  config.setToken(argv.token, (error) => {
     Util.handleError(error);
     console.log('Token supplied!'.green);
     console.log('This will have no effect if you have supplied a '.red +
-        'doclt_TOKEN environment variable'.red);
+        'DOCLT_TOKEN environment variable'.red);
   });
 };

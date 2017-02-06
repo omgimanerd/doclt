@@ -1,2 +1,3 @@
 node_modules/
-lib/.doclt_token
+config.json
+
