@@ -2,21 +2,29 @@
   "name": "doclt",
   "version": "1.1.2",
   "description": "Digital Ocean Command Line Tool",
-  "bin": {
-    "doclt": "doclt.js"
-  },
+  "bin": "doclt.js",
+  "keywords": [
+    "cli",
+    "digitalocean",
+    "digital-ocean",
+    "cli-application",
+    "digital",
+    "ocean"
+  ],
   "main": "doclt.js",
   "scripts": {
     "test": "node doclt.js"
   },
+  "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omgimanerd/doclt.git"
+    "url": "https://github.com/omgimanerd/doclt.git"
   },
-  "author": "omgimanerd",
+  "author": "Alvin Lin <alvin@omgimanerd.tech> (http://omgimanerd.tech/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/omgimanerd/doclt/issues"
+    "url": "https://github.com/omgimanerd/doclt/issues",
+    "email": "alvin@omgimanerd.tech"
   },
   "homepage": "https://github.com/omgimanerd/doclt#readme",
   "dependencies": {
