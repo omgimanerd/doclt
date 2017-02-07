@@ -45,7 +45,7 @@ exports.handler = (argv) => {
       type: {
         description: 'Domain Type'.yellow,
         type: 'string',
-        conform: (value) => types.includes(value),
+        conform: (value) => types.indexOf(value) != -1,
         message: 'Domain type must be A, AAAA, CNAME, MX, TXT, SRV, or NS',
         required: true
       }
