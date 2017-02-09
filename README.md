@@ -2,8 +2,8 @@
 [![npm](https://img.shields.io/npm/v/doclt.svg)](https://www.npmjs.com/package/doclt)
 [![npm](https://img.shields.io/npm/l/doclt.svg)](https://spdx.org/licenses/MIT)
 [![npm](https://img.shields.io/npm/dt/doclt.svg)]([![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/doclt))
-[![GitHub issues](https://img.shields.io/github/issues/omgimanerd/doclt.svg)](https://github.com/omgimanerd/doclt/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/omgimanerd/doclt.svg)](https://github.com/omgimanerd/doclt/pulls)
+[![GitHub issues](https://img.shields.io/github/issues/omgimanerd/doclt.svg)](https://github.com/omgimanerd/doclt/issues)
 
 [![GitHub watchers](https://img.shields.io/github/watchers/omgimanerd/doclt.svg?style=social&label=Watch)](https://github.com/omgimanerd/doclt/watchers)
 [![GitHub forks](https://img.shields.io/github/forks/omgimanerd/doclt.svg?style=social&label=Fork)](https://github.com/omgimanerd/doclt/fork)
