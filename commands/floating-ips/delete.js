@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete a floating IP'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.floatingIps.delete(argv.floatingip, (error) => {
+  client.floatingIps.delete(argv.floatingip, function(error) {
     Util.handleError(error);
     Display.displayMessage('Floating IP deleted.');
   });

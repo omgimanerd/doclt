@@ -10,13 +10,13 @@ exports.command = 'detach <volume id>';
 
 exports.description = 'Detach a volume'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.detach(argv.volumeid, (error, action) => {
+  client.volumes.detach(argv.volumeid, function(error, action) {
     Util.handleError(error);
     Display.displayAction(action, 'Volume detached.');
   });

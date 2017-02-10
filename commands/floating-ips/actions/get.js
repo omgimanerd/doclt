@@ -12,15 +12,15 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a floating IP action'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var ip = argv.floatingip;
   var id = argv.actionid;
-  client.floatingIps.getAction(ip, id, (error, action) => {
+  client.floatingIps.getAction(ip, id, function(error, action) {
     Util.handleError(error);
     Display.displayAction(action);
   });

@@ -12,13 +12,15 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a domain record'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.domains.getRecord(argv.domain, argv.recordid, (error, record) => {
+  var domain = argv.domain;
+  var recordid = argv.recordid;
+  client.domains.getRecord(domain, recordid, function(error, record) {
     Util.handleError(error);
     Display.displayDomainRecord(record);
   });

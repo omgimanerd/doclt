@@ -12,13 +12,15 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a volume action'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.getAction(argv.volumeid, argv.actionid, (error, action) => {
+  var volumeid = argv.volumeid;
+  var actionid = argv.actionid;
+  client.volumes.getAction(volumeid, actionid, function(error, action) {
     Util.handleError(error);
     Display.displayAction(action);
   });

@@ -12,13 +12,13 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a floating IP'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.floatingIps.get(argv.floatingip, (error, ip) => {
+  client.floatingIps.get(argv.floatingip, function(error, ip) {
     Util.handleError(error);
     Display.displayFloatingIp(ip);
   });

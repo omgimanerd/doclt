@@ -10,13 +10,13 @@ exports.command = 'shutdown <droplet id>';
 
 exports.description = 'Gracefully shut down a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.shutdown(argv.dropletid, (error, action) => {
+  client.droplets.shutdown(argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Shutting down droplet...');
   });

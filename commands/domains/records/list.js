@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all records for a domain'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.domains.listRecords(argv.domain, (error, records) => {
+  client.domains.listRecords(argv.domain, function(error, records) {
     Util.handleError(error);
     Display.displayDomainRecords(records);
   });

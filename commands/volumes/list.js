@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all volumes'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.list((error, volumes) => {
+  client.volumes.list(function(error, volumes) {
     Util.handleError(error);
     Display.displayVolumes(volumes);
   });

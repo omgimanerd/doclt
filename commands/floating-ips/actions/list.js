@@ -12,9 +12,9 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all actions performed on a floating IP'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   var client = Util.getClient();
-  client.floatingIps.listActions((error, actions) => {
+  client.floatingIps.listActions(function(error, actions) {
     Util.handleError(error);
     Display.displayActions(actions);
   });

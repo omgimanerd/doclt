@@ -12,13 +12,13 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a tag'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.tags.get(argv.tag, (error, tag) => {
+  client.tags.get(argv.tag, function(error, tag) {
     Util.handleError(error);
     Display.displayTag(tag);
   });

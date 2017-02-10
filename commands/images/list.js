@@ -12,7 +12,7 @@ exports.aliases = ['ls'];
 
 exports.description = 'List images on your account'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('application', {
     description: 'Show application based images'.yellow
   }).option('distribution', {
@@ -23,7 +23,7 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var query = {};
   if (argv.private) {
@@ -36,7 +36,7 @@ exports.handler = (argv) => {
     query.page = 1;
     query.per_page = Number.MAX_SAFE_INTEGER;
   }
-  client.images.list(query, (error, images) => {
+  client.images.list(query, function(error, images) {
     Util.handleError(error);
     Display.displayImages(images);
   });

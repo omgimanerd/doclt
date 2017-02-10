@@ -11,13 +11,13 @@ exports.aliases = ['auth', 'authenticate'];
 
 exports.description = 'Set the DigitalOcean auth token'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 1, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var config = require('../lib/config');
-  config.setToken(argv.token, (error) => {
+  config.setToken(argv.token, function(error) {
     Util.handleError(error);
     console.log('Token supplied!'.green);
     console.log('This will have no effect if you have supplied a '.red +

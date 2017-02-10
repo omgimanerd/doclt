@@ -14,7 +14,7 @@ exports.aliases = ['create'];
 
 exports.description = 'Create a new droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('name', {
     description: 'Set the droplet name'.yellow
   }).option('region', {
@@ -54,7 +54,7 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   prompt.message = '';
   prompt.override = argv;
@@ -113,9 +113,9 @@ exports.handler = (argv) => {
         before: Util.csvToArray
       }
     }
-  }, (error, result) => {
+  }, function(error, result) {
     Util.handleError(error);
-    client.droplets.create(result, (error, droplet) => {
+    client.droplets.create(result, function(error, droplet) {
       Util.handleError(error);
       Display.displayDroplet(droplet, 'Droplet created.');
     });

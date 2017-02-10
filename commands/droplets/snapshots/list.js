@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List snapshots made of a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.snapshots(argv.dropletid, (error, snapshots) => {
+  client.droplets.snapshots(argv.dropletid, function(error, snapshots) {
     Util.handleError(error);
     Display.displaySnapshots(snapshots);
   });

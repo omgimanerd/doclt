@@ -12,16 +12,16 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about an SSH key'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('key', {
     description: 'Show only the public key'.yellow
   }).group(['key'], 'SSH Key Options:');
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.account.getSshKey(argv.keyid, (error, key) => {
+  client.account.getSshKey(argv.keyid, function(error, key) {
     Util.handleError(error);
     Display.displaySshKey(key, argv.key);
   });

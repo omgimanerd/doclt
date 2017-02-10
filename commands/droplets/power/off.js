@@ -10,13 +10,13 @@ exports.command = 'off <droplet id>';
 
 exports.description = 'Power off a droplet (hard shutdown)'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.powerOff(argv.dropletid, (error, action) => {
+  client.droplets.powerOff(argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Powering off droplet...');
   });

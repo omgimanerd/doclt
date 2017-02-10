@@ -12,15 +12,15 @@ exports.aliases = ['create', 'add'];
 
 exports.description = 'Take a snapshot of a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   client.droplets.snapshot(argv.dropletid, {
     name: argv.snapshotname
-  }, (error, action) => {
+  }, function(error, action) {
     Util.handleError(error);
     Display.displayAction(action, 'Taking a snapshot...');
   });

@@ -10,7 +10,7 @@ exports.command = 'actionByTag <tag>';
 
 exports.description = 'Perform actions on droplets by tag'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('action', {
     description: 'The action to perform on the droplets'.yellow,
     required: true,
@@ -23,16 +23,16 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var action = argv.action;
   if (action === 'delete') {
-    client.droplets.deleteByTag(argv.tag, (error) => {
+    client.droplets.deleteByTag(argv.tag, function(error) {
       Util.handleError(error);
       Display.displayMessage('Droplets deleted.');
     });
   } else {
-    client.droplets.actionByTag(argv.tag, action, (error, action) => {
+    client.droplets.actionByTag(argv.tag, action, function(error, action) {
       Util.handleError(error);
       Display.displayActionID(action, 'Executing action...');
     });

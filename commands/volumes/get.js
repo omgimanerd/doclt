@@ -12,13 +12,13 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a volume'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.get(argv.volumeid, (error, volume) => {
+  client.volumes.get(argv.volumeid, function(error, volume) {
     Util.handleError(error);
     Display.displayVolume(volume);
   });

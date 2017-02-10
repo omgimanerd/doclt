@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete an image'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.images.delete(argv.imageid, (error) => {
+  client.images.delete(argv.imageid, function(error) {
     Util.handleError(error);
     Display.displayMessage('Image deleted.');
   });

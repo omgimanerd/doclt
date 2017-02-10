@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.delete(argv.dropletid, (error) => {
+  client.droplets.delete(argv.dropletid, function(error) {
     Util.handleError(error);
     Display.displayMessage('Droplet deleted.');
   });

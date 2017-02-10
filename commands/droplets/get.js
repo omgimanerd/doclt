@@ -12,13 +12,13 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.get(argv.dropletid, (error, droplet) => {
+  client.droplets.get(argv.dropletid, function(error, droplet) {
     Util.handleError(error);
     Display.displayDroplet(droplet);
   });

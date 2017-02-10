@@ -12,15 +12,15 @@ exports.aliases = ['update'];
 
 exports.description = 'Rename an image'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   client.images.update(argv.imageid, {
     name: argv.name
-  }, (error, image) => {
+  }, function(error, image) {
     Util.handleError(error);
     Display.displayImage(image);
   });

@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete a record'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.domains.deleteRecord(argv.domain, argv.recordid, (error) => {
+  client.domains.deleteRecord(argv.domain, argv.recordid, function(error) {
     Util.handleError(error);
     Display.displayMessage('Domain record deleted.');
   });

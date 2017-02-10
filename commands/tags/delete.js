@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete a tag'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.tags.delete(argv.tag, (error) => {
+  client.tags.delete(argv.tag, function(error) {
     Util.handleError(error);
     Display.displayMessage('Tag deleted.');
   });

@@ -12,7 +12,7 @@ exports.aliases = ['create'];
 
 exports.description = 'Create a floating IP'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('type', {
     description: 'The type of data to associate the floating-ip to',
     required: true,
@@ -21,11 +21,11 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   client.floatingIps.create({
     [argv.type]: argv['dropletid/region']
-  }, (error, ip) => {
+  }, function(error, ip) {
     Util.handleError(error);
     Display.displayFloatingIp(ip);
   });

@@ -11,7 +11,7 @@ exports.aliases = ['snapshot'];
 
 exports.description = 'List and take snapshots of a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.commandDir('snapshots');
   Util.globalConfig(yargs, 2, exports.command, true);
 };

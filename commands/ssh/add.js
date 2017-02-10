@@ -14,17 +14,17 @@ exports.aliases = ['create'];
 
 exports.description = 'Add an SSH key'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   try {
     client.account.createSshKey({
       name: argv.name,
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
-    }, (error, key) => {
+    }, function(error, key) {
       Util.handleError(error);
       Display.displaySshKey(key, false, 'New SSH Key added.');
     });

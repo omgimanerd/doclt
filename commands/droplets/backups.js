@@ -11,7 +11,7 @@ exports.aliases = ['backup'];
 
 exports.description = 'List and enable/disable automatic backups'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.commandDir('backups');
   Util.globalConfig(yargs, 2, exports.command, true);
 };

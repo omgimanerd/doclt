@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all floating IPs'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.floatingIps.list((error, ips) => {
+  client.floatingIps.list(function(error, ips) {
     Util.handleError(error);
     Display.displayFloatingIps(ips);
   });

@@ -10,15 +10,15 @@ exports.command = 'change <droplet id> <kernel id>';
 
 exports.description = 'Change the kernel of a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var dropletid = argv.dropletid;
   var kernelid = argv.kernelid;
-  client.droplets.changeKernel(dropletid, kernelid, (error, action) => {
+  client.droplets.changeKernel(dropletid, kernelid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Changing droplet kernel...');
   });

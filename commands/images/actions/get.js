@@ -12,13 +12,15 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about an image action'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.images.getAction(argv.imageid, argv.actionid, (error, action) => {
+  var imageid = argv.imageid;
+  var actionid = argv.actionid;
+  client.images.getAction(imageid, actionid, function(error, action) {
     Util.handleError(error);
     Display.displayAction(action);
   });

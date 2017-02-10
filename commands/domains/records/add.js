@@ -14,7 +14,7 @@ exports.aliases = ['create'];
 
 exports.description = 'Add a record to a domain'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('type', {
     description: 'Set the domain record type'.yellow,
     choices: ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV']
@@ -34,7 +34,7 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   prompt.override = argv;
   prompt.message = '';
@@ -50,10 +50,10 @@ exports.handler = (argv) => {
         required: true
       }
     }
-  }, (error, result) => {
+  }, function(error, result) {
     Util.handleError(error);
     var schema = { properties: {} };
-    var property = (description, required) => {
+    var property = function(description, required) {
       return {
         description: description,
         required: true
@@ -101,10 +101,11 @@ exports.handler = (argv) => {
         };
         break;
     }
-    prompt.get(schema, (error, result) => {
+    prompt.get(schema, function(error, result) {
       Util.handleError(error);
+      var domain = argv.domain;
       result.type = type;
-      client.domains.createRecord(argv.domain, result, (error, record) => {
+      client.domains.createRecord(domain, result, function(error, record) {
         Util.handleError(error);
         Display.displayDomainRecord(record, 'New domain record added.');
       });

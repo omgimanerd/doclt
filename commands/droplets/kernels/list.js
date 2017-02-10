@@ -10,13 +10,13 @@ exports.command = 'list <droplet id>';
 
 exports.description = 'List kernels of a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.kernels(argv.dropletid, (error, kernels) => {
+  client.droplets.kernels(argv.dropletid, function(error, kernels) {
     Util.handleError(error);
     Display.displayKernels(kernels);
   });

@@ -12,13 +12,13 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about an image'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.images.get(argv.imageid, (error, image) => {
+  client.images.get(argv.imageid, function(error, image) {
     Util.handleError(error);
     Display.displayImage(image);
   });

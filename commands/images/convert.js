@@ -10,13 +10,13 @@ exports.command = 'convert <image id>';
 
 exports.description = 'Convert an image into a snapshot'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.images.convert(argv.imageid, (error, action) => {
+  client.images.convert(argv.imageid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action);
   });

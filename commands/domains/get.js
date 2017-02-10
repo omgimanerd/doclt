@@ -12,16 +12,16 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a domain name'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('zone-file', {
     description: 'Show only the zone file'.yellow
   }).group(['zone-file'], 'Domain Options:');
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.domains.get(argv.domain, (error, domain) => {
+  client.domains.get(argv.domain, function(error, domain) {
     Util.handleError(error);
     Display.displayDomain(domain, argv.zoneFile);
   });

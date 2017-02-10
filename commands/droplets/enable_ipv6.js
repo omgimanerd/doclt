@@ -12,13 +12,13 @@ exports.aliases = ['ipv6'];
 
 exports.description = 'Enable IPv6 on a droplet.'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.enableIpv6(argv.dropletid, (error, action) => {
+  client.droplets.enableIpv6(argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'IPv6 enabled.');
   });

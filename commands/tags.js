@@ -11,7 +11,7 @@ exports.aliases = ['tag'];
 
 exports.description = 'Create, delete, and manage tags'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.commandDir('tags');
   Util.globalConfig(yargs, 1, exports.command, true);
 };

@@ -10,13 +10,13 @@ exports.command = 'unassign <floating ip>';
 
 exports.description = 'Unassign a floating IP'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.floatingIps.unassign(argv.floatingip, (error, action) => {
+  client.floatingIps.unassign(argv.floatingip, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action);
   });

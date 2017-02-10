@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all SSH keys'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.account.listSshKeys((error, keys) => {
+  client.account.listSshKeys(function(error, keys) {
     Util.handleError(error);
     Display.displaySshKeys(keys);
   });

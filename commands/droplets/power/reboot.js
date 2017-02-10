@@ -12,13 +12,13 @@ exports.aliases = ['restart'];
 
 exports.description = 'Gracefully reboot a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.reboot(argv.dropletid, (error, action) => {
+  client.droplets.reboot(argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Rebooting droplet...');
   });

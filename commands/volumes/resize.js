@@ -10,16 +10,18 @@ exports.command = 'resize <volume id> <size>';
 
 exports.description = 'Resize a volume'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.get(argv.volumeid, (error, volume) => {
+  client.volumes.get(argv.volumeid, function(error, volume) {
     Util.handleError(error);
+    var volumeid = argv.volumeid;
+    var size = argv.size;
     var region = volume.region.slug;
-    client.volumes.resize(argv.volumeid, argv.size, region, (error, action) => {
+    client.volumes.resize(volumeid, size, region, function(error, action) {
       Util.handleError(error);
       Display.displayAction(action, 'Volume resized.');
     });

@@ -12,13 +12,13 @@ exports.aliases = ['region'];
 
 exports.description = 'Lists the available regions'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 1, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.regions.list((error, regions) => {
+  client.regions.list(function(error, regions) {
     Util.handleError(error);
     Display.displayRegions(regions);
   });

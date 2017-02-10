@@ -10,14 +10,14 @@ exports.command = 'assign <floating ip> <droplet id>';
 
 exports.description = 'Assign a floating IP to a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var ip = argv.floatingip;
-  client.floatingIps.assign(ip, argv.dropletid, (error, action) => {
+  client.floatingIps.assign(ip, argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action);
   });

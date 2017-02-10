@@ -10,7 +10,7 @@ exports.command = 'update <domain> <record id>';
 
 exports.description = 'Update a domain record'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.option('type', {
     description: 'Set the domain record type'.yellow,
     choices: ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV']
@@ -30,7 +30,7 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var domain = argv.domain;
   var id = argv.recordid;
@@ -42,7 +42,7 @@ exports.handler = (argv) => {
     port: argv.port,
     weight: argv.weight
   };
-  client.domains.updateRecord(domain, id, attributes, (error, record) => {
+  client.domains.updateRecord(domain, id, attributes, function(error, record) {
     Util.handleError(error);
     Display.displayDomainRecord(record);
   });

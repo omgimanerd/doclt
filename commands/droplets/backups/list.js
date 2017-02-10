@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List all backups of a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.backups(argv.dropletid, (error, backups) => {
+  client.droplets.backups(argv.dropletid, function(error, backups) {
     Util.handleError(error);
     Display.displaySnapshots(backups);
   });

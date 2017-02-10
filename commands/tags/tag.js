@@ -12,16 +12,16 @@ exports.aliases = ['apply'];
 
 exports.description = 'Tag a resource'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   client.tags.tag(argv.tag, [{
     resource_type: argv.resourcetype,
     resource_id: argv.resourceid
-  }], (error) => {
+  }], function(error) {
     Util.handleError(error);
     Display.displayMessage('Resource tagged.');
   });

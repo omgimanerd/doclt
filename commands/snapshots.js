@@ -11,7 +11,7 @@ exports.aliases = ['snapshot'];
 
 exports.description = 'Create, delete, and manage snapshots'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.commandDir('snapshots');
   Util.globalConfig(yargs, 1, exports.command, true);
 };

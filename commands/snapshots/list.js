@@ -12,13 +12,13 @@ exports.aliases = ['ls'];
 
 exports.description = 'List snapshots on your account'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.snapshots.list((error, snapshots) => {
+  client.snapshots.list(function(error, snapshots) {
     Util.handleError(error);
     Display.displaySnapshots(snapshots);
   });

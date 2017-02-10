@@ -10,13 +10,13 @@ exports.command = 'transfer <image id> <region>';
 
 exports.description = 'Transfer an image to another region'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.images.transfer(argv.imageid, argv.region, (error, action) => {
+  client.images.transfer(argv.imageid, argv.region, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action);
   });

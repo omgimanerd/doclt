@@ -12,14 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete a domain name'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-
-  client.domains.delete(argv.domain, (error) => {
+  client.domains.delete(argv.domain, function(error) {
     Util.handleError(error);
     Display.displayMessage('Domain name deleted.');
   });

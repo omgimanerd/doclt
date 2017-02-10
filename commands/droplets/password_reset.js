@@ -12,13 +12,13 @@ exports.aliases = ['password', 'pw'];
 
 exports.description = 'Reset the password on a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.passwordReset(argv.dropletid, (error, action) => {
+  client.droplets.passwordReset(argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Droplet password reset.');
   });

@@ -10,13 +10,15 @@ exports.command = 'resize <droplet id> <size slug>';
 
 exports.description = 'Resize a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.resize(argv.dropletid, argv.sizeslug, (error, action) => {
+  var dropletid = argv.dropletid;
+  var sizeslug = argv.sizeslug;
+  client.droplets.resize(dropletid, sizeslug, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Resizing droplet...');
   });

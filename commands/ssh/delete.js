@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete an SSH key'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.account.deleteSshKey(argv.keyid, (error) => {
+  client.account.deleteSshKey(argv.keyid, function(error) {
     Util.handleError(error);
     Display.displayMessage('SSH Key deleted.');
   });

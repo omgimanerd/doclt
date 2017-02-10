@@ -9,7 +9,7 @@ exports.command = 'ssh';
 
 exports.description = 'Create, delete, and manage SSH public keys'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   yargs.commandDir('ssh');
   Util.globalConfig(yargs, 1, exports.command, true);
 };

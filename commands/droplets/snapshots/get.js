@@ -12,18 +12,18 @@ exports.aliases = ['i', 'info'];
 
 exports.description = 'Info about a snapshot'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   /**
    * We're going to use the images endpoint to get the
    * snapshot so that we can get information like
    * distribution and type.
    */
-  client.images.get(argv.snapshotid, (error, image) => {
+  client.images.get(argv.snapshotid, function(error, image) {
     Util.handleError(error);
     Display.displayImage(image);
   });

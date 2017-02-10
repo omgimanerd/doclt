@@ -1,5 +1,6 @@
 /**
- * @fileoverview Module handling the enabling of automatic backups for droplets.
+ * @fileoverview Module handling the enabling of automatic backups for
+ *   droplets.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
@@ -12,13 +13,13 @@ exports.aliases = ['on'];
 
 exports.description = 'Enable automatic backups for a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 3, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.enableBackups(argv.dropletid, (error, action) => {
+  client.droplets.enableBackups(argv.dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Automatic backups enabled.');
   });

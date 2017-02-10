@@ -12,13 +12,13 @@ exports.aliases = ['remove', 'del', 'rm'];
 
 exports.description = 'Delete a snapshot'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.snapshots.delete(argv.snapshotid, (error) => {
+  client.snapshots.delete(argv.snapshotid, function(error) {
     Util.handleError(error);
     Display.displayMessage('Snapshot deleted.');
   });

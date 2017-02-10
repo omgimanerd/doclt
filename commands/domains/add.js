@@ -12,17 +12,17 @@ exports.aliases = ['create'];
 
 exports.description = 'Add a domain name'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
 
   client.domains.create({
     name: argv.domain,
     ip_address: argv.ip
-  }, (error, domain) => {
+  }, function(error, domain) {
     Util.handleError(error);
     Display.displayDomain(domain, false, 'New domain name added.');
   });

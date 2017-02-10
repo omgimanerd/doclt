@@ -10,13 +10,13 @@ exports.command = 'rename <droplet id> <name>';
 
 exports.description = 'Rename a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.rename(argv.dropletid, argv.name, (error, action) => {
+  client.droplets.rename(argv.dropletid, argv.name, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Droplet renamed.');
   });

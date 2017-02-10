@@ -12,13 +12,13 @@ exports.aliases = ['update'];
 
 exports.description = 'Rename a tag'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.tags.update(argv.tag, { name: argv.newtag }, (error, tag) => {
+  client.tags.update(argv.tag, { name: argv.newtag }, function(error, tag) {
     Util.handleError(error);
     Display.displayTag(tag, 'Tag renamed.');
   });

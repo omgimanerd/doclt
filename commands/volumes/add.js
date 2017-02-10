@@ -14,7 +14,7 @@ exports.aliases = ['create'];
 
 exports.description = 'Create a new volume'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   var options = [
       'name', 'size_gigabytes', 'description', 'region', 'snapshot_id'];
   yargs.option('name', {
@@ -34,7 +34,7 @@ exports.builder = (yargs) => {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   prompt.message = '';
   prompt.override = argv;
@@ -60,9 +60,9 @@ exports.handler = (argv) => {
         description: 'Base snapshot ID (cannot be specified with a region)'
       }
     }
-  }, (error, result) => {
+  }, function(error, result) {
     Util.handleError(error);
-    client.volumes.create(result, (error, volume) => {
+    client.volumes.create(result, function(error, volume) {
       Util.handleError(error);
       Display.displayVolume(volume, 'Volume created.');
     });

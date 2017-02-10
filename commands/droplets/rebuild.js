@@ -10,14 +10,14 @@ exports.command = 'rebuild <droplet id> <image id/slug>';
 
 exports.description = 'Rebuild a droplet'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
   var data = argv['imageid/slug'];
-  client.droplets.rebuild(argv.dropletid, data, (error, action) => {
+  client.droplets.rebuild(argv.dropletid, data, function(error, action) {
     Util.handleError(error);
     Display.displayActionID(action, 'Rebuilding droplet...');
   });

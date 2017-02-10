@@ -10,13 +10,15 @@ exports.command = 'attach <volume id> <droplet id>';
 
 exports.description = 'Attach a volume'.yellow;
 
-exports.builder = (yargs) => {
+exports.builder = function(yargs) {
   Util.globalConfig(yargs, 2, exports.command);
 };
 
-exports.handler = (argv) => {
+exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.attach(argv.volumeid, argv.dropletid, (error, action) => {
+  var volumeid = argv.volumeid;
+  var dropletid = argv.dropletid;
+  client.volumes.attach(volumeid, dropletid, function(error, action) {
     Util.handleError(error);
     Display.displayAction(action, 'Volume attached.');
   });
