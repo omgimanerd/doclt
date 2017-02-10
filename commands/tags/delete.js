@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.tags.delete(argv.tag, function(error) {
+  var tag = argv.tag;
+  client.tags.delete(tag, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Tag deleted.');
+    Display.displayMessage('Tag {0} deleted.', tag);
   });
 };

@@ -29,7 +29,7 @@ exports.handler = function(argv) {
   if (action === 'delete') {
     client.droplets.deleteByTag(argv.tag, function(error) {
       Util.handleError(error);
-      Display.displayMessage('Droplets deleted.');
+      Display.displayMessage('Droplets with tag {0} deleted.', tag);
     });
   } else {
     client.droplets.actionByTag(argv.tag, action, function(error, action) {

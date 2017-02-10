@@ -18,11 +18,15 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.tags.tag(argv.tag, [{
-    resource_type: argv.resourcetype,
-    resource_id: argv.resourceid
+  var tag = argv.tag;
+  var resourcetype = argv.resourcetype;
+  var resourceid = argv.resourceid;
+  client.tags.tag(tag, [{
+    resource_type: resourcetype,
+    resource_id: resourceid
   }], function(error) {
     Util.handleError(error);
-    Display.displayMessage('Resource tagged.');
+    Display.displayMessage(
+        '{0} {1} tagged as {2}.', resourcetype, resourceid, tag);
   });
 };

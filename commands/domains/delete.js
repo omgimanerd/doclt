@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.domains.delete(argv.domain, function(error) {
+  var domain = argv.domain;
+  client.domains.delete(domain, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Domain name deleted.');
+    Display.displayMessage('Domain name {0} deleted.', domain);
   });
 };

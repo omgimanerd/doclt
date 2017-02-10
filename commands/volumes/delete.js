@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.volumes.delete(argv.volumeid, function(error) {
+  var volumeid = argv.volumeid;
+  client.volumes.delete(volumeid, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Volume deleted.');
+    Display.displayMessage('Volume {0} deleted.', volumeid);
   });
 };

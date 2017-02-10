@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.images.delete(argv.imageid, function(error) {
+  var imageid = argv.imageid;
+  client.images.delete(imageid, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Image deleted.');
+    Display.displayMessage('Image {0} deleted.', imageid);
   });
 };

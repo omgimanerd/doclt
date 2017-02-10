@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
+  var keyid = argv.keyid;
   client.account.deleteSshKey(argv.keyid, function(error) {
     Util.handleError(error);
-    Display.displayMessage('SSH Key deleted.');
+    Display.displayMessage('SSH Key {0} deleted.', keyid);
   });
 };

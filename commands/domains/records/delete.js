@@ -18,8 +18,11 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.domains.deleteRecord(argv.domain, argv.recordid, function(error) {
+  var domain = argv.domain;
+  var recordid = argv.recordid;
+  client.domains.deleteRecord(domain, recordid, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Domain record deleted.');
+    Display.displayMessage(
+        'Domain record {0} deleted from {1}.', recordid, domain);
   });
 };

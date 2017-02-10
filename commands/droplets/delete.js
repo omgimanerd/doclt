@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.droplets.delete(argv.dropletid, function(error) {
+  var dropletid = argv.dropletid;
+  client.droplets.delete(dropletid, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Droplet deleted.');
+    Display.displayMessage('Droplet {0} deleted.', dropletid);
   });
 };

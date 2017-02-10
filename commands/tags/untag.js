@@ -16,11 +16,15 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
+  var tag = argv.tag;
+  var resourcetype = argv.resourcetype;
+  var resourceid = argv.resourceid;
   client.tags.untag(argv.tag, [{
-    resource_type: argv.resourcetype,
-    resource_id: argv.resourceid
+    resource_type: resourcetype,
+    resource_id: resourceid
   }], function(error) {
     Util.handleError(error);
-    Display.displayMessage('Resource untagged.');
+    Display.displayMessage(
+        'Tag {0} removed from {1} {2}.', tag, resourcetype, resourceid);
   });
 };

@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.floatingIps.delete(argv.floatingip, function(error) {
+  var floatingip = argv.floatingip;
+  client.floatingIps.delete(floatingip, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Floating IP deleted.');
+    Display.displayMessage('Floating IP {0} deleted.', floatingip);
   });
 };

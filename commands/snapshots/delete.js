@@ -18,8 +18,9 @@ exports.builder = function(yargs) {
 
 exports.handler = function(argv) {
   var client = Util.getClient();
-  client.snapshots.delete(argv.snapshotid, function(error) {
+  var snapshotid = argv.snapshotid;
+  client.snapshots.delete(snapshotid, function(error) {
     Util.handleError(error);
-    Display.displayMessage('Snapshot deleted.');
+    Display.displayMessage('Snapshot {0} deleted.', snapshotid);
   });
 };
