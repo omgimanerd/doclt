@@ -1,6 +1,6 @@
 {
   "name": "doclt",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Digital Ocean Command Line Tool",
   "bin": "doclt.js",
   "keywords": [
