@@ -3,26 +3,26 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../../lib/Display');
-var Util = require('../../../lib/Util');
+const Display = require('../../../lib/Display')
+const Util = require('../../../lib/Util')
 
-exports.command = 'delete <domain> <record id>';
+exports.command = 'delete <domain> <record id>'
 
-exports.aliases = ['remove', 'del', 'rm'];
+exports.aliases = ['remove', 'del', 'rm']
 
-exports.description = 'Delete a record'.yellow;
+exports.description = 'Delete a record'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 3, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 3, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  var domain = argv.domain;
-  var recordid = argv.recordid;
-  client.domains.deleteRecord(domain, recordid, function(error) {
-    Util.handleError(error);
+exports.handler = argv => {
+  const client = Util.getClient()
+  const domain = argv.domain
+  const recordid = argv.recordid
+  client.domains.deleteRecord(domain, recordid, error => {
+    Util.handleError(error)
     Display.displayMessage(
-        'Domain record {0} deleted from {1}.', recordid, domain);
-  });
-};
+      'Domain record {0} deleted from {1}.', recordid, domain)
+  })
+}

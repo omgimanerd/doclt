@@ -3,15 +3,15 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Util = require('../../lib/Util');
+const Util = require('../../lib/Util')
 
-exports.command = 'actions';
+exports.command = 'actions'
 
-exports.aliases = ['action'];
+exports.aliases = ['action']
 
-exports.description = 'List and fetch volume actions'.yellow;
+exports.description = 'List and fetch volume actions'.yellow
 
-exports.builder = function(yargs) {
-  yargs.commandDir('actions');
-  Util.globalConfig(yargs, 2, exports.command, true);
-};
+exports.builder = yargs => {
+  yargs.commandDir('actions')
+  Util.globalConfig(yargs, 2, exports.command, true)
+}

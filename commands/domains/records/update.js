@@ -3,14 +3,14 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../../lib/Display');
-var Util = require('../../../lib/Util');
+const Display = require('../../../lib/Display')
+const Util = require('../../../lib/Util')
 
-exports.command = 'update <domain> <record id>';
+exports.command = 'update <domain> <record id>'
 
-exports.description = 'Update a domain record'.yellow;
+exports.description = 'Update a domain record'.yellow
 
-exports.builder = function(yargs) {
+exports.builder = yargs => {
   yargs.option('type', {
     description: 'Set the domain record type'.yellow,
     choices: ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV']
@@ -27,23 +27,23 @@ exports.builder = function(yargs) {
   }).group([
     'type', 'name', 'data', 'priority', 'port', 'weight'
   ], 'Domain Record Attributes:')
-  Util.globalConfig(yargs, 3, exports.command);
-};
+  Util.globalConfig(yargs, 3, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  var domain = argv.domain;
-  var id = argv.recordid;
-  var attributes = {
+exports.handler = argv => {
+  const client = Util.getClient()
+  const domain = argv.domain
+  const id = argv.recordid
+  const attributes = {
     type: argv.type,
     name: argv.name,
     data: argv.data,
     priority: argv.priority,
     port: argv.port,
     weight: argv.weight
-  };
-  client.domains.updateRecord(domain, id, attributes, function(error, record) {
-    Util.handleError(error);
-    Display.displayDomainRecord(record);
-  });
-};
+  }
+  client.domains.updateRecord(domain, id, attributes, (error, record) => {
+    Util.handleError(error)
+    Display.displayDomainRecord(record)
+  })
+}

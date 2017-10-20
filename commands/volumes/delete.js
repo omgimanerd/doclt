@@ -3,24 +3,24 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'delete <volume id>';
+exports.command = 'delete <volume id>'
 
-exports.aliases = ['remove', 'del', 'rm'];
+exports.aliases = ['remove', 'del', 'rm']
 
-exports.description = 'Delete a volume'.yellow;
+exports.description = 'Delete a volume'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  var volumeid = argv.volumeid;
-  client.volumes.delete(volumeid, function(error) {
-    Util.handleError(error);
-    Display.displayMessage('Volume {0} deleted.', volumeid);
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  const volumeid = argv.volumeid
+  client.volumes.delete(volumeid, error => {
+    Util.handleError(error)
+    Display.displayMessage('Volume {0} deleted.', volumeid)
+  })
+}

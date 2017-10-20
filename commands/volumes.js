@@ -3,15 +3,15 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Util = require('../lib/Util');
+const Util = require('../lib/Util')
 
-exports.command = 'volumes';
+exports.command = 'volumes'
 
-exports.aliases = ['volume'];
+exports.aliases = ['volume']
 
-exports.description = 'Create, delete, and manage volumes'.yellow;
+exports.description = 'Create, delete, and manage volumes'.yellow
 
-exports.builder = function(yargs) {
-  yargs.commandDir('volumes');
-  Util.globalConfig(yargs, 1, exports.command, true);
-};
+exports.builder = yargs => {
+  yargs.commandDir('volumes')
+  Util.globalConfig(yargs, 1, exports.command, true)
+}

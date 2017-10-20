@@ -3,21 +3,21 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../../lib/Display');
-var Util = require('../../../lib/Util');
+const Display = require('../../../lib/Display')
+const Util = require('../../../lib/Util')
 
-exports.command = 'on <droplet id>';
+exports.command = 'on <droplet id>'
 
-exports.description = 'Power on a droplet'.yellow;
+exports.description = 'Power on a droplet'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 3, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 3, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.droplets.powerOn(argv.dropletid, function(error, action) {
-    Util.handleError(error);
-    Display.displayActionID(action, 'Powering on droplet...');
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.droplets.powerOn(argv.dropletid, (error, action) => {
+    Util.handleError(error)
+    Display.displayActionID(action, 'Powering on droplet...')
+  })
+}

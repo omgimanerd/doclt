@@ -3,23 +3,23 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../lib/Display');
-var Util = require('../lib/Util');
+const Display = require('../lib/Display')
+const Util = require('../lib/Util')
 
-exports.command = 'regions';
+exports.command = 'regions'
 
-exports.aliases = ['region'];
+exports.aliases = ['region']
 
-exports.description = 'Lists the available regions'.yellow;
+exports.description = 'Lists the available regions'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 1, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 1, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.regions.list(function(error, regions) {
-    Util.handleError(error);
-    Display.displayRegions(regions);
-  });
-};
+exports.handler = () => {
+  const client = Util.getClient()
+  client.regions.list((error, regions) => {
+    Util.handleError(error)
+    Display.displayRegions(regions)
+  })
+}

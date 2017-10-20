@@ -3,23 +3,23 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'list';
+exports.command = 'list'
 
-exports.aliases = ['ls'];
+exports.aliases = ['ls']
 
-exports.description = 'List all SSH keys'.yellow;
+exports.description = 'List all SSH keys'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.account.listSshKeys(function(error, keys) {
-    Util.handleError(error);
-    Display.displaySshKeys(keys);
-  });
-};
+exports.handler = () => {
+  const client = Util.getClient()
+  client.account.listSshKeys((error, keys) => {
+    Util.handleError(error)
+    Display.displaySshKeys(keys)
+  })
+}

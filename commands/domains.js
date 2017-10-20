@@ -3,15 +3,15 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Util = require('../lib/Util');
+const Util = require('../lib/Util')
 
-exports.command = 'domains';
+exports.command = 'domains'
 
-exports.aliases = ['domain'];
+exports.aliases = ['domain']
 
-exports.description = 'Create, delete, and manage domains'.yellow;
+exports.description = 'Create, delete, and manage domains'.yellow
 
-exports.builder = function(yargs) {
-  yargs.commandDir('domains');
-  Util.globalConfig(yargs, 1, exports.command, true);
-};
+exports.builder = yargs => {
+  yargs.commandDir('domains')
+  Util.globalConfig(yargs, 1, exports.command, true)
+}

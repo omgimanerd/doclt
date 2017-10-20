@@ -3,23 +3,23 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'get <floating ip>';
+exports.command = 'get <floating ip>'
 
-exports.aliases = ['i', 'info'];
+exports.aliases = ['i', 'info']
 
-exports.description = 'Info about a floating IP'.yellow;
+exports.description = 'Info about a floating IP'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.floatingIps.get(argv.floatingip, function(error, ip) {
-    Util.handleError(error);
-    Display.displayFloatingIp(ip);
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.floatingIps.get(argv.floatingip, (error, ip) => {
+    Util.handleError(error)
+    Display.displayFloatingIp(ip)
+  })
+}

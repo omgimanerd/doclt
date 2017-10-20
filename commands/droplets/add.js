@@ -3,18 +3,18 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var prompt = require('prompt');
+const prompt = require('prompt')
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'add';
+exports.command = 'add'
 
-exports.aliases = ['create'];
+exports.aliases = ['create']
 
-exports.description = 'Create a new droplet'.yellow;
+exports.description = 'Create a new droplet'.yellow
 
-exports.builder = function(yargs) {
+exports.builder = yargs => {
   yargs.option('name', {
     description: 'Set the droplet name'.yellow
   }).option('region', {
@@ -29,16 +29,16 @@ exports.builder = function(yargs) {
     array: true
   }).option('backups', {
     description: 'Enable backups'.yellow,
-    boolean: true
+    'boolean': true
   }).option('ipv6', {
     description: 'Enable IPv6'.yellow,
-    boolean: true
+    'boolean': true
   }).option('private_networking', {
     description: 'Enable private networking'.yellow,
-    boolean: true
+    'boolean': true
   }).option('monitoring', {
     description: 'Enable monitoring'.yellow,
-    boolean: true
+    'boolean': true
   }).option('user_data', {
     description: 'Custom user data'.yellow
   }).option('volume', {
@@ -50,15 +50,15 @@ exports.builder = function(yargs) {
   }).group([
     'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
     'private_networking', 'monitoring', 'user_data', 'volume', 'tags'
-  ], 'Droplet Attributes:');
-  Util.globalConfig(yargs, 2, exports.command);
-};
+  ], 'Droplet Attributes:')
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  prompt.message = '';
-  prompt.override = argv;
-  prompt.start();
+exports.handler = argv => {
+  const client = Util.getClient()
+  prompt.message = ''
+  prompt.override = argv
+  prompt.start()
   prompt.get({
     properties: {
       name: {
@@ -66,58 +66,64 @@ exports.handler = function(argv) {
         required: true
       },
       region: {
-        description: 'Region ID ("doclt regions" to list regions)',
-        required: true,
+        description: 'Region ID ("doclt regions" to list regions)'.yellow,
+        required: true
       },
       size: {
-        description: 'Size slug ("doclt sizes" to list sizes)',
+        description: 'Size slug ("doclt sizes" to list sizes)'.yellow,
         required: true
       },
       image: {
         description: 'Base image ID or slug identifier'.yellow,
-        required: true
+        required: true,
+        type: 'integer'
       },
+      // eslint-disable-next-line camelcase
       ssh_keys: {
         description: 'SSH Key IDs (comma separated) (optional)',
         before: Util.csvToArray
       },
       backups: {
         description: 'Enable backups? (true/false)',
-        required: true,
+        'default': false,
         type: 'boolean'
       },
       ipv6: {
         description: 'Enable IPv6? (true/false)',
-        required: true,
+        'default': false,
         type: 'boolean'
       },
+      // eslint-disable-next-line camelcase
       private_networking: {
         description: 'Enable private networking? (true/false)',
-        required: true,
+        'default': false,
         type: 'boolean'
       },
       monitoring: {
         description: 'Enable monitoring? (true/false)',
-        required: true,
+        'default': false,
         type: 'boolean'
       },
+      // eslint-disable-next-line camelcase
       user_data: {
-        description: 'Desired user data (optional)'
+        description: 'Desired user data (optional)',
+        'default': 'null'
       },
       volume: {
         description: 'Volume IDs to attach (comma separated) (optional)',
-        before: Util.csvToArray,
+        before: Util.csvToArray
       },
       tags: {
         description: 'Tags (comma separated) (optional)',
         before: Util.csvToArray
       }
     }
-  }, function(error, result) {
-    Util.handleError(error);
-    client.droplets.create(result, function(error, droplet) {
-      Util.handleError(error);
-      Display.displayDroplet(droplet, 'Droplet created.');
-    });
-  });
-};
+  }, (error, result) => {
+    Util.handleError(error)
+    console.log(result)
+    client.droplets.create(result, (clientError, droplet) => {
+      Util.handleError(clientError)
+      Display.displayDroplet(droplet, 'Droplet created.')
+    })
+  })
+}

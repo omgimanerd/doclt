@@ -3,24 +3,25 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Util = require('../lib/Util');
+const Util = require('../lib/Util')
 
-exports.command = 'token <token>';
+const config = require('../lib/config')
 
-exports.aliases = ['auth', 'authenticate'];
+exports.command = 'token <token>'
 
-exports.description = 'Set the DigitalOcean auth token'.yellow;
+exports.aliases = ['auth', 'authenticate']
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 1, exports.command);
-};
+exports.description = 'Set the DigitalOcean auth token'.yellow
 
-exports.handler = function(argv) {
-  var config = require('../lib/config');
-  config.setToken(argv.token, function(error) {
-    Util.handleError(error);
-    console.log('Token supplied!'.green);
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 1, exports.command)
+}
+
+exports.handler = argv => {
+  config.setToken(argv.token, error => {
+    Util.handleError(error)
+    console.log('Token supplied!'.green)
     console.log('This will have no effect if you have supplied a '.red +
-        'DOCLT_TOKEN environment variable'.red);
-  });
-};
+        'DOCLT_TOKEN environment variable'.red)
+  })
+}

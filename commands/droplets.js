@@ -3,15 +3,15 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Util = require('../lib/Util');
+const Util = require('../lib/Util')
 
-exports.command = 'droplets';
+exports.command = 'droplets'
 
-exports.aliases = ['droplet'];
+exports.aliases = ['droplet']
 
-exports.description = 'Create, delete, and manage droplets'.yellow;
+exports.description = 'Create, delete, and manage droplets'.yellow
 
-exports.builder = function(yargs) {
-  yargs.commandDir('droplets');
-  Util.globalConfig(yargs, 1, exports.command, true);
-};
+exports.builder = yargs => {
+  yargs.commandDir('droplets')
+  Util.globalConfig(yargs, 1, exports.command, true)
+}

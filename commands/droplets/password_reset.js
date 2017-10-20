@@ -3,23 +3,23 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'password_reset <droplet id>';
+exports.command = 'password_reset <droplet id>'
 
-exports.aliases = ['password', 'pw'];
+exports.aliases = ['password', 'pw']
 
-exports.description = 'Reset the password on a droplet'.yellow;
+exports.description = 'Reset the password on a droplet'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.droplets.passwordReset(argv.dropletid, function(error, action) {
-    Util.handleError(error);
-    Display.displayActionID(action, 'Droplet password reset.');
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.droplets.passwordReset(argv.dropletid, (error, action) => {
+    Util.handleError(error)
+    Display.displayActionID(action, 'Droplet password reset.')
+  })
+}

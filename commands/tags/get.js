@@ -3,23 +3,23 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'get <tag>';
+exports.command = 'get <tag>'
 
-exports.aliases = ['i', 'info'];
+exports.aliases = ['i', 'info']
 
-exports.description = 'Info about a tag'.yellow;
+exports.description = 'Info about a tag'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.tags.get(argv.tag, function(error, tag) {
-    Util.handleError(error);
-    Display.displayTag(tag);
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.tags.get(argv.tag, (error, tag) => {
+    Util.handleError(error)
+    Display.displayTag(tag)
+  })
+}

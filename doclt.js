@@ -4,14 +4,14 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var yargs = require('yargs');
+const yargs = require('yargs')
 
-var Util = require('./lib/Util');
+const Util = require('./lib/Util')
 
-yargs.commandDir('commands').fail(Util.handleFail);
-Util.globalConfig(yargs, 0, '', true);
+yargs.commandDir('commands').fail(Util.handleFail)
+Util.globalConfig(yargs, 0, '', true)
 
-var argv = yargs.argv;
+const argv = yargs.argv
 if (argv !== null && argv.color) {
-  console.log('Invoking --color does nothing you idiot!'.bold.red.bgWhite);
+  console.log('Invoking --color does nothing!'.bold.red.bgWhite)
 }

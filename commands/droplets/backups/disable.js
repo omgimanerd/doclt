@@ -4,23 +4,23 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../../lib/Display');
-var Util = require('../../../lib/Util');
+const Display = require('../../../lib/Display')
+const Util = require('../../../lib/Util')
 
-exports.command = 'disable <droplet id>';
+exports.command = 'disable <droplet id>'
 
-exports.aliases = ['off'];
+exports.aliases = ['off']
 
-exports.description = 'Disable automatic backups for a droplet'.yellow;
+exports.description = 'Disable automatic backups for a droplet'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 3, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 3, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.droplets.disableBackups(argv.dropletid, function(error, action) {
-    Util.handleError(error);
-    Display.displayActionID(action, 'Automatic backups disabled.');
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.droplets.disableBackups(argv.dropletid, (error, action) => {
+    Util.handleError(error)
+    Display.displayActionID(action, 'Automatic backups disabled.')
+  })
+}

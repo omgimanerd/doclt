@@ -3,26 +3,26 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'get <key id>';
+exports.command = 'get <key id>'
 
-exports.aliases = ['i', 'info'];
+exports.aliases = ['i', 'info']
 
-exports.description = 'Info about an SSH key'.yellow;
+exports.description = 'Info about an SSH key'.yellow
 
-exports.builder = function(yargs) {
+exports.builder = yargs => {
   yargs.option('key', {
     description: 'Show only the public key'.yellow
-  }).group(['key'], 'SSH Key Options:');
-  Util.globalConfig(yargs, 2, exports.command);
-};
+  }).group(['key'], 'SSH Key Options:')
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.account.getSshKey(argv.keyid, function(error, key) {
-    Util.handleError(error);
-    Display.displaySshKey(key, argv.key);
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.account.getSshKey(argv.keyid, (error, key) => {
+    Util.handleError(error)
+    Display.displaySshKey(key, argv.key)
+  })
+}

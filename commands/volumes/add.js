@@ -3,22 +3,22 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var prompt = require('prompt');
+const prompt = require('prompt')
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'add';
+exports.command = 'add'
 
-exports.aliases = ['create'];
+exports.aliases = ['create']
 
-exports.description = 'Create a new volume'.yellow;
+exports.description = 'Create a new volume'.yellow
 
-exports.builder = function(yargs) {
-  var options = [
-      'name', 'size_gigabytes', 'description', 'region', 'snapshot_id'];
+exports.builder = yargs => {
+  const options = [
+    'name', 'size_gigabytes', 'description', 'region', 'snapshot_id']
   yargs.option('name', {
-    description: 'Set the volume name'.yellow,
+    description: 'Set the volume name'.yellow
   }).option('size_gigabytes', {
     alias: ['size'],
     description: 'Set the volume size in gigabytes'.yellow,
@@ -30,41 +30,43 @@ exports.builder = function(yargs) {
   }).option('snapshot_id', {
     alias: ['snapshot', 'snapshots'],
     description: 'Set a volume snapshot ID (do not specify a region)'.yellow
-  }).group(options, 'Volume Attributes:');
-  Util.globalConfig(yargs, 2, exports.command);
-};
+  }).group(options, 'Volume Attributes:')
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  prompt.message = '';
-  prompt.override = argv;
-  prompt.start();
+exports.handler = argv => {
+  const client = Util.getClient()
+  prompt.message = ''
+  prompt.override = argv
+  prompt.start()
   prompt.get({
     properties: {
       name: {
         description: 'Volume name'.yellow,
         required: true
       },
+      // eslint-disable-next-line camelcase
       size_gigabytes: {
         description: 'Size (GB)',
         required: true,
         type: 'number'
       },
       description: {
-        description: 'Description (optional)',
+        description: 'Description (optional)'
       },
       region: {
         description: 'Region slug (cannot be specified with a snapshot)'
       },
+      // eslint-disable-next-line camelcase
       snapshot_id: {
         description: 'Base snapshot ID (cannot be specified with a region)'
       }
     }
-  }, function(error, result) {
-    Util.handleError(error);
-    client.volumes.create(result, function(error, volume) {
-      Util.handleError(error);
-      Display.displayVolume(volume, 'Volume created.');
-    });
+  }, (error, result) => {
+    Util.handleError(error)
+    client.volumes.create(result, (clientError, volume) => {
+      Util.handleError(clientError)
+      Display.displayVolume(volume, 'Volume created.')
+    })
   })
-};
+}

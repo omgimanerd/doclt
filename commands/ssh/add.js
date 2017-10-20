@@ -3,32 +3,33 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var fs = require('fs');
+const fs = require('fs')
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'add <name> <keyfile>';
+exports.command = 'add <name> <keyfile>'
 
-exports.aliases = ['create'];
+exports.aliases = ['create']
 
-exports.description = 'Add an SSH key'.yellow;
+exports.description = 'Add an SSH key'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
+exports.handler = argv => {
+  const client = Util.getClient()
   try {
     client.account.createSshKey({
       name: argv.name,
+      // eslint-disable-next-line camelcase,no-sync
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
-    }, function(error, key) {
-      Util.handleError(error);
-      Display.displaySshKey(key, false, 'New SSH Key added.');
-    });
+    }, (error, key) => {
+      Util.handleError(error)
+      Display.displaySshKey(key, false, 'New SSH Key added.')
+    })
   } catch (error) {
-    Util.handleError(error);
+    Util.handleError(error)
   }
-};
+}

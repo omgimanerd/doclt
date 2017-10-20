@@ -3,30 +3,30 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'add <droplet id/region>';
+exports.command = 'add <droplet id/region>'
 
-exports.aliases = ['create'];
+exports.aliases = ['create']
 
-exports.description = 'Create a floating IP'.yellow;
+exports.description = 'Create a floating IP'.yellow
 
-exports.builder = function(yargs) {
+exports.builder = yargs => {
   yargs.option('type', {
     description: 'The type of data to associate the floating-ip to',
     required: true,
     choices: ['droplet', 'region']
-  }).group(['type'], 'Required Flags:');
-  Util.globalConfig(yargs, 2, exports.command);
-};
+  }).group(['type'], 'Required Flags:')
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
+exports.handler = argv => {
+  const client = Util.getClient()
   client.floatingIps.create({
     [argv.type]: argv['dropletid/region']
-  }, function(error, ip) {
-    Util.handleError(error);
-    Display.displayFloatingIp(ip);
-  });
-};
+  }, (error, ip) => {
+    Util.handleError(error)
+    Display.displayFloatingIp(ip)
+  })
+}

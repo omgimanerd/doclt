@@ -3,21 +3,21 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-var Display = require('../../lib/Display');
-var Util = require('../../lib/Util');
+const Display = require('../../lib/Display')
+const Util = require('../../lib/Util')
 
-exports.command = 'unassign <floating ip>';
+exports.command = 'unassign <floating ip>'
 
-exports.description = 'Unassign a floating IP'.yellow;
+exports.description = 'Unassign a floating IP'.yellow
 
-exports.builder = function(yargs) {
-  Util.globalConfig(yargs, 2, exports.command);
-};
+exports.builder = yargs => {
+  Util.globalConfig(yargs, 2, exports.command)
+}
 
-exports.handler = function(argv) {
-  var client = Util.getClient();
-  client.floatingIps.unassign(argv.floatingip, function(error, action) {
-    Util.handleError(error);
-    Display.displayActionID(action);
-  });
-};
+exports.handler = argv => {
+  const client = Util.getClient()
+  client.floatingIps.unassign(argv.floatingip, (error, action) => {
+    Util.handleError(error)
+    Display.displayActionID(action)
+  })
+}
