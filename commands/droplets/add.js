@@ -106,8 +106,7 @@ exports.handler = argv => {
       },
       // eslint-disable-next-line camelcase
       user_data: {
-        description: 'Desired user data (optional)',
-        'default': 'null'
+        description: 'Desired user data (optional)'
       },
       volume: {
         description: 'Volume IDs to attach (comma separated) (optional)',
@@ -120,7 +119,6 @@ exports.handler = argv => {
     }
   }, (error, result) => {
     Util.handleError(error)
-    console.log(result)
     client.droplets.create(result, (clientError, droplet) => {
       Util.handleError(clientError)
       Display.displayDroplet(droplet, 'Droplet created.')
