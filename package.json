@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/omgimanerd/doclt#readme",
   "dependencies": {
-    "cli-table2": "^0.2.0",
+    "cli-table3": "^0.5.0",
     "colors": "^1.1.2",
     "digitalocean": "^0.9.1",
     "prompt": "^1.0.0",
