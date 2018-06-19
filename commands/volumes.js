@@ -7,7 +7,7 @@ const Util = require('../lib/Util')
 
 exports.command = 'volumes'
 
-exports.aliases = ['volume']
+exports.aliases = ['volume', 'block', 'blockStorage']
 
 exports.description = 'Create, delete, and manage volumes'.yellow
 
