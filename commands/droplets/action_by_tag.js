@@ -6,7 +6,7 @@
 const Display = require('../../lib/Display')
 const Util = require('../../lib/Util')
 
-exports.command = 'actionByTag <tag>'
+exports.command = 'action_by_tag <tag>'
 
 exports.description = 'Perform actions on droplets by tag'.yellow
 
