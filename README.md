@@ -97,31 +97,44 @@ Every command is documented by the tool itself. Run `doclt <command> --help`
 for details about using any command.
 ```
 Usage:
-  doclt <command> [arguments..] [options..]
+  doclt.js <command> [arguments..] [options..]
 
 Commands:
-  account        Display account information  [aliases: acc]
-  domains        Create, delete, and manage domains  [aliases: domain]
-  droplets       Create, delete, and manage droplets  [aliases: droplet]
-  floating-ips   Create, delete, and manage floating IPs  [aliases: floating-ip, fip, ip]
-  images         Create, delete, and manage images  [aliases: image]
-  regions        Lists the available regions  [aliases: region]
-  sizes          Lists the available droplet sizes  [aliases: size]
-  snapshots      Create, delete, and manage snapshots  [aliases: snapshot]
+  account        Display account information
+                                          [aliases: acc]
+  certificates   Create, delete, and manage SSL certificates
+                                          [aliases: certificate, cert, certs]
+  domains        Create, delete, and manage domains                             
+                                          [aliases: domain]
+  droplets       Create, delete, and manage droplets                         
+                                          [aliases: droplet]
+  floating-ips   Create, delete, and manage floating IPs
+                                          [aliases: floating-ip, fip, ip]
+  images         Create, delete, and manage images
+                                          [aliases: image]
+  regions        Lists the available regions
+                                          [aliases: region]
+  sizes          Lists the available droplet sizes
+                                          [aliases: size]
+  snapshots      Create, delete, and manage snapshots
+                                          [aliases: snapshot]
   ssh            Create, delete, and manage SSH public keys
-  tags           Create, delete, and manage tags  [aliases: tag]
-  token <token>  Set the DigitalOcean auth token  [aliases: auth, authenticate]
-  volumes        Create, delete, and manage volumes  [aliases: volume]
+  tags           Create, delete, and manage tags
+                                          [aliases: tag]
+  token <token>  Set the DigitalOcean auth token
+                                          [aliases: auth, authenticate]
+  volumes        Create, delete, and manage volumes
+                                          [aliases: volume, block, blockStorage]
 
 Options:
-  --help      Show help  [boolean]
-  --dev       Run in development mode  [boolean]
-  --json      Output results as JSON  [boolean]
-  --no-color  Disable colors  [boolean]
-  --color     Invoking this does nothing  [boolean]
-  --version   Show version number  [boolean]
+  --help      Show help                                  [boolean]
+  --dev       Run in development mode                    [boolean]
+  --json      Output results as JSON                     [boolean]
+  --no-color  Disable colors                             [boolean]
+  --color     Invoking this does nothing                 [boolean]
+  --version   Show version number                        [boolean]
 
-See 'doclt <command> --help' for more info.
+See 'doclt.js <command> --help' for more info.
 ```
 
 ## Contributing
