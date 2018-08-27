@@ -21,3 +21,6 @@
   - I was too fucking trigger happy so I broke everything in version 1.4.0
   - Fix breakage when trying to set an access token
   - Fix breakage when Display.format() is called with an empty string
+
+### 1.5.0
+  - Implemented certificate subcommand after contributing it upstream
