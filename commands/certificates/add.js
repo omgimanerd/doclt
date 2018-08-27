@@ -30,9 +30,9 @@ exports.builder = yargs => {
       authority's certificate and your domain's SSL certificate`.yellow
   }).option('dns_names', {
     description: `An array of fully-qualified domain names (FQDNs) for which
-      the certificate will be issued. Required for Let's Encryption`.yellow
+      the certificate will be issued. Required for Let's Encrypt`.yellow
   }).option('type', {
-    description: 'A string representing the type of certificate.',
+    description: 'A string representing the type of certificate.'.yellow,
     choices: ['custom', 'lets_encrypt']
   }).group(options, 'Certificate Attributes:')
   Util.globalConfig(yargs, 2, exports.command)

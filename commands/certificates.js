@@ -7,9 +7,9 @@ const Util = require('../lib/Util')
 
 exports.command = 'certificates'
 
-exports.aliases = ['certificate']
+exports.aliases = ['certificate', 'cert', 'certs']
 
-exports.description = 'Create, delete, and manage certificates'.yellow
+exports.description = 'Create, delete, and manage SSL certificates'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('certificates')
