@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const floatingip = argv.floatingip
-  client.floatingIps.delete(floatingip, error => {
+  client.floatingIps.delete(argv.floatingip, error => {
     Util.handleError(error)
-    Display.displayMessage('Floating IP {0} deleted.', floatingip)
+    Display.displayMessage('Floating IP {0} deleted.', argv.floatingip)
   })
 }

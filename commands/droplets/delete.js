@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const dropletid = argv.dropletid
-  client.droplets.delete(dropletid, error => {
+  client.droplets.delete(argv.dropletid, error => {
     Util.handleError(error)
-    Display.displayMessage('Droplet {0} deleted.', dropletid)
+    Display.displayMessage('Droplet {0} deleted.', argv.dropletid)
   })
 }

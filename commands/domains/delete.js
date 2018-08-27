@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const domain = argv.domain
-  client.domains.delete(domain, error => {
+  client.domains.delete(argv.domain, error => {
     Util.handleError(error)
-    Display.displayMessage('Domain name {0} deleted.', domain)
+    Display.displayMessage('Domain name {0} deleted.', argv.domain)
   })
 }

@@ -1,16 +1,16 @@
 /**
- * @fileoverview Module handling the snapshot delete command.
+ * @fileoverview Module handling the SSL certificate delete command.
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
 const Display = require('../../lib/Display')
 const Util = require('../../lib/Util')
 
-exports.command = 'delete <snapshot id>'
+exports.command = 'delete <certificate id>'
 
 exports.aliases = ['remove', 'del', 'rm']
 
-exports.description = 'Delete a snapshot'.yellow
+exports.description = 'Delete an SSL certificate'.yellow
 
 exports.builder = yargs => {
   Util.globalConfig(yargs, 2, exports.command)
@@ -18,8 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  client.snapshots.delete(argv.snapshotid, error => {
+  client.account.deleteSshKey(argv.certificateid, error => {
     Util.handleError(error)
-    Display.displayMessage('Snapshot {0} deleted.', argv.snapshotid)
+    Display.displayMessage('SSL Certificate {0} deleted.', argv.certificateid)
   })
 }

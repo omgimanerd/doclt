@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const keyid = argv.keyid
   client.account.deleteSshKey(argv.keyid, error => {
     Util.handleError(error)
-    Display.displayMessage('SSH Key {0} deleted.', keyid)
+    Display.displayMessage('SSH Key {0} deleted.', argv.keyid)
   })
 }

@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const imageid = argv.imageid
-  client.images.delete(imageid, error => {
+  client.images.delete(argv.imageid, error => {
     Util.handleError(error)
-    Display.displayMessage('Image {0} deleted.', imageid)
+    Display.displayMessage('Image {0} deleted.', argv.imageid)
   })
 }

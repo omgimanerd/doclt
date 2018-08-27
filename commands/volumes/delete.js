@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const volumeid = argv.volumeid
-  client.volumes.delete(volumeid, error => {
+  client.volumes.delete(argv.volumeid, error => {
     Util.handleError(error)
-    Display.displayMessage('Volume {0} deleted.', volumeid)
+    Display.displayMessage('Volume {0} deleted.', argv.volumeid)
   })
 }

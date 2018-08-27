@@ -18,9 +18,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const tag = argv.tag
-  client.tags.delete(tag, error => {
+  client.tags.delete(argv.tag, error => {
     Util.handleError(error)
-    Display.displayMessage('Tag {0} deleted.', tag)
+    Display.displayMessage('Tag {0} deleted.', argv.tag)
   })
 }
