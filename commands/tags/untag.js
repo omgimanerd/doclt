@@ -27,6 +27,6 @@ exports.handler = argv => {
   }], error => {
     Util.handleError(error)
     Display.displayMessage(
-      'Tag {0} removed from {1} {2}.', tag, resourcetype, resourceid)
+      `Tag ${tag} removed from ${resourcetype} ${resourceid}`)
   })
 }

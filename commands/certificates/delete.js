@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.account.deleteSshKey(argv.certificateid, error => {
     Util.handleError(error)
-    Display.displayMessage('SSL Certificate {0} deleted.', argv.certificateid)
+    Display.displayMessage(`SSL Certificate ${argv.certificateid} deleted.`)
   })
 }

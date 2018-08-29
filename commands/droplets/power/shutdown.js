@@ -18,6 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.shutdown(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Shutting down droplet...')
+    Display.displayMessage('Shutting down droplet...')
+    Display.displayActionID(action)
   })
 }

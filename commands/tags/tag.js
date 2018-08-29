@@ -28,7 +28,6 @@ exports.handler = argv => {
     resource_id: resourceid
   }], error => {
     Util.handleError(error)
-    Display.displayMessage(
-      '{0} {1} tagged as {2}.', resourcetype, resourceid, tag)
+    Display.displayMessage(`${resourcetype} ${resourceid} tagged as ${tag}`)
   })
 }

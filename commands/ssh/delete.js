@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.account.deleteSshKey(argv.keyid, error => {
     Util.handleError(error)
-    Display.displayMessage('SSH Key {0} deleted.', argv.keyid)
+    Display.displayMessage(`SSH Key ${argv.keyid} deleted.`)
   })
 }

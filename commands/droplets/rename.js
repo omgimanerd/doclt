@@ -18,6 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.rename(argv.dropletid, argv.name, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Droplet renamed.')
+    Display.displayMessage('Droplet renamed.')
+    Display.displayActionID(action)
   })
 }

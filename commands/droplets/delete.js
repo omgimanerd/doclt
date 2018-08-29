@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.delete(argv.dropletid, error => {
     Util.handleError(error)
-    Display.displayMessage('Droplet {0} deleted.', argv.dropletid)
+    Display.displayMessage(`Droplet ${argv.dropletid} deleted.`)
   })
 }

@@ -23,7 +23,8 @@ exports.handler = argv => {
     const region = volume.region.slug
     client.volumes.resize(volumeid, size, region, (clientError, action) => {
       Util.handleError(clientError)
-      Display.displayAction(action, 'Volume resized.')
+      Display.displayMessage('Volume resized.')
+      Display.displayAction(action)
     })
   })
 }

@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.snapshots.delete(argv.snapshotid, error => {
     Util.handleError(error)
-    Display.displayMessage('Snapshot {0} deleted.', argv.snapshotid)
+    Display.displayMessage(`Snapshot ${argv.snapshotid} deleted.`)
   })
 }

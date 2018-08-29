@@ -105,7 +105,8 @@ exports.handler = argv => {
       data.type = type
       client.domains.createRecord(domain, data, (clientError, record) => {
         Util.handleError(clientError)
-        Display.displayDomainRecord(record, 'New domain record added.')
+        Display.displayMessage('New domain record added.')
+        Display.displayDomainRecord(record)
       })
     })
   })

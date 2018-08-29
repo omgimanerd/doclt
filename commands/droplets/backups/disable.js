@@ -21,6 +21,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.disableBackups(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Automatic backups disabled.')
+    Display.displayMessage('Automatic backups disabled.')
+    Display.displayActionID(action)
   })
 }

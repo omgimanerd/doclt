@@ -16,10 +16,9 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const dropletid = argv.dropletid
-  const backupid = argv.backupid
-  client.droplets.restore(dropletid, backupid, (error, action) => {
+  client.droplets.restore(argv.dropletid, argv.backupid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Restoring droplet from backup...')
+    Display.displayMessage('Restoring droplet from backup...')
+    Display.displayActionID(action)
   })
 }

@@ -20,6 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.reboot(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Rebooting droplet...')
+    Display.displayMessage('Rebooting droplet...')
+    Display.displayActionID(action)
   })
 }

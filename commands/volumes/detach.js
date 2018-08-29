@@ -18,6 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.volumes.detach(argv.volumeid, (error, action) => {
     Util.handleError(error)
-    Display.displayAction(action, 'Volume detached.')
+    Display.displayMessage('Volume detached.')
+    Display.displayAction(action)
   })
 }

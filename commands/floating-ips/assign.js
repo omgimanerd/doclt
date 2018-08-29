@@ -16,8 +16,7 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const ip = argv.floatingip
-  client.floatingIps.assign(ip, argv.dropletid, (error, action) => {
+  client.floatingIps.assign(argv.ip, argv.dropletid, (error, action) => {
     Util.handleError(error)
     Display.displayActionID(action)
   })

@@ -20,6 +20,7 @@ exports.handler = argv => {
   const kernelid = argv.kernelid
   client.droplets.changeKernel(dropletid, kernelid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Changing droplet kernel...')
+    Display.displayMessage('Changing droplet kernel...')
+    Display.displayActionID(action)
   })
 }

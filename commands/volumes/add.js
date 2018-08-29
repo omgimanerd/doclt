@@ -66,7 +66,8 @@ exports.handler = argv => {
     Util.handleError(error)
     client.volumes.create(result, (clientError, volume) => {
       Util.handleError(clientError)
-      Display.displayVolume(volume, 'Volume created.')
+      Display.displayMessage('Volume created.')
+      Display.displayVolume(volume)
     })
   })
 }

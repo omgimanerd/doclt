@@ -75,7 +75,8 @@ exports.handler = argv => {
   }, (error, result) => {
     client.certificates.create(result, (clientError, certificate) => {
       Util.handleError(clientError)
-      Display.displayCertificate(certificate, 'Certificate created.')
+      Display.displayMessage('Certificate created.')
+      Display.displayCertificate(certificate)
     })
   })
 }

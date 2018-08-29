@@ -20,6 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.tags.update(argv.tag, { name: argv.newtag }, (error, tag) => {
     Util.handleError(error)
-    Display.displayTag(tag, 'Tag renamed.')
+    Display.displayMessage('Tag renamed.')
+    Display.displayTag(tag)
   })
 }

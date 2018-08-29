@@ -27,7 +27,8 @@ exports.handler = argv => {
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
       Util.handleError(error)
-      Display.displaySshKey(key, false, 'New SSH Key added.')
+      Display.displayMessage('New SSH Key added.')
+      Display.displaySshKey(key, false)
     })
   } catch (error) {
     Util.handleError(error)

@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.volumes.delete(argv.volumeid, error => {
     Util.handleError(error)
-    Display.displayMessage('Volume {0} deleted.', argv.volumeid)
+    Display.displayMessage(`Volume ${argv.volumeid} deleted.`)
   })
 }

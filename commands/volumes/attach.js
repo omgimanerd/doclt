@@ -20,6 +20,7 @@ exports.handler = argv => {
   const dropletid = argv.dropletid
   client.volumes.attach(volumeid, dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayAction(action, 'Volume attached.')
+    Display.displayMessage('Volume attached.')
+    Display.displayAction(action)
   })
 }

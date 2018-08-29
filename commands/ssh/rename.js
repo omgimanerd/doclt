@@ -22,6 +22,7 @@ exports.handler = argv => {
     name: argv.name
   }, (error, key) => {
     Util.handleError(error)
-    Display.displaySshKey(key, false, 'SSH Key renamed.')
+    Display.displayMessage('SSH Key renamed.')
+    Display.displaySshKey(key, false)
   })
 }

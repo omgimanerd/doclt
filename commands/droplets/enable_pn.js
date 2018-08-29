@@ -19,9 +19,9 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const dropletid = argv.dropletid
-  client.droplets.enablePrivateNetworking(dropletid, (error, action) => {
+  client.droplets.enablePrivateNetworking(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Private networking enabled.')
+    Display.displayMessage('Private networking enabled.')
+    Display.displayActionID(action)
   })
 }

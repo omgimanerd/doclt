@@ -25,6 +25,7 @@ exports.handler = argv => {
     ip_address: argv.ip
   }, (error, domain) => {
     Util.handleError(error)
-    Display.displayDomain(domain, false, 'New domain name added.')
+    Display.displayMessage('New domain name added.')
+    Display.displayDomain(domain, false)
   })
 }

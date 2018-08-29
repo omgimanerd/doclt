@@ -121,7 +121,8 @@ exports.handler = argv => {
     Util.handleError(error)
     client.droplets.create(result, (clientError, droplet) => {
       Util.handleError(clientError)
-      Display.displayDroplet(droplet, 'Droplet created.')
+      Display.displayMessage('Droplet created.')
+      Display.displayDroplet(droplet)
     })
   })
 }

@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.domains.delete(argv.domain, error => {
     Util.handleError(error)
-    Display.displayMessage('Domain name {0} deleted.', argv.domain)
+    Display.displayMessage(`Domain name ${argv.domain} deleted.`)
   })
 }

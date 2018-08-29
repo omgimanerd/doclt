@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.floatingIps.delete(argv.floatingip, error => {
     Util.handleError(error)
-    Display.displayMessage('Floating IP {0} deleted.', argv.floatingip)
+    Display.displayMessage(`Floating IP ${argv.floatingip} deleted.`)
   })
 }

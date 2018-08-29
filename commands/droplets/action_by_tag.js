@@ -28,12 +28,13 @@ exports.handler = argv => {
   if (argv.action === 'delete') {
     client.droplets.deleteByTag(argv.tag, error => {
       Util.handleError(error)
-      Display.displayMessage('Droplets with tag {0} deleted.', argv.tag)
+      Display.displayMessage(`Droplets with tag ${argv.tag} deleted.`)
     })
   } else {
     client.droplets.actionByTag(argv.tag, argv.action, (error, action) => {
       Util.handleError(error)
-      Display.displayActionID(action, 'Executing action...')
+      Display.displayMessage('Executing action...')
+      Display.displayActionID(action)
     })
   }
 }

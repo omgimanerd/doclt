@@ -18,6 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.powerCycle(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Power cycling droplet...')
+    Display.displayMessage('Power cycling droplet...')
+    Display.displayActionID(action)
   })
 }

@@ -20,6 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.passwordReset(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Droplet password reset.')
+    Display.displayMessage('Droplet password reset.')
+    Display.displayActionID(action)
   })
 }

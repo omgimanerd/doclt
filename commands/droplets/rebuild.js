@@ -19,6 +19,7 @@ exports.handler = argv => {
   const data = argv['imageid/slug']
   client.droplets.rebuild(argv.dropletid, data, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Rebuilding droplet...')
+    Display.displayMessage('Rebuilding droplet...')
+    Display.displayActionID(action)
   })
 }

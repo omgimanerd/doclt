@@ -22,7 +22,6 @@ exports.handler = argv => {
   const recordid = argv.recordid
   client.domains.deleteRecord(domain, recordid, error => {
     Util.handleError(error)
-    Display.displayMessage(
-      'Domain record {0} deleted from {1}.', recordid, domain)
+    Display.displayMessage(`Domain record ${recordid} deleted from ${domain}`)
   })
 }

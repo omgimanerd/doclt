@@ -22,6 +22,7 @@ exports.handler = argv => {
     name: argv.snapshotname
   }, (error, action) => {
     Util.handleError(error)
-    Display.displayAction(action, 'Taking a snapshot...')
+    Display.displayMessage('Taking a snapshot...')
+    Display.displayAction(action)
   })
 }

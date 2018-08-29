@@ -20,6 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.enableIpv6(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'IPv6 enabled.')
+    Display.displayMessage('IPv6 enabled.')
+    Display.displayActionID(action)
   })
 }

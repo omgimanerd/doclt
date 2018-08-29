@@ -16,10 +16,9 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = Util.getClient()
-  const dropletid = argv.dropletid
-  const sizeslug = argv.sizeslug
-  client.droplets.resize(dropletid, sizeslug, (error, action) => {
+  client.droplets.resize(argv.dropletid, argv.sizeslug, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action, 'Resizing droplet...')
+    Display.displayMessage('Resizing droplet...')
+    Display.displayActionID(action)
   })
 }

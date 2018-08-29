@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.images.delete(argv.imageid, error => {
     Util.handleError(error)
-    Display.displayMessage('Image {0} deleted.', argv.imageid)
+    Display.displayMessage(`Image ${argv.imageid} deleted.`)
   })
 }
