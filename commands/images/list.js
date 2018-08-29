@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'list'
@@ -39,6 +39,6 @@ exports.handler = argv => {
   }
   client.images.list(query, (error, images) => {
     Util.handleError(error)
-    Display.displayImages(images)
+    display.displayImages(images)
   })
 }

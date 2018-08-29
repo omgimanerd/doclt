@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'list'
@@ -20,6 +20,6 @@ exports.handler = () => {
   const client = Util.getClient()
   client.tags.list((error, tags) => {
     Util.handleError(error)
-    Display.displayTags(tags)
+    display.displayTags(tags)
   })
 }

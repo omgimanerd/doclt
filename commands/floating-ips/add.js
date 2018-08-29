@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add <droplet id/region>'
@@ -27,6 +27,6 @@ exports.handler = argv => {
     [argv.type]: argv['dropletid/region']
   }, (error, ip) => {
     Util.handleError(error)
-    Display.displayFloatingIp(ip)
+    display.displayFloatingIp(ip)
   })
 }

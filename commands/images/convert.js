@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'convert <image id>'
@@ -18,6 +18,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.images.convert(argv.imageid, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action)
+    display.displayActionID(action)
   })
 }

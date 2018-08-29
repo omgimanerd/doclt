@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../lib/Display')
+const display = require('../lib/display')
 const Util = require('../lib/Util')
 
 exports.command = 'regions'
@@ -20,6 +20,6 @@ exports.handler = () => {
   const client = Util.getClient()
   client.regions.list((error, regions) => {
     Util.handleError(error)
-    Display.displayRegions(regions)
+    display.displayRegions(regions)
   })
 }

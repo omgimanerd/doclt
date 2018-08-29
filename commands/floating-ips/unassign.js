@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'unassign <floating ip>'
@@ -18,6 +18,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.floatingIps.unassign(argv.floatingip, (error, action) => {
     Util.handleError(error)
-    Display.displayActionID(action)
+    display.displayActionID(action)
   })
 }

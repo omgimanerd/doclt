@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <certificate id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.account.deleteSshKey(argv.certificateid, error => {
     Util.handleError(error)
-    Display.displayMessage(`SSL Certificate ${argv.certificateid} deleted.`)
+    display.displayMessage(`SSL Certificate ${argv.certificateid} deleted.`)
   })
 }

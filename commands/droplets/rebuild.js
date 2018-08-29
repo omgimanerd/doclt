@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'rebuild <droplet id> <image id/slug>'
@@ -19,7 +19,7 @@ exports.handler = argv => {
   const data = argv['imageid/slug']
   client.droplets.rebuild(argv.dropletid, data, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Rebuilding droplet...')
-    Display.displayActionID(action)
+    display.displayMessage('Rebuilding droplet...')
+    display.displayActionID(action)
   })
 }

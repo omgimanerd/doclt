@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'attach <volume id> <droplet id>'
@@ -20,7 +20,7 @@ exports.handler = argv => {
   const dropletid = argv.dropletid
   client.volumes.attach(volumeid, dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Volume attached.')
-    Display.displayAction(action)
+    display.displayMessage('Volume attached.')
+    display.displayAction(action)
   })
 }

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <snapshot id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.snapshots.delete(argv.snapshotid, error => {
     Util.handleError(error)
-    Display.displayMessage(`Snapshot ${argv.snapshotid} deleted.`)
+    display.displayMessage(`Snapshot ${argv.snapshotid} deleted.`)
   })
 }

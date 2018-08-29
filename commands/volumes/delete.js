@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <volume id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.volumes.delete(argv.volumeid, error => {
     Util.handleError(error)
-    Display.displayMessage(`Volume ${argv.volumeid} deleted.`)
+    display.displayMessage(`Volume ${argv.volumeid} deleted.`)
   })
 }

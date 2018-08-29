@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'list'
@@ -20,6 +20,6 @@ exports.handler = () => {
   const client = Util.getClient()
   client.floatingIps.list((error, ips) => {
     Util.handleError(error)
-    Display.displayFloatingIps(ips)
+    display.displayFloatingIps(ips)
   })
 }

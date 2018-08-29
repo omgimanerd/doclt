@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <key id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.account.deleteSshKey(argv.keyid, error => {
     Util.handleError(error)
-    Display.displayMessage(`SSH Key ${argv.keyid} deleted.`)
+    display.displayMessage(`SSH Key ${argv.keyid} deleted.`)
   })
 }

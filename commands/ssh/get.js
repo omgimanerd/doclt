@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'get <key id>'
@@ -23,6 +23,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.account.getSshKey(argv.keyid, (error, key) => {
     Util.handleError(error)
-    Display.displaySshKey(key, argv.key)
+    display.displaySshKey(key, argv.key)
   })
 }

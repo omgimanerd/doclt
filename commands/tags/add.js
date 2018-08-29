@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add <tag>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.tags.create({ name: argv.tag }, (error, tag) => {
     Util.handleError(error)
-    Display.displayTag(tag)
+    display.displayTag(tag)
   })
 }

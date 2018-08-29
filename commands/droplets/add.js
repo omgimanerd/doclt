@@ -5,7 +5,7 @@
 
 const prompt = require('prompt')
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add'
@@ -121,8 +121,8 @@ exports.handler = argv => {
     Util.handleError(error)
     client.droplets.create(result, (clientError, droplet) => {
       Util.handleError(clientError)
-      Display.displayMessage('Droplet created.')
-      Display.displayDroplet(droplet)
+      display.displayMessage('Droplet created.')
+      display.displayDroplet(droplet)
     })
   })
 }

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <tag>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.tags.delete(argv.tag, error => {
     Util.handleError(error)
-    Display.displayMessage(`Tag ${argv.tag} deleted.`)
+    display.displayMessage(`Tag ${argv.tag} deleted.`)
   })
 }

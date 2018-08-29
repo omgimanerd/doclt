@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'take <droplet id> <snapshot name>'
@@ -22,7 +22,7 @@ exports.handler = argv => {
     name: argv.snapshotname
   }, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Taking a snapshot...')
-    Display.displayAction(action)
+    display.displayMessage('Taking a snapshot...')
+    display.displayAction(action)
   })
 }

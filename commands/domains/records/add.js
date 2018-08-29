@@ -5,7 +5,7 @@
 
 const prompt = require('prompt')
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'add <domain>'
@@ -105,8 +105,8 @@ exports.handler = argv => {
       data.type = type
       client.domains.createRecord(domain, data, (clientError, record) => {
         Util.handleError(clientError)
-        Display.displayMessage('New domain record added.')
-        Display.displayDomainRecord(record)
+        display.displayMessage('New domain record added.')
+        display.displayDomainRecord(record)
       })
     })
   })

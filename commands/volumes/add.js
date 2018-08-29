@@ -5,7 +5,7 @@
 
 const prompt = require('prompt')
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add'
@@ -66,8 +66,8 @@ exports.handler = argv => {
     Util.handleError(error)
     client.volumes.create(result, (clientError, volume) => {
       Util.handleError(clientError)
-      Display.displayMessage('Volume created.')
-      Display.displayVolume(volume)
+      display.displayMessage('Volume created.')
+      display.displayVolume(volume)
     })
   })
 }

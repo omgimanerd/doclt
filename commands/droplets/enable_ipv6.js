@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'enable_ipv6 <droplet id>'
@@ -20,7 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.enableIpv6(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('IPv6 enabled.')
-    Display.displayActionID(action)
+    display.displayMessage('IPv6 enabled.')
+    display.displayActionID(action)
   })
 }

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <droplet id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.delete(argv.dropletid, error => {
     Util.handleError(error)
-    Display.displayMessage(`Droplet ${argv.dropletid} deleted.`)
+    display.displayMessage(`Droplet ${argv.dropletid} deleted.`)
   })
 }

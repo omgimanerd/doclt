@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'cycle <droplet id>'
@@ -18,7 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.powerCycle(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Power cycling droplet...')
-    Display.displayActionID(action)
+    display.displayMessage('Power cycling droplet...')
+    display.displayActionID(action)
   })
 }

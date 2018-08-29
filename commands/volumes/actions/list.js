@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'list <volume id>'
@@ -24,6 +24,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.volumes.listActions(argv.volumeid, (error, actions) => {
     Util.handleError(error)
-    Display.displayActions(actions, argv.limit)
+    display.displayActions(actions, argv.limit)
   })
 }

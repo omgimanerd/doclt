@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'rename <key id> <name>'
@@ -22,7 +22,7 @@ exports.handler = argv => {
     name: argv.name
   }, (error, key) => {
     Util.handleError(error)
-    Display.displayMessage('SSH Key renamed.')
-    Display.displaySshKey(key, false)
+    display.displayMessage('SSH Key renamed.')
+    display.displaySshKey(key, false)
   })
 }

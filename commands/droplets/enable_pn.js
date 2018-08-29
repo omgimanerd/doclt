@@ -4,7 +4,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'enable_pn <droplet id>'
@@ -21,7 +21,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.enablePrivateNetworking(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Private networking enabled.')
-    Display.displayActionID(action)
+    display.displayMessage('Private networking enabled.')
+    display.displayActionID(action)
   })
 }

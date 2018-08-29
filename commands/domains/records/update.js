@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'update <domain> <record id>'
@@ -44,6 +44,6 @@ exports.handler = argv => {
   }
   client.domains.updateRecord(domain, id, attributes, (error, record) => {
     Util.handleError(error)
-    Display.displayDomainRecord(record)
+    display.displayDomainRecord(record)
   })
 }

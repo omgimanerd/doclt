@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'rename <tag> <new tag>'
@@ -20,7 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.tags.update(argv.tag, { name: argv.newtag }, (error, tag) => {
     Util.handleError(error)
-    Display.displayMessage('Tag renamed.')
-    Display.displayTag(tag)
+    display.displayMessage('Tag renamed.')
+    display.displayTag(tag)
   })
 }

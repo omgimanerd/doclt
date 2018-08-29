@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'get <volume id> <action id>'
@@ -22,6 +22,6 @@ exports.handler = argv => {
   const actionid = argv.actionid
   client.volumes.getAction(volumeid, actionid, (error, action) => {
     Util.handleError(error)
-    Display.displayAction(action)
+    display.displayAction(action)
   })
 }

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'change <droplet id> <kernel id>'
@@ -20,7 +20,7 @@ exports.handler = argv => {
   const kernelid = argv.kernelid
   client.droplets.changeKernel(dropletid, kernelid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Changing droplet kernel...')
-    Display.displayActionID(action)
+    display.displayMessage('Changing droplet kernel...')
+    display.displayActionID(action)
   })
 }

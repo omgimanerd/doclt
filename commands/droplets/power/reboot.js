@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'reboot <droplet id>'
@@ -20,7 +20,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.reboot(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Rebooting droplet...')
-    Display.displayActionID(action)
+    display.displayMessage('Rebooting droplet...')
+    display.displayActionID(action)
   })
 }

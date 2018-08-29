@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'rename <droplet id> <name>'
@@ -18,7 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.rename(argv.dropletid, argv.name, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Droplet renamed.')
-    Display.displayActionID(action)
+    display.displayMessage('Droplet renamed.')
+    display.displayActionID(action)
   })
 }

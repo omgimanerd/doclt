@@ -5,7 +5,7 @@
 
 const fs = require('fs')
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add <name> <keyfile>'
@@ -27,8 +27,8 @@ exports.handler = argv => {
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
       Util.handleError(error)
-      Display.displayMessage('New SSH Key added.')
-      Display.displaySshKey(key, false)
+      display.displayMessage('New SSH Key added.')
+      display.displaySshKey(key, false)
     })
   } catch (error) {
     Util.handleError(error)

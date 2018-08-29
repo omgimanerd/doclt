@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add <domain> <ip>'
@@ -25,7 +25,7 @@ exports.handler = argv => {
     ip_address: argv.ip
   }, (error, domain) => {
     Util.handleError(error)
-    Display.displayMessage('New domain name added.')
-    Display.displayDomain(domain, false)
+    display.displayMessage('New domain name added.')
+    display.displayDomain(domain, false)
   })
 }

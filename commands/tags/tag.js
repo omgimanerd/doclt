@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'tag <resource type> <resource id> <tag>'
@@ -28,6 +28,6 @@ exports.handler = argv => {
     resource_id: resourceid
   }], error => {
     Util.handleError(error)
-    Display.displayMessage(`${resourcetype} ${resourceid} tagged as ${tag}`)
+    display.displayMessage(`${resourcetype} ${resourceid} tagged as ${tag}`)
   })
 }

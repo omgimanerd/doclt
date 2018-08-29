@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../lib/Display')
+const display = require('../lib/display')
 const Util = require('../lib/Util')
 
 exports.command = 'sizes'
@@ -19,6 +19,6 @@ exports.builder = yargs => {
 exports.handler = () => {
   const client = Util.getClient()
   client.sizes.list((error, sizes) => {
-    Display.displaySizes(sizes)
+    display.displaySizes(sizes)
   })
 }

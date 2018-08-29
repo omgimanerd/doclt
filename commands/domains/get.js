@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'get <domain>'
@@ -23,6 +23,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.domains.get(argv.domain, (error, domain) => {
     Util.handleError(error)
-    Display.displayDomain(domain, argv.zoneFile)
+    display.displayDomain(domain, argv.zoneFile)
   })
 }

@@ -5,7 +5,7 @@
 
 const prompt = require('prompt')
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'add'
@@ -75,8 +75,8 @@ exports.handler = argv => {
   }, (error, result) => {
     client.certificates.create(result, (clientError, certificate) => {
       Util.handleError(clientError)
-      Display.displayMessage('Certificate created.')
-      Display.displayCertificate(certificate)
+      display.displayMessage('Certificate created.')
+      display.displayCertificate(certificate)
     })
   })
 }

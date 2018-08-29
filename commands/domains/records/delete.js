@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'delete <domain> <record id>'
@@ -22,6 +22,6 @@ exports.handler = argv => {
   const recordid = argv.recordid
   client.domains.deleteRecord(domain, recordid, error => {
     Util.handleError(error)
-    Display.displayMessage(`Domain record ${recordid} deleted from ${domain}`)
+    display.displayMessage(`Domain record ${recordid} deleted from ${domain}`)
   })
 }

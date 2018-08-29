@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'action_by_tag <tag>'
@@ -28,13 +28,13 @@ exports.handler = argv => {
   if (argv.action === 'delete') {
     client.droplets.deleteByTag(argv.tag, error => {
       Util.handleError(error)
-      Display.displayMessage(`Droplets with tag ${argv.tag} deleted.`)
+      display.displayMessage(`Droplets with tag ${argv.tag} deleted.`)
     })
   } else {
     client.droplets.actionByTag(argv.tag, argv.action, (error, action) => {
       Util.handleError(error)
-      Display.displayMessage('Executing action...')
-      Display.displayActionID(action)
+      display.displayMessage('Executing action...')
+      display.displayActionID(action)
     })
   }
 }

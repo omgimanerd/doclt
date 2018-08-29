@@ -4,7 +4,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'disable <droplet id>'
@@ -21,7 +21,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.disableBackups(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Automatic backups disabled.')
-    Display.displayActionID(action)
+    display.displayMessage('Automatic backups disabled.')
+    display.displayActionID(action)
   })
 }

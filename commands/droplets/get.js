@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'get <droplet id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.get(argv.dropletid, (error, droplet) => {
     Util.handleError(error)
-    Display.displayDroplet(droplet)
+    display.displayDroplet(droplet)
   })
 }

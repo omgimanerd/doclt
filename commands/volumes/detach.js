@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'detach <volume id>'
@@ -18,7 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.volumes.detach(argv.volumeid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Volume detached.')
-    Display.displayAction(action)
+    display.displayMessage('Volume detached.')
+    display.displayAction(action)
   })
 }

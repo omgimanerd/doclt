@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'get <volume id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.volumes.get(argv.volumeid, (error, volume) => {
     Util.handleError(error)
-    Display.displayVolume(volume)
+    display.displayVolume(volume)
   })
 }

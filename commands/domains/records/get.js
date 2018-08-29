@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'get <domain> <record id>'
@@ -22,6 +22,6 @@ exports.handler = argv => {
   const recordid = argv.recordid
   client.domains.getRecord(domain, recordid, (error, record) => {
     Util.handleError(error)
-    Display.displayDomainRecord(record)
+    display.displayDomainRecord(record)
   })
 }

@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'shutdown <droplet id>'
@@ -18,7 +18,7 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.shutdown(argv.dropletid, (error, action) => {
     Util.handleError(error)
-    Display.displayMessage('Shutting down droplet...')
-    Display.displayActionID(action)
+    display.displayMessage('Shutting down droplet...')
+    display.displayActionID(action)
   })
 }

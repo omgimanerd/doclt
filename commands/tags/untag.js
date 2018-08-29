@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'untag <resource type> <resource id> <tag>'
@@ -26,7 +26,7 @@ exports.handler = argv => {
     resource_id: resourceid
   }], error => {
     Util.handleError(error)
-    Display.displayMessage(
+    display.displayMessage(
       `Tag ${tag} removed from ${resourcetype} ${resourceid}`)
   })
 }

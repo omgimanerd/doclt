@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../../lib/Display')
+const display = require('../../../lib/display')
 const Util = require('../../../lib/Util')
 
 exports.command = 'list <droplet id>'
@@ -18,6 +18,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.droplets.kernels(argv.dropletid, (error, kernels) => {
     Util.handleError(error)
-    Display.displayKernels(kernels)
+    display.displayKernels(kernels)
   })
 }

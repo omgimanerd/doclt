@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'resize <volume id> <size>'
@@ -23,8 +23,8 @@ exports.handler = argv => {
     const region = volume.region.slug
     client.volumes.resize(volumeid, size, region, (clientError, action) => {
       Util.handleError(clientError)
-      Display.displayMessage('Volume resized.')
-      Display.displayAction(action)
+      display.displayMessage('Volume resized.')
+      display.displayAction(action)
     })
   })
 }

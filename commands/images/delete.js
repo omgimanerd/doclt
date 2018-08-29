@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Display = require('../../lib/Display')
+const display = require('../../lib/display')
 const Util = require('../../lib/Util')
 
 exports.command = 'delete <image id>'
@@ -20,6 +20,6 @@ exports.handler = argv => {
   const client = Util.getClient()
   client.images.delete(argv.imageid, error => {
     Util.handleError(error)
-    Display.displayMessage(`Image ${argv.imageid} deleted.`)
+    display.displayMessage(`Image ${argv.imageid} deleted.`)
   })
 }
