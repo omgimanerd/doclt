@@ -6,7 +6,7 @@
 const prompt = require('prompt')
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add'
 
@@ -35,11 +35,11 @@ exports.builder = yargs => {
     description: 'A string representing the type of certificate.'.yellow,
     choices: ['custom', 'lets_encrypt']
   }).group(options, 'Certificate Attributes:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   prompt.message = ''
   prompt.override = argv
   prompt.start()
@@ -64,7 +64,7 @@ exports.handler = argv => {
       // eslint-disable-next-line camelcase
       dns_names: {
         description: 'Domain names (Let\'s Encrypt) (comma separated)'.yellow,
-        before: Util.csvToArray
+        before: util.csvToArray
       },
       type: {
         description: 'Certificate type [custom|lets_encrypt]'.yellow,
@@ -74,7 +74,7 @@ exports.handler = argv => {
     }
   }, (error, result) => {
     client.certificates.create(result, (clientError, certificate) => {
-      Util.handleError(clientError)
+      util.handleError(clientError)
       display.displayMessage('Certificate created.')
       display.displayCertificate(certificate)
     })

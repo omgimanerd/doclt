@@ -4,7 +4,7 @@
  */
 
 const display = require('../../../lib/display')
-const Util = require('../../../lib/Util')
+const util = require('../../../lib/util')
 
 exports.command = 'list <volume id>'
 
@@ -17,13 +17,13 @@ exports.builder = yargs => {
     description: 'The maximum number of actions to fetch'.yellow,
     number: true
   }).group(['limit'], 'Volume Action Options:')
-  Util.globalConfig(yargs, 3, exports.command)
+  util.globalConfig(yargs, 3, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.volumes.listActions(argv.volumeid, (error, actions) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayActions(actions, argv.limit)
   })
 }

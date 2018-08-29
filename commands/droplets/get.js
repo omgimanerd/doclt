@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'get <droplet id>'
 
@@ -13,13 +13,13 @@ exports.aliases = ['i', 'info']
 exports.description = 'Info about a droplet'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.droplets.get(argv.dropletid, (error, droplet) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayDroplet(droplet)
   })
 }

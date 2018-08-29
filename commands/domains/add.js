@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add <domain> <ip>'
 
@@ -13,18 +13,18 @@ exports.aliases = ['create']
 exports.description = 'Add a domain name'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
 
   client.domains.create({
     name: argv.domain,
     // eslint-disable-next-line camelcase
     ip_address: argv.ip
   }, (error, domain) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage('New domain name added.')
     display.displayDomain(domain, false)
   })

@@ -6,10 +6,10 @@
 
 const yargs = require('yargs')
 
-const Util = require('./lib/Util')
+const util = require('./lib/util')
 
-yargs.commandDir('commands').fail(Util.handleFail)
-Util.globalConfig(yargs, 0, '', true)
+yargs.commandDir('commands').fail(util.handleFail)
+util.globalConfig(yargs, 0, '', true)
 
 const argv = yargs.argv
 if (argv !== null && argv.color) {

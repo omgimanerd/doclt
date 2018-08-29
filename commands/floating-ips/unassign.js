@@ -4,20 +4,20 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'unassign <floating ip>'
 
 exports.description = 'Unassign a floating IP'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.floatingIps.unassign(argv.floatingip, (error, action) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayActionID(action)
   })
 }

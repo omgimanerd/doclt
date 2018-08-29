@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'backups'
 
@@ -13,5 +13,5 @@ exports.description = 'List and enable/disable automatic backups'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('backups')
-  Util.globalConfig(yargs, 2, exports.command, true)
+  util.globalConfig(yargs, 2, exports.command, true)
 }

@@ -4,22 +4,22 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'attach <volume id> <droplet id>'
 
 exports.description = 'Attach a volume'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   const volumeid = argv.volumeid
   const dropletid = argv.dropletid
   client.volumes.attach(volumeid, dropletid, (error, action) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage('Volume attached.')
     display.displayAction(action)
   })

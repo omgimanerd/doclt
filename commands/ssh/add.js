@@ -6,7 +6,7 @@
 const fs = require('fs')
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add <name> <keyfile>'
 
@@ -15,22 +15,22 @@ exports.aliases = ['create']
 exports.description = 'Add an SSH key'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   try {
     client.account.createSshKey({
       name: argv.name,
       // eslint-disable-next-line camelcase,no-sync
       public_key: fs.readFileSync(argv.keyfile, 'utf-8')
     }, (error, key) => {
-      Util.handleError(error)
+      util.handleError(error)
       display.displayMessage('New SSH Key added.')
       display.displaySshKey(key, false)
     })
   } catch (error) {
-    Util.handleError(error)
+    util.handleError(error)
   }
 }

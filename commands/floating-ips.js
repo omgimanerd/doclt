@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../lib/Util')
+const util = require('../lib/util')
 
 exports.command = 'floating-ips'
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage floating IPs'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('floating-ips')
-  Util.globalConfig(yargs, 1, exports.command, true)
+  util.globalConfig(yargs, 1, exports.command, true)
 }

@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add <tag>'
 
@@ -13,13 +13,13 @@ exports.aliases = ['create']
 exports.description = 'Add a tag'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.tags.create({ name: argv.tag }, (error, tag) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayTag(tag)
   })
 }

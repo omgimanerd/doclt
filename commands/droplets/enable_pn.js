@@ -5,7 +5,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'enable_pn <droplet id>'
 
@@ -14,13 +14,13 @@ exports.aliases = ['enable_private_networking']
 exports.description = 'Enable private networking on a droplet.'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.droplets.enablePrivateNetworking(argv.dropletid, (error, action) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage('Private networking enabled.')
     display.displayActionID(action)
   })

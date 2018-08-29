@@ -4,7 +4,7 @@
  */
 
 const display = require('../../../lib/display')
-const Util = require('../../../lib/Util')
+const util = require('../../../lib/util')
 
 exports.command = 'take <droplet id> <snapshot name>'
 
@@ -13,15 +13,15 @@ exports.aliases = ['create', 'add']
 exports.description = 'Take a snapshot of a droplet'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 3, exports.command)
+  util.globalConfig(yargs, 3, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.droplets.snapshot(argv.dropletid, {
     name: argv.snapshotname
   }, (error, action) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage('Taking a snapshot...')
     display.displayAction(action)
   })

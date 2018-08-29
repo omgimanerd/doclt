@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../lib/Util')
+const util = require('../lib/util')
 
 exports.command = ['tags']
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage tags'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('tags')
-  Util.globalConfig(yargs, 1, exports.command, true)
+  util.globalConfig(yargs, 1, exports.command, true)
 }

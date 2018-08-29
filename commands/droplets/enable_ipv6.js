@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'enable_ipv6 <droplet id>'
 
@@ -13,13 +13,13 @@ exports.aliases = ['ipv6']
 exports.description = 'Enable IPv6 on a droplet.'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.droplets.enableIpv6(argv.dropletid, (error, action) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage('IPv6 enabled.')
     display.displayActionID(action)
   })

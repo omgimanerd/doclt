@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'delete <domain>'
 
@@ -13,13 +13,13 @@ exports.aliases = ['remove', 'del', 'rm']
 exports.description = 'Delete a domain name'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.domains.delete(argv.domain, error => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage(`Domain name ${argv.domain} deleted.`)
   })
 }

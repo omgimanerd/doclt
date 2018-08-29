@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add <droplet id/region>'
 
@@ -18,15 +18,15 @@ exports.builder = yargs => {
     required: true,
     choices: ['droplet', 'region']
   }).group(['type'], 'Required Flags:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.floatingIps.create({
     [argv.type]: argv['dropletid/region']
   }, (error, ip) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayFloatingIp(ip)
   })
 }

@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'list'
 
@@ -20,11 +20,11 @@ exports.builder = yargs => {
   }).option('private', {
     description: 'Show all private user images'.yellow
   }).group(['application', 'distribution', 'private'], 'Image Options:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   const query = {}
   if (argv.private) {
     query.private = true
@@ -38,7 +38,7 @@ exports.handler = argv => {
     query.per_page = Number.MAX_SAFE_INTEGER
   }
   client.images.list(query, (error, images) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayImages(images)
   })
 }

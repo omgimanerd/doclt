@@ -4,7 +4,7 @@
  */
 
 const display = require('../lib/display')
-const Util = require('../lib/Util')
+const util = require('../lib/util')
 
 exports.command = 'regions'
 
@@ -13,13 +13,13 @@ exports.aliases = ['region']
 exports.description = 'Lists the available regions'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 1, exports.command)
+  util.globalConfig(yargs, 1, exports.command)
 }
 
 exports.handler = () => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.regions.list((error, regions) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayRegions(regions)
   })
 }

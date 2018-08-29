@@ -6,7 +6,7 @@
 const prompt = require('prompt')
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add'
 
@@ -31,11 +31,11 @@ exports.builder = yargs => {
     alias: ['snapshot', 'snapshots'],
     description: 'Set a volume snapshot ID (do not specify a region)'.yellow
   }).group(options, 'Volume Attributes:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   prompt.message = ''
   prompt.override = argv
   prompt.start()
@@ -63,9 +63,9 @@ exports.handler = argv => {
       }
     }
   }, (error, result) => {
-    Util.handleError(error)
+    util.handleError(error)
     client.volumes.create(result, (clientError, volume) => {
-      Util.handleError(clientError)
+      util.handleError(clientError)
       display.displayMessage('Volume created.')
       display.displayVolume(volume)
     })

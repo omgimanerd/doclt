@@ -6,7 +6,7 @@
 const prompt = require('prompt')
 
 const display = require('../../../lib/display')
-const Util = require('../../../lib/Util')
+const util = require('../../../lib/util')
 
 exports.command = 'add <domain>'
 
@@ -31,11 +31,11 @@ exports.builder = yargs => {
   }).group([
     'type', 'name', 'data', 'priority', 'port', 'weight'
   ], 'Domain Record Attributes:')
-  Util.globalConfig(yargs, 3, exports.command)
+  util.globalConfig(yargs, 3, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   prompt.override = argv
   prompt.message = ''
   prompt.start()
@@ -51,7 +51,7 @@ exports.handler = argv => {
       }
     }
   }, (error, result) => {
-    Util.handleError(error)
+    util.handleError(error)
     const schema = { properties: {} }
     // eslint-disable-next-line require-jsdoc
     const property = (description, required) => {
@@ -100,11 +100,11 @@ exports.handler = argv => {
       break
     }
     prompt.get(schema, (promptError, data) => {
-      Util.handleError(promptError)
+      util.handleError(promptError)
       const domain = argv.domain
       data.type = type
       client.domains.createRecord(domain, data, (clientError, record) => {
-        Util.handleError(clientError)
+        util.handleError(clientError)
         display.displayMessage('New domain record added.')
         display.displayDomainRecord(record)
       })

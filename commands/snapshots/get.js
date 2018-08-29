@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'get <snapshot id>'
 
@@ -13,18 +13,18 @@ exports.aliases = ['i', 'info']
 exports.description = 'Info about a snapshot'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   /**
    * We're going to use the images endpoint to get the
    * snapshot so that we can get information like
    * distribution and type.
    */
   client.images.get(argv.snapshotid, (error, image) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayImage(image)
   })
 }

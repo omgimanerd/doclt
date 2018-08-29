@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../lib/Util')
+const util = require('../lib/util')
 
 exports.command = 'snapshots'
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage snapshots'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('snapshots')
-  Util.globalConfig(yargs, 1, exports.command, true)
+  util.globalConfig(yargs, 1, exports.command, true)
 }

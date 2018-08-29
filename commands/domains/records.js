@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'records'
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage domain records'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('records')
-  Util.globalConfig(yargs, 2, exports.command, true)
+  util.globalConfig(yargs, 2, exports.command, true)
 }

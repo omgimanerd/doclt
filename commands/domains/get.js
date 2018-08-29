@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'get <domain>'
 
@@ -16,13 +16,13 @@ exports.builder = yargs => {
   yargs.option('zone-file', {
     description: 'Show only the zone file'.yellow
   }).group(['zone-file'], 'Domain Options:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.domains.get(argv.domain, (error, domain) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayDomain(domain, argv.zoneFile)
   })
 }

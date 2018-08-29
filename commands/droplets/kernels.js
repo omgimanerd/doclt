@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'kernels'
 
@@ -13,5 +13,5 @@ exports.description = 'List and change droplet kernels'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('kernels')
-  Util.globalConfig(yargs, 2, exports.command, true)
+  util.globalConfig(yargs, 2, exports.command, true)
 }

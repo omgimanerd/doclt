@@ -4,21 +4,21 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'rebuild <droplet id> <image id/slug>'
 
 exports.description = 'Rebuild a droplet'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   const data = argv['imageid/slug']
   client.droplets.rebuild(argv.dropletid, data, (error, action) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage('Rebuilding droplet...')
     display.displayActionID(action)
   })

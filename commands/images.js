@@ -3,7 +3,7 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const Util = require('../lib/Util')
+const util = require('../lib/util')
 
 exports.command = 'images'
 
@@ -13,5 +13,5 @@ exports.description = 'Create, delete, and manage images'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('images')
-  Util.globalConfig(yargs, 1, exports.command, true)
+  util.globalConfig(yargs, 1, exports.command, true)
 }

@@ -4,7 +4,7 @@
  */
 
 const display = require('../../../lib/display')
-const Util = require('../../../lib/Util')
+const util = require('../../../lib/util')
 
 exports.command = 'list <domain>'
 
@@ -13,13 +13,13 @@ exports.aliases = ['ls']
 exports.description = 'List all records for a domain'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 3, exports.command)
+  util.globalConfig(yargs, 3, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.domains.listRecords(argv.domain, (error, records) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayDomainRecords(records)
   })
 }

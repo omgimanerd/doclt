@@ -4,7 +4,7 @@
  */
 
 const display = require('../../../lib/display')
-const Util = require('../../../lib/Util')
+const util = require('../../../lib/util')
 
 exports.command = 'update <domain> <record id>'
 
@@ -27,11 +27,11 @@ exports.builder = yargs => {
   }).group([
     'type', 'name', 'data', 'priority', 'port', 'weight'
   ], 'Domain Record Attributes:')
-  Util.globalConfig(yargs, 3, exports.command)
+  util.globalConfig(yargs, 3, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   const domain = argv.domain
   const id = argv.recordid
   const attributes = {
@@ -43,7 +43,7 @@ exports.handler = argv => {
     weight: argv.weight
   }
   client.domains.updateRecord(domain, id, attributes, (error, record) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayDomainRecord(record)
   })
 }

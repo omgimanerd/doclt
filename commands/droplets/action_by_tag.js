@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'action_by_tag <tag>'
 
@@ -20,19 +20,19 @@ exports.builder = yargs => {
       'disable_backups', 'snapshot'
     ]
   }).group(['action'], 'Droplet Actions:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   if (argv.action === 'delete') {
     client.droplets.deleteByTag(argv.tag, error => {
-      Util.handleError(error)
+      util.handleError(error)
       display.displayMessage(`Droplets with tag ${argv.tag} deleted.`)
     })
   } else {
     client.droplets.actionByTag(argv.tag, argv.action, (error, action) => {
-      Util.handleError(error)
+      util.handleError(error)
       display.displayMessage('Executing action...')
       display.displayActionID(action)
     })

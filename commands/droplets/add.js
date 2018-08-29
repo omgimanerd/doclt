@@ -6,7 +6,7 @@
 const prompt = require('prompt')
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'add'
 
@@ -51,11 +51,11 @@ exports.builder = yargs => {
     'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
     'private_networking', 'monitoring', 'user_data', 'volume', 'tags'
   ], 'Droplet Attributes:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   prompt.message = ''
   prompt.override = argv
   prompt.start()
@@ -81,7 +81,7 @@ exports.handler = argv => {
       // eslint-disable-next-line camelcase
       ssh_keys: {
         description: 'SSH Key IDs (comma separated) (optional)',
-        before: Util.csvToArray
+        before: util.csvToArray
       },
       backups: {
         description: 'Enable backups? (true/false)',
@@ -110,17 +110,17 @@ exports.handler = argv => {
       },
       volume: {
         description: 'Volume IDs to attach (comma separated) (optional)',
-        before: Util.csvToArray
+        before: util.csvToArray
       },
       tags: {
         description: 'Tags (comma separated) (optional)',
-        before: Util.csvToArray
+        before: util.csvToArray
       }
     }
   }, (error, result) => {
-    Util.handleError(error)
+    util.handleError(error)
     client.droplets.create(result, (clientError, droplet) => {
-      Util.handleError(clientError)
+      util.handleError(clientError)
       display.displayMessage('Droplet created.')
       display.displayDroplet(droplet)
     })

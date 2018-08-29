@@ -4,7 +4,7 @@
  */
 
 const display = require('../lib/display')
-const Util = require('../lib/Util')
+const util = require('../lib/util')
 
 exports.command = 'account'
 
@@ -13,13 +13,13 @@ exports.aliases = ['acc']
 exports.description = 'Display account information'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 1, exports.command)
+  util.globalConfig(yargs, 1, exports.command)
 }
 
 exports.handler = () => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.account.get((error, account) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayAccount(account)
   })
 }

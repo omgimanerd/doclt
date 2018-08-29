@@ -4,7 +4,7 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'get <key id>'
 
@@ -16,13 +16,13 @@ exports.builder = yargs => {
   yargs.option('key', {
     description: 'Show only the public key'.yellow
   }).group(['key'], 'SSH Key Options:')
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   client.account.getSshKey(argv.keyid, (error, key) => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displaySshKey(key, argv.key)
   })
 }

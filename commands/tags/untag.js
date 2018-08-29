@@ -4,18 +4,18 @@
  */
 
 const display = require('../../lib/display')
-const Util = require('../../lib/Util')
+const util = require('../../lib/util')
 
 exports.command = 'untag <resource type> <resource id> <tag>'
 
 exports.description = 'Untag a resource'.yellow
 
 exports.builder = yargs => {
-  Util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs, 2, exports.command)
 }
 
 exports.handler = argv => {
-  const client = Util.getClient()
+  const client = util.getClient()
   const tag = argv.tag
   const resourcetype = argv.resourcetype
   const resourceid = argv.resourceid
@@ -25,7 +25,7 @@ exports.handler = argv => {
     // eslint-disable-next-line camelcase
     resource_id: resourceid
   }], error => {
-    Util.handleError(error)
+    util.handleError(error)
     display.displayMessage(
       `Tag ${tag} removed from ${resourcetype} ${resourceid}`)
   })
