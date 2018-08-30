@@ -23,6 +23,10 @@ exports.handler = argv => {
   const client = util.getClient()
   client.account.getSshKey(argv.keyid, (error, key) => {
     util.handleError(error)
-    display.displaySshKey(key, argv.key)
+    if (argv.key) {
+      console.log(key.public_key)
+    } else {
+      display.displaySshKey(key)
+    }
   })
 }
