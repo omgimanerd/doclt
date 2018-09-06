@@ -8,11 +8,8 @@ const yargs = require('yargs')
 
 const util = require('./lib/util')
 
-yargs.commandDir('commands').fail(util.handleFail)
+util.globalConfig(yargs, 0, 0, true)
 
-util.globalConfig(yargs, 0, '', true)
-
-const argv = yargs.argv
-if (argv !== null && argv.color) {
-  console.log('Invoking --color does nothing!'.bold.red.bgWhite)
-}
+// eslint-disable-next-line no-unused-expressions
+yargs.completion('completion', 'Generate bash completion script'.yellow)
+  .commandDir('commands').fail(util.handleFail).argv
