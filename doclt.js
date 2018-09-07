@@ -10,9 +10,8 @@ const util = require('./lib/util')
 
 util.globalConfig(yargs)
 
-// eslint-disable-next-line no-unused-expressions
 yargs
   .completion('completion', 'Generate bash completion script'.yellow)
   .commandDir('commands')
   .demandCommand()
-  .argv
+  .parse()
