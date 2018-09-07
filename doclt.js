@@ -15,5 +15,4 @@ yargs
   .completion('completion', 'Generate bash completion script'.yellow)
   .commandDir('commands')
   .demandCommand()
-  .fail(util.handleFail)
   .argv
