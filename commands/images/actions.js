@@ -13,5 +13,6 @@ exports.description = 'List and fetch image actions'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('actions')
-  util.globalConfig(yargs, 2, exports.commmand, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

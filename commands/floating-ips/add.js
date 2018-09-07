@@ -18,7 +18,7 @@ exports.builder = yargs => {
     required: true,
     choices: ['droplet', 'region']
   }).group(['type'], 'Required Flags:')
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

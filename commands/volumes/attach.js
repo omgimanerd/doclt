@@ -11,7 +11,7 @@ exports.command = 'attach <volume id> <droplet id>'
 exports.description = 'Attach a volume'.yellow
 
 exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

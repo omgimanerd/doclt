@@ -13,5 +13,6 @@ exports.description = 'Create, delete, and manage floating IPs'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('floating-ips')
-  util.globalConfig(yargs, 1, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

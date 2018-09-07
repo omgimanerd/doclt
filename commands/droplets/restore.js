@@ -10,9 +10,7 @@ exports.command = 'restore <droplet id> <backup id>'
 
 exports.description = 'Restore a droplet from a backup'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

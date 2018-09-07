@@ -13,7 +13,7 @@ exports.aliases = ['ls']
 exports.description = 'List all volumes'.yellow
 
 exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = () => {

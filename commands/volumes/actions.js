@@ -13,5 +13,5 @@ exports.description = 'List and fetch volume actions'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('actions')
-  util.globalConfig(yargs, 2, exports.command, true)
+  util.globalConfig(yargs)
 }

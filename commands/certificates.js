@@ -13,5 +13,6 @@ exports.description = 'Create, delete, and manage SSL certificates'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('certificates')
-  util.globalConfig(yargs, 1, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

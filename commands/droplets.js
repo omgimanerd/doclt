@@ -13,5 +13,6 @@ exports.description = 'Create, delete, and manage droplets'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('droplets')
-  util.globalConfig(yargs, 1, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

@@ -11,7 +11,7 @@ exports.command = 'detach <volume id>'
 exports.description = 'Detach a volume'.yellow
 
 exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

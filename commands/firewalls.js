@@ -13,5 +13,6 @@ exports.description = 'Create delete and manage firewalls'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('firewalls')
-  util.globalConfig(yargs, 1, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

@@ -13,5 +13,6 @@ exports.description = 'List and change droplet kernels'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('kernels')
-  util.globalConfig(yargs, 2, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

@@ -11,5 +11,6 @@ exports.description = 'Reboot, power on, and power off a droplet'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('power')
-  util.globalConfig(yargs, 2, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

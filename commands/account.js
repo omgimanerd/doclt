@@ -12,9 +12,7 @@ exports.aliases = ['acc']
 
 exports.description = 'Display account information'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 1, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = () => {
   const client = util.getClient()

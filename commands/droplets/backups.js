@@ -13,5 +13,6 @@ exports.description = 'List and enable/disable automatic backups'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('backups')
-  util.globalConfig(yargs, 2, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

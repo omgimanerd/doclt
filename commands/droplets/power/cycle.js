@@ -10,9 +10,7 @@ exports.command = 'cycle <droplet id>'
 
 exports.description = 'Power cycle a droplet (hard reset)'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 3, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

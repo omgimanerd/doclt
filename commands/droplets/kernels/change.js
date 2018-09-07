@@ -10,9 +10,7 @@ exports.command = 'change <droplet id> <kernel id>'
 
 exports.description = 'Change the kernel of a droplet'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 3, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

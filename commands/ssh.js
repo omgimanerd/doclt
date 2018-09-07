@@ -11,5 +11,6 @@ exports.description = 'Create, delete, and manage SSH public keys'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('ssh')
-  util.globalConfig(yargs, 1, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

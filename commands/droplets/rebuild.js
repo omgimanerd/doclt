@@ -10,9 +10,7 @@ exports.command = 'rebuild <droplet id> <image id/slug>'
 
 exports.description = 'Rebuild a droplet'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

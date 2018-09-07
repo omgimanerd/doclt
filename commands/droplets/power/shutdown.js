@@ -11,7 +11,7 @@ exports.command = 'shutdown <droplet id>'
 exports.description = 'Gracefully shut down a droplet'.yellow
 
 exports.builder = yargs => {
-  util.globalConfig(yargs, 3, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

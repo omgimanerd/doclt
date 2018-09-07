@@ -13,7 +13,7 @@ exports.aliases = ['remove', 'del', 'rm']
 exports.description = 'Delete a volume'.yellow
 
 exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

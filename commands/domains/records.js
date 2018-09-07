@@ -13,5 +13,6 @@ exports.description = 'Create, delete, and manage domain records'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('records')
-  util.globalConfig(yargs, 2, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

@@ -20,7 +20,7 @@ exports.builder = yargs => {
       'disable_backups', 'snapshot'
     ]
   }).group(['action'], 'Droplet Actions:')
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

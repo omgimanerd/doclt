@@ -13,9 +13,7 @@ exports.aliases = ['enable_private_networking']
 
 exports.description = 'Enable private networking on a droplet.'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

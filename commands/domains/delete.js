@@ -12,9 +12,7 @@ exports.aliases = ['remove', 'del', 'rm']
 
 exports.description = 'Delete a domain name'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

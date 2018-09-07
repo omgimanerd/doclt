@@ -10,9 +10,7 @@ exports.command = 'assign <floating ip> <droplet id>'
 
 exports.description = 'Assign a floating IP to a droplet'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

@@ -12,9 +12,7 @@ exports.aliases = ['size']
 
 exports.description = 'Lists the available droplet sizes'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 1, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = () => {
   const client = util.getClient()

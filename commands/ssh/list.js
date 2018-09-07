@@ -12,9 +12,7 @@ exports.aliases = ['ls']
 
 exports.description = 'List all SSH keys'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = () => {
   const client = util.getClient()

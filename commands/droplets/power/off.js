@@ -10,9 +10,7 @@ exports.command = 'off <droplet id>'
 
 exports.description = 'Power off a droplet (hard shutdown)'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 3, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

@@ -11,7 +11,7 @@ exports.command = 'resize <volume id> <size>'
 exports.description = 'Resize a volume'.yellow
 
 exports.builder = yargs => {
-  util.globalConfig(yargs, 2, exports.command)
+  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

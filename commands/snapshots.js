@@ -13,5 +13,6 @@ exports.description = 'Create, delete, and manage snapshots'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('snapshots')
-  util.globalConfig(yargs, 1, exports.command, true)
+    .demandCommand()
+  util.globalConfig(yargs)
 }

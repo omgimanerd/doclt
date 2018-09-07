@@ -10,9 +10,7 @@ exports.command = 'on <droplet id>'
 
 exports.description = 'Power on a droplet'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 3, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()

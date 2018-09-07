@@ -12,9 +12,7 @@ exports.aliases = ['i', 'info']
 
 exports.description = 'Info about an image action'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs, 3, exports.command)
-}
+exports.builder = util.globalConfig
 
 exports.handler = argv => {
   const client = util.getClient()
