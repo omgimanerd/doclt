@@ -16,7 +16,7 @@ exports.builder = yargs => {
   yargs.option('limit', {
     description: 'The maximum number of actions to fetch'.yellow,
     number: true
-  }).group(['limit'], 'Droplet Actions Options:')
+  }).group(['limit'], 'Droplet Action Options:')
   util.globalConfig(yargs)
 }
 

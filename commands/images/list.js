@@ -19,7 +19,7 @@ exports.builder = yargs => {
     description: 'Show distribution based images'.yellow
   }).option('private', {
     description: 'Show all private user images'.yellow
-  }).group(['application', 'distribution', 'private'], 'Image Options:')
+  }).group(['application', 'distribution', 'private'], 'Image Display Options:')
   util.globalConfig(yargs)
 }
 

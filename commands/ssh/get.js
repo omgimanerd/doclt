@@ -15,7 +15,7 @@ exports.description = 'Info about an SSH key'.yellow
 exports.builder = yargs => {
   yargs.option('key', {
     description: 'Show only the public key'.yellow
-  }).group(['key'], 'SSH Key Options:')
+  }).group(['key'], 'SSH Key Display Options:')
   util.globalConfig(yargs)
 }
 
