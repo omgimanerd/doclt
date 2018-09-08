@@ -9,7 +9,7 @@ exports.command = 'firewalls'
 
 exports.aliases = ['firewall']
 
-exports.description = 'Create delete and manage firewalls'.yellow
+exports.description = 'Create, delete, and manage firewalls'.yellow
 
 exports.builder = yargs => {
   yargs.commandDir('firewalls')
