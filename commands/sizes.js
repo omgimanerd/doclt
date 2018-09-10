@@ -10,7 +10,7 @@ exports.command = 'sizes'
 
 exports.aliases = ['size']
 
-exports.description = 'Lists the available droplet sizes'.yellow
+exports.description = 'List the available droplet sizes'.yellow
 
 exports.builder = util.globalConfig
 

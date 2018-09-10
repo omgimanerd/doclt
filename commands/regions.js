@@ -10,7 +10,7 @@ exports.command = 'regions'
 
 exports.aliases = ['region']
 
-exports.description = 'Lists the available regions'.yellow
+exports.description = 'List the available regions'.yellow
 
 exports.builder = util.globalConfig
 

@@ -7,7 +7,7 @@ const util = require('../lib/util')
 
 exports.command = 'snapshots'
 
-exports.aliases = ['snapshot']
+exports.aliases = ['snapshot', 'snap']
 
 exports.description = 'Create, delete, and manage snapshots'.yellow
 
