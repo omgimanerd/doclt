@@ -7,7 +7,7 @@ const util = require('../lib/util')
 
 exports.command = 'load-balancers'
 
-exports.aliases = ['load-balancer', 'loadbalancers', 'loadbalancer', 'lb']
+exports.aliases = ['load-balancer', 'lb']
 
 exports.description = 'Create, delete, and manage load balancers.'.yellow
 
