@@ -24,12 +24,12 @@ describe('util', () => {
       util.csvToArray(',1,c,4,').should.deepEqual(['1', 'c', '4'])
     })
 
-    it('should trim spaces', () => {
+    it('should trim spaces from elements', () => {
       util.csvToArray('bob, the, bu').should.deepEqual(['bob', 'the', 'bu'])
       util.csvToArray('bob , the , bu').should.deepEqual(['bob', 'the', 'bu'])
     })
 
-    it('should work for empty strings and edge cases', () => {
+    it('should not fail on edge cases', () => {
       util.csvToArray('').should.deepEqual([])
       util.csvToArray(' ').should.deepEqual([])
       util.csvToArray('            ').should.deepEqual([])
@@ -44,6 +44,25 @@ describe('util', () => {
     it('should work with properly formatted strings', () => {
       util.csvToObject('1:2,3:4').should.deepEqual({ 1: '2', 3: '4' })
       util.csvToObject('a:c,asdf:3').should.deepEqual({ a: 'c', asdf: '3' })
+      util.csvToObject('a:c,b:null').should.deepEqual({ a: 'c', b: 'null' })
+    })
+
+    it('should omit improper key:value pairs', () => {
+      util.csvToObject('sdf:c:d').should.deepEqual({})
+      util.csvToObject('asdf:fe,bob:e:f').should.deepEqual({ asdf: 'fe' })
+      util.csvToObject('a:b,').should.deepEqual({ a: 'b' })
+      util.csvToObject(',a:b,').should.deepEqual({ a: 'b' })
+      util.csvToObject(',a:b,,,').should.deepEqual({ a: 'b' })
+      util.csvToObject('a:b e, c: d e').should.deepEqual({})
+    })
+
+    it('should not fail on edge cases', () => {
+      util.csvToObject('').should.deepEqual({})
+      util.csvToObject(' ').should.deepEqual({})
+      util.csvToObject('\n').should.deepEqual({})
+      util.csvToObject('\t').should.deepEqual({})
+      util.csvToObject(null).should.deepEqual({})
+      util.csvToObject().should.deepEqual({})
     })
   })
 
@@ -81,7 +100,7 @@ describe('util', () => {
       util.parseForwardingRule(':tcp:3000:').should.deepEqual(badResult)
     })
 
-    it('should not error for weird edge cases', () => {
+    it('should not fail on edge cases', () => {
       util.parseForwardingRule('').should.deepEqual(badResult)
       util.parseForwardingRule(' ').should.deepEqual(badResult)
       util.parseForwardingRule('\n').should.deepEqual(badResult)
