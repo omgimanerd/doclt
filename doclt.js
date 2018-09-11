@@ -34,5 +34,5 @@ try {
     .wrap(yargs.terminalWidth())
     .parse()
 } catch (error) {
-  util.handleFail(null, error)
+  util.handleFail(error)
 }
