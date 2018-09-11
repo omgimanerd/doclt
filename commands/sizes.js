@@ -12,8 +12,6 @@ exports.aliases = ['size']
 
 exports.description = 'List the available droplet sizes'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.sizes.list((error, sizes) => {

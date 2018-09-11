@@ -12,8 +12,6 @@ exports.aliases = ['region']
 
 exports.description = 'List the available regions'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.regions.list((error, regions) => {

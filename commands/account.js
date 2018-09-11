@@ -12,8 +12,6 @@ exports.aliases = ['acc']
 
 exports.description = 'Display account information'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.account.get((error, account) => {

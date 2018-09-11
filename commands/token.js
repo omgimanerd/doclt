@@ -13,8 +13,6 @@ exports.aliases = ['auth', 'authenticate']
 
 exports.description = 'Set the DigitalOcean auth token'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   config.setToken(argv.token, error => {
     util.handleError(error)

@@ -3,8 +3,6 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const util = require('../lib/util')
-
 exports.command = 'volumes'
 
 exports.aliases = ['volume']
@@ -12,7 +10,5 @@ exports.aliases = ['volume']
 exports.description = 'Create, delete, and manage volumes'.yellow
 
 exports.builder = yargs => {
-  yargs.commandDir('volumes')
-    .demandCommand()
-  util.globalConfig(yargs)
+  yargs.commandDir('volumes').demandCommand()
 }

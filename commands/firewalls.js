@@ -3,8 +3,6 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const util = require('../lib/util')
-
 exports.command = 'firewalls'
 
 exports.aliases = ['firewall']
@@ -12,7 +10,5 @@ exports.aliases = ['firewall']
 exports.description = 'Create, delete, and manage firewalls'.yellow
 
 exports.builder = yargs => {
-  yargs.commandDir('firewalls')
-    .demandCommand()
-  util.globalConfig(yargs)
+  yargs.commandDir('firewalls').demandCommand()
 }

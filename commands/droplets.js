@@ -3,8 +3,6 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const util = require('../lib/util')
-
 exports.command = 'droplets'
 
 exports.aliases = ['droplet']
@@ -12,7 +10,5 @@ exports.aliases = ['droplet']
 exports.description = 'Create, delete, and manage droplets'.yellow
 
 exports.builder = yargs => {
-  yargs.commandDir('droplets')
-    .demandCommand()
-  util.globalConfig(yargs)
+  yargs.commandDir('droplets').demandCommand()
 }
