@@ -8,6 +8,8 @@ const prompt = require('prompt')
 const display = require('../../../lib/display')
 const util = require('../../../lib/util')
 
+const TYPES = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'SRV', 'NS']
+
 exports.command = 'add <domain>'
 
 exports.aliases = ['create']
@@ -17,7 +19,7 @@ exports.description = 'Add a record to a domain'.yellow
 exports.builder = yargs => {
   yargs.option('type', {
     description: 'Set the domain record type'.yellow,
-    choices: ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'NS', 'SRV']
+    choices: TYPES
   }).option('name', {
     description: 'Set the domain record hostname, alias, or service'.yellow
   }).option('data', {
@@ -38,13 +40,11 @@ exports.handler = argv => {
   prompt.override = argv
   prompt.message = ''
   prompt.start()
-  const types = ['A', 'AAAA', 'CNAME', 'MX', 'TXT', 'SRV', 'NS']
   prompt.get({
     properties: {
       type: {
         description: 'Domain Type'.yellow,
-        type: 'string',
-        conform: value => types.indexOf(value) !== -1,
+        conform: value => TYPES.indexOf(value) !== -1,
         message: 'Domain type must be A, AAAA, CNAME, MX, TXT, SRV, or NS',
         required: true
       }
