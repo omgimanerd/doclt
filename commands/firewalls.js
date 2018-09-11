@@ -5,7 +5,7 @@
 
 exports.command = 'firewalls'
 
-exports.aliases = ['firewall']
+exports.aliases = ['firewall', 'fw']
 
 exports.description = 'Create, delete, and manage firewalls'.yellow
 
