@@ -10,8 +10,8 @@ const VERSION = require('./package.json').version
 
 yargs
   .commandDir('commands')
-  .demandCommand()
   .completion('completion', 'Generate bash completion script'.yellow)
+  .demandCommand()
   .example('$0 completion >> .bashrc', 'Append bash completion script'.yellow)
   .help('help', 'Show help for a command'.yellow)
   .option('dev', {
