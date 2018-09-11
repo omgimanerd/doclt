@@ -10,8 +10,6 @@ exports.command = 'list <droplet id>'
 
 exports.description = 'List kernels of a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.kernels(argv.dropletid, (error, kernels) => {

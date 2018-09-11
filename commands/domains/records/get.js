@@ -12,8 +12,6 @@ exports.aliases = ['i', 'info']
 
 exports.description = 'Info about a domain record'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const domain = argv.domain

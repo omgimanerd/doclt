@@ -12,8 +12,6 @@ exports.aliases = ['i', 'info']
 
 exports.description = 'Info about a droplet action'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const dropletid = argv.dropletid

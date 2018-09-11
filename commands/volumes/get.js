@@ -12,10 +12,6 @@ exports.aliases = ['i', 'info']
 
 exports.description = 'Info about a volume'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   client.volumes.get(argv.volumeid, (error, volume) => {

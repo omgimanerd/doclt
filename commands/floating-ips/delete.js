@@ -12,8 +12,6 @@ exports.aliases = ['remove', 'del', 'rm']
 
 exports.description = 'Delete a floating IP'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.floatingIps.delete(argv.floatingip, error => {

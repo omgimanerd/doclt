@@ -10,8 +10,6 @@ exports.command = 'transfer <image id> <region>'
 
 exports.description = 'Transfer an image to another region'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.images.transfer(argv.imageid, argv.region, (error, action) => {

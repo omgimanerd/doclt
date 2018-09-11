@@ -12,8 +12,6 @@ exports.aliases = ['password', 'pw']
 
 exports.description = 'Reset the password on a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.passwordReset(argv.dropletid, (error, action) => {

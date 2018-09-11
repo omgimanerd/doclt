@@ -12,8 +12,6 @@ exports.aliases = ['remove', 'del', 'rm']
 
 exports.description = 'Delete a record'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const domain = argv.domain

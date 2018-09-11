@@ -12,10 +12,6 @@ exports.aliases = ['restart']
 
 exports.description = 'Gracefully reboot a droplet'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.reboot(argv.dropletid, (error, action) => {

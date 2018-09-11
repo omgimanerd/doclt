@@ -12,8 +12,6 @@ exports.aliases = ['update']
 
 exports.description = 'Rename an image'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.images.update(argv.imageid, {

@@ -10,10 +10,6 @@ exports.command = 'attach <volume id> <droplet id>'
 
 exports.description = 'Attach a volume'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   const volumeid = argv.volumeid

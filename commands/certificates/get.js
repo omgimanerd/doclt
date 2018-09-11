@@ -12,8 +12,6 @@ exports.aliases = ['i', 'info']
 
 exports.description = 'Info about an SSL certificate'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.certificates.get(argv.certificateid, (error, certificate) => {

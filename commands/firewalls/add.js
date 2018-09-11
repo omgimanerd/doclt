@@ -18,7 +18,6 @@ exports.builder = yargs => {
   yargs.option('name', {
     description: 'Set the firewall name'.yellow
   })
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {
@@ -26,13 +25,13 @@ exports.handler = argv => {
   prompt.message = ''
   prompt.override = argv
   prompt.start()
-  prompt.get({
-    properties: {
-      name: {
-        description: 'Firewall name'.yellow,
-        required: true
-
-      },
-    }
-  })
+  // prompt.get({
+  //   properties: {
+  //     name: {
+  //       description: 'Firewall name'.yellow,
+  //       required: true
+  //
+  //     },
+  //   }
+  // })
 }

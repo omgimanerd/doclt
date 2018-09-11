@@ -12,8 +12,6 @@ exports.aliases = ['remove', 'del', 'rm']
 
 exports.description = 'Delete a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.delete(argv.dropletid, error => {

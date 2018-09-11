@@ -12,8 +12,6 @@ exports.aliases = ['update']
 
 exports.description = 'Rename a tag'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.tags.update(argv.tag, { name: argv.newtag }, (error, tag) => {

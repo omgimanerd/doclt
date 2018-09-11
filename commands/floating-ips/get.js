@@ -12,8 +12,6 @@ exports.aliases = ['i', 'info']
 
 exports.description = 'Info about a floating IP'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.floatingIps.get(argv.floatingip, (error, ip) => {

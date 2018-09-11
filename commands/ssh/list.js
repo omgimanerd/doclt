@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all SSH keys'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.account.listSshKeys((error, keys) => {

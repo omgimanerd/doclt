@@ -11,9 +11,7 @@ exports.command = 'remove-droplets <load balancer id> <droplet ids>'
 exports.description = 'Remove droplets from a load balancer'.yellow
 
 exports.builder = yargs => {
-  yargs.example(
-    '$0 load-balancers remove-droplets 12345 52232,43451'
-  )
+  yargs.example('$0 load-balancers remove-droplets 12345 52232,43451')
 }
 
 exports.handler = argv => {

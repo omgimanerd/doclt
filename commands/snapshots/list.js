@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List snapshots on your account'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.snapshots.list((error, snapshots) => {

@@ -10,8 +10,6 @@ exports.command = 'change <droplet id> <kernel id>'
 
 exports.description = 'Change the kernel of a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const dropletid = argv.dropletid

@@ -12,8 +12,6 @@ exports.aliases = ['remove', 'del', 'rm']
 
 exports.description = 'Delete an image'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.images.delete(argv.imageid, error => {

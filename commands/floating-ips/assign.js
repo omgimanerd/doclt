@@ -10,8 +10,6 @@ exports.command = 'assign <floating ip> <droplet id>'
 
 exports.description = 'Assign a floating IP to a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.floatingIps.assign(argv.ip, argv.dropletid, (error, action) => {

@@ -12,10 +12,6 @@ exports.aliases = ['remove', 'del', 'rm']
 
 exports.description = 'Delete a volume'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   client.volumes.delete(argv.volumeid, error => {

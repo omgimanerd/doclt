@@ -10,8 +10,6 @@ exports.command = 'convert <image id>'
 
 exports.description = 'Convert an image into a snapshot'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.images.convert(argv.imageid, (error, action) => {

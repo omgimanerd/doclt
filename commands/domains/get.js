@@ -16,7 +16,6 @@ exports.builder = yargs => {
   yargs.option('zone-file', {
     description: 'Show only the zone file'.yellow
   }).group(['zone-file'], 'Domain Display Options:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

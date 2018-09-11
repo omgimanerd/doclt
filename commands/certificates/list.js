@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all SSL certificates'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.certificates.list((error, certificates) => {

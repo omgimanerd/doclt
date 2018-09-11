@@ -10,8 +10,6 @@ exports.command = 'untag <resource type> <resource id> <tag>'
 
 exports.description = 'Untag a resource'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const tag = argv.tag

@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all floating IPs'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.floatingIps.list((error, ips) => {

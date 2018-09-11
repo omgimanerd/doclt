@@ -14,8 +14,6 @@ exports.aliases = ['create']
 
 exports.description = 'Add an SSH key'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   try {

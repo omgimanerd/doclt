@@ -16,7 +16,6 @@ exports.builder = yargs => {
   yargs.option('key', {
     description: 'Show only the public key'.yellow
   }).group(['key'], 'SSH Key Display Options:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

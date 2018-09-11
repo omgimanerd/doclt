@@ -10,8 +10,6 @@ exports.command = 'cycle <droplet id>'
 
 exports.description = 'Power cycle a droplet (hard reset)'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.powerCycle(argv.dropletid, (error, action) => {

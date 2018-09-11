@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all tags'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.tags.list((error, tags) => {

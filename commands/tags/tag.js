@@ -12,8 +12,6 @@ exports.aliases = ['apply']
 
 exports.description = 'Tag a resource'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const tag = argv.tag

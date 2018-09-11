@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all actions performed on a floating IP'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.floatingIps.listActions(argv.floatingip, (error, actions) => {

@@ -10,8 +10,6 @@ exports.command = 'unassign <floating ip>'
 
 exports.description = 'Unassign a floating IP'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.floatingIps.unassign(argv.floatingip, (error, action) => {

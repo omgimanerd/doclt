@@ -10,11 +10,7 @@ exports.command = 'list <droplet id>'
 
 exports.aliases = ['ls']
 
-exports.description = 'List snapshots made of a droplet'.yellow
-
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
+exports.description = 'List snapshots of a droplet'.yellow
 
 exports.handler = argv => {
   const client = util.getClient()

@@ -12,10 +12,6 @@ exports.aliases = ['create', 'add']
 
 exports.description = 'Take a snapshot of a droplet'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.snapshot(argv.dropletid, {

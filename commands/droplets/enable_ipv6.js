@@ -12,8 +12,6 @@ exports.aliases = ['ipv6']
 
 exports.description = 'Enable IPv6 on a droplet.'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.enableIpv6(argv.dropletid, (error, action) => {

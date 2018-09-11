@@ -13,8 +13,6 @@ exports.aliases = ['on']
 
 exports.description = 'Enable automatic backups for a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.enableBackups(argv.dropletid, (error, action) => {

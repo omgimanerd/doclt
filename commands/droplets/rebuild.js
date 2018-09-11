@@ -10,8 +10,6 @@ exports.command = 'rebuild <droplet id> <image id/slug>'
 
 exports.description = 'Rebuild a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   const data = argv['imageid/slug']

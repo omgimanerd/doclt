@@ -17,7 +17,6 @@ exports.builder = yargs => {
     description: 'The maximum number of actions to fetch'.yellow,
     number: true
   }).group(['limit'], 'Image Action Options:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

@@ -31,7 +31,6 @@ exports.builder = yargs => {
     alias: ['snapshot', 'snapshots'],
     description: 'Set a volume snapshot ID (do not specify a region)'.yellow
   }).group(options, 'Volume Attributes:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

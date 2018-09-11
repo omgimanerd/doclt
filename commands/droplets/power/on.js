@@ -10,8 +10,6 @@ exports.command = 'on <droplet id>'
 
 exports.description = 'Power on a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.powerOn(argv.dropletid, (error, action) => {

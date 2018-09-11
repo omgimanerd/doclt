@@ -35,7 +35,6 @@ exports.builder = yargs => {
     description: 'A string representing the type of certificate.'.yellow,
     choices: ['custom', 'lets_encrypt']
   }).group(options, 'Certificate Attributes:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

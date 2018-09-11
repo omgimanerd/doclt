@@ -10,8 +10,6 @@ exports.command = 'restore <droplet id> <backup id>'
 
 exports.description = 'Restore a droplet from a backup'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.restore(argv.dropletid, argv.backupid, (error, action) => {

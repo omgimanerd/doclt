@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all records for a domain'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.domains.listRecords(argv.domain, (error, records) => {

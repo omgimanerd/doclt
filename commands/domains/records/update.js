@@ -27,7 +27,6 @@ exports.builder = yargs => {
   }).group([
     'type', 'name', 'data', 'priority', 'port', 'weight'
   ], 'Domain Record Attributes:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

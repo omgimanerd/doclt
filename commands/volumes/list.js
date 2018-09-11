@@ -12,10 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all volumes'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = () => {
   const client = util.getClient()
   client.volumes.list((error, volumes) => {

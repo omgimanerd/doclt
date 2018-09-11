@@ -11,9 +11,7 @@ exports.command = 'add-droplets <load balancer id> <droplet ids>'
 exports.description = 'Add droplets to a load balancer'.yellow
 
 exports.builder = yargs => {
-  yargs.example(
-    '$0 load-balancers add-droplet 12345 52232,43451,32552')
-  util.globalConfig(yargs)
+  yargs.example('$0 load-balancers add-droplet 12345 52232,43451,32552')
 }
 
 exports.handler = argv => {

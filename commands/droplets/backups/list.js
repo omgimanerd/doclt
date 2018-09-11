@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all backups of a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.backups(argv.dropletid, (error, backups) => {

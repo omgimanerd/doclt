@@ -10,8 +10,6 @@ exports.command = 'rename <droplet id> <name>'
 
 exports.description = 'Rename a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.rename(argv.dropletid, argv.name, (error, action) => {

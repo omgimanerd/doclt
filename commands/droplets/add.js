@@ -51,7 +51,6 @@ exports.builder = yargs => {
     'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
     'private_networking', 'monitoring', 'user_data', 'volume', 'tags'
   ], 'Droplet Attributes:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

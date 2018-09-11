@@ -10,10 +10,6 @@ exports.command = 'resize <volume id> <size>'
 
 exports.description = 'Resize a volume'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   client.volumes.get(argv.volumeid, (error, volume) => {

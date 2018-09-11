@@ -12,8 +12,6 @@ exports.aliases = ['create']
 
 exports.description = 'Add a tag'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.tags.create({ name: argv.tag }, (error, tag) => {

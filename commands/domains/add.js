@@ -12,8 +12,6 @@ exports.aliases = ['create']
 
 exports.description = 'Add a domain name'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
 

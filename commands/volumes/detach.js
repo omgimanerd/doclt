@@ -10,10 +10,6 @@ exports.command = 'detach <volume id>'
 
 exports.description = 'Detach a volume'.yellow
 
-exports.builder = yargs => {
-  util.globalConfig(yargs)
-}
-
 exports.handler = argv => {
   const client = util.getClient()
   client.volumes.detach(argv.volumeid, (error, action) => {

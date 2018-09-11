@@ -16,7 +16,6 @@ exports.builder = yargs => {
   yargs.option('rules', {
     description: 'Show the forwarding rules'.yellow
   }).group(['rules'], 'Load Balancer Display Options:')
-  util.globalConfig(yargs)
 }
 
 exports.handler = argv => {

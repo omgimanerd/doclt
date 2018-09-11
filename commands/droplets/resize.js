@@ -10,8 +10,6 @@ exports.command = 'resize <droplet id> <size slug>'
 
 exports.description = 'Resize a droplet'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.resize(argv.dropletid, argv.sizeslug, (error, action) => {

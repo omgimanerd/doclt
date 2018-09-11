@@ -10,8 +10,6 @@ exports.command = 'off <droplet id>'
 
 exports.description = 'Power off a droplet (hard shutdown)'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = argv => {
   const client = util.getClient()
   client.droplets.powerOff(argv.dropletid, (error, action) => {

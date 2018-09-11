@@ -12,8 +12,6 @@ exports.aliases = ['ls']
 
 exports.description = 'List all domain names'.yellow
 
-exports.builder = util.globalConfig
-
 exports.handler = () => {
   const client = util.getClient()
   client.domains.list((error, domains) => {
