@@ -68,7 +68,7 @@ exports.handler = argv => {
         required: true
       },
       region: {
-        description: 'Region ID ("doclt regions" to list regions)'.yellow,
+        description: 'Region ID'.yellow,
         required: true
       },
       size: {
@@ -82,40 +82,40 @@ exports.handler = argv => {
       },
       // eslint-disable-next-line camelcase
       ssh_keys: {
-        description: 'SSH Key IDs (comma separated) (optional)',
+        description: 'SSH Key IDs (comma separated) (optional)'.yellow,
         before: util.csvToArray
       },
       backups: {
-        description: 'Enable backups? (true/false)',
+        description: 'Enable backups? (true/false)'.yellow,
         'default': false,
         type: 'boolean'
       },
       ipv6: {
-        description: 'Enable IPv6? (true/false)',
+        description: 'Enable IPv6? (true/false)'.yellow,
         'default': false,
         type: 'boolean'
       },
       // eslint-disable-next-line camelcase
       private_networking: {
-        description: 'Enable private networking? (true/false)',
+        description: 'Enable private networking? (true/false)'.yellow,
         'default': false,
         type: 'boolean'
       },
       monitoring: {
-        description: 'Enable monitoring? (true/false)',
+        description: 'Enable monitoring? (true/false)'.yellow,
         'default': false,
         type: 'boolean'
       },
       // eslint-disable-next-line camelcase
       user_data: {
-        description: 'Desired user data (optional)'
+        description: 'Desired user data (optional)'.yellow
       },
       volume: {
-        description: 'Volume IDs to attach (comma separated) (optional)',
+        description: 'Volume IDs to attach (comma separated) (optional)'.yellow,
         before: util.csvToArray
       },
       tags: {
-        description: 'Tags (comma separated) (optional)',
+        description: 'Tags (comma separated) (optional)'.yellow,
         before: util.csvToArray
       }
     }
