@@ -15,6 +15,7 @@ exports.aliases = ['create']
 exports.description = 'Create a new droplet'.yellow
 
 exports.builder = yargs => {
+  const command = '$0 droplets add'
   yargs.option('name', {
     description: 'Set the droplet name'.yellow
   }).option('region', {
@@ -40,17 +41,19 @@ exports.builder = yargs => {
     description: 'Enable monitoring'.yellow,
     'boolean': true
   }).option('user_data', {
-    description: 'Custom user data'.yellow
+    description: 'Set custom user data'.yellow
   }).option('volume', {
-    description: 'Volume IDs to attach (space separated)'.yellow,
+    description: 'Set volume IDs to attach (space separated)'.yellow,
     array: true
   }).option('tags', {
-    description: 'Tags (comma separated)'.yellow,
+    description: 'Set tags to apply (comma separated)'.yellow,
     array: true
   }).group([
     'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
     'private_networking', 'monitoring', 'user_data', 'volume', 'tags'
   ], 'Droplet Attributes:')
+    .example(`${command} --name box --size 512mb --ipv6`)
+    .example(`${command} --region nyc3 --backups --tags tag1 tag2`)
 }
 
 exports.handler = argv => {
