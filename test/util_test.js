@@ -54,6 +54,7 @@ describe('util', () => {
       util.csvToObject(',a:b,').should.deepEqual({ a: 'b' })
       util.csvToObject(',a:b,,,').should.deepEqual({ a: 'b' })
       util.csvToObject('a:b e, c: d e').should.deepEqual({})
+      util.csvToObject('a::b').should.deepEqual({})
     })
 
     it('should not fail on edge cases', () => {
@@ -98,6 +99,7 @@ describe('util', () => {
       util.parseForwardingRule(':tcp:3000').should.deepEqual(badResult)
       util.parseForwardingRule('tcp:3000:').should.deepEqual(badResult)
       util.parseForwardingRule(':tcp:3000:').should.deepEqual(badResult)
+      util.parseForwardingRule('tcp::3000').should.deepEqual(badResult)
     })
 
     it('should not fail on edge cases', () => {
