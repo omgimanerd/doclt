@@ -3,8 +3,6 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const prompt = require('prompt')
-
 const display = require('../../lib/display')
 const util = require('../../lib/util')
 
