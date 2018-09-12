@@ -8,6 +8,11 @@ const prompt = require('prompt')
 const display = require('../../lib/display')
 const util = require('../../lib/util')
 
+const OPTIONS = [
+  'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
+  'private_networking', 'user_data', 'monitoring', 'volumes', 'tags'
+]
+
 exports.command = 'add'
 
 exports.aliases = ['create']
@@ -15,18 +20,20 @@ exports.aliases = ['create']
 exports.description = 'Create a new droplet'.yellow
 
 exports.builder = yargs => {
-  const command = '$0 droplets add'
   yargs.option('name', {
-    description: 'Set the droplet name'.yellow
+    description: 'Set the droplet name'.yellow,
+    required: true
   }).option('region', {
-    description: 'Set the droplet region ID'.yellow
+    description: 'Set the droplet region'.yellow,
+    required: true
   }).option('size', {
-    description: 'Set the droplet size slug'.yellow
+    description: 'Set the droplet size slug'.yellow,
+    required: true
   }).option('image', {
-    description: 'Set the droplet base image ID or slug identifier'.yellow
+    description: 'Set the droplet base image ID or slug identifier'.yellow,
+    required: true
   }).option('ssh_keys', {
-    alias: ['ssh'],
-    description: 'Set the droplet SSH keys (space separated)'.yellow,
+    description: 'Set the droplet SSH keys'.yellow,
     array: true
   }).option('backups', {
     description: 'Enable backups'.yellow,
@@ -42,89 +49,29 @@ exports.builder = yargs => {
     'boolean': true
   }).option('user_data', {
     description: 'Set custom user data'.yellow
-  }).option('volume', {
-    description: 'Set volume IDs to attach (space separated)'.yellow,
+  }).option('volumes', {
+    description: 'Set volume IDs to attach'.yellow,
     array: true
   }).option('tags', {
-    description: 'Set tags to apply (comma separated)'.yellow,
+    description: 'Set tags to apply'.yellow,
     array: true
-  }).group([
-    'name', 'region', 'size', 'image', 'ssh_keys', 'backups', 'ipv6',
-    'private_networking', 'monitoring', 'user_data', 'volume', 'tags'
-  ], 'Droplet Attributes:')
-    .example(`${command} --name box --size 512mb --ipv6`)
-    .example(`${command} --region nyc3 --backups --tags tag1 tag2`)
+  }).group(OPTIONS, 'Droplet Attributes:')
+    .example(`$0 droplets add
+      --name box
+      --region nyc1
+      --size 512mb
+      --image ubuntu-14-04-x32
+      --ipv6
+      --volumes 1234 4356
+      --tags biggestbox bestestbox`)
 }
 
 exports.handler = argv => {
   const client = util.getClient()
-  prompt.message = ''
-  prompt.override = argv
-  prompt.start()
-  prompt.get({
-    properties: {
-      name: {
-        description: 'Droplet name'.yellow,
-        required: true
-      },
-      region: {
-        description: 'Region ID'.yellow,
-        required: true
-      },
-      size: {
-        description: 'Size slug ("doclt sizes" to list sizes)'.yellow,
-        required: true
-      },
-      image: {
-        description: 'Base image ID or slug identifier'.yellow,
-        required: true,
-        type: 'integer'
-      },
-      // eslint-disable-next-line camelcase
-      ssh_keys: {
-        description: 'SSH Key IDs (comma separated) (optional)'.yellow,
-        before: util.csvToArray
-      },
-      backups: {
-        description: 'Enable backups? (true/false)'.yellow,
-        'default': false,
-        type: 'boolean'
-      },
-      ipv6: {
-        description: 'Enable IPv6? (true/false)'.yellow,
-        'default': false,
-        type: 'boolean'
-      },
-      // eslint-disable-next-line camelcase
-      private_networking: {
-        description: 'Enable private networking? (true/false)'.yellow,
-        'default': false,
-        type: 'boolean'
-      },
-      monitoring: {
-        description: 'Enable monitoring? (true/false)'.yellow,
-        'default': false,
-        type: 'boolean'
-      },
-      // eslint-disable-next-line camelcase
-      user_data: {
-        description: 'Desired user data (optional)'.yellow
-      },
-      volume: {
-        description: 'Volume IDs to attach (comma separated) (optional)'.yellow,
-        before: util.csvToArray
-      },
-      tags: {
-        description: 'Tags (comma separated) (optional)'.yellow,
-        before: util.csvToArray
-      }
-    }
-  }, (error, result) => {
+  const args = util.filterOptions(argv, OPTIONS)
+  client.droplets.create(args, (error, droplet) => {
     util.handleError(error)
-    client.droplets.create(result, (clientError, droplet) => {
-      util.handleError(clientError)
-      display.displayMessage('Droplet created.')
-      display.displayDroplet(droplet)
-    })
+    display.displayMessage('Droplet created.')
+    display.displayDroplet(droplet)
   })
 }

@@ -3,10 +3,13 @@
  * @author alvin@omgimanerd.tech (Alvin Lin)
  */
 
-const prompt = require('prompt')
-
 const display = require('../../lib/display')
 const util = require('../../lib/util')
+
+const OPTIONS = [
+  'name', 'private_key', 'leaf_certificate', 'certificate_chain',
+  'dns_names', 'type'
+]
 
 exports.command = 'add'
 
@@ -15,67 +18,41 @@ exports.aliases = ['create']
 exports.description = 'Create/add a new certificate'.yellow
 
 exports.builder = yargs => {
-  const options = [
-    'name', 'private_key', 'leaf_certificate', 'certificate_chain',
-    'dns_names', 'type'
-  ]
   yargs.options('name', {
-    description: 'Set the certificate name'.yellow
+    description: 'Set the certificate name'.yellow,
+    required: true
   }).option('private_key', {
-    description: 'A PEM-formatted private-key for the SSL certificate'.yellow
+    description: `Custom Type: A PEM-formatted private-key for the SSL
+      certificate`.yellow
   }).option('leaf_certificate', {
-    description: 'The PEM-formatted SSL certificate (filename)'.yellow
+    description: `Custom Type: The PEM-formatted SSL certificate
+      (filename)`.yellow,
+    normalize: true,
+    coerce: util.fileReadCoercionFunction
   }).option('certificate_chain', {
     description: `The PEM-formatted trust chain between the certificate
       authority's certificate and your domain's SSL certificate`.yellow
   }).option('dns_names', {
-    description: `An array of fully-qualified domain names (FQDNs) for which
-      the certificate will be issued. Required for Let's Encrypt`.yellow
+    description: `Let's Encrypt: An array of fully-qualified domain names
+      (FQDNs) for which the certificate will be issued`.yellow
   }).option('type', {
-    description: 'A string representing the type of certificate.'.yellow,
+    description: 'Set the type of certificate'.yellow,
+    required: true,
     choices: ['custom', 'lets_encrypt']
-  }).group(options, 'Certificate Attributes:')
+  }).group(OPTIONS, 'Certificate Attributes:')
+    .example(`$0 certificates add
+      --name cert1
+      --type custom
+      --private_key key1234
+      --leaf_certificate /home/certificate.cert`)
 }
 
 exports.handler = argv => {
   const client = util.getClient()
-  prompt.message = ''
-  prompt.override = argv
-  prompt.start()
-  prompt.get({
-    properties: {
-      name: {
-        description: 'Certificate name'.yellow,
-        required: true
-      },
-      // eslint-disable-next-line camelcase
-      private_key: {
-        description: 'PEM-formatted private-key:'.yellow
-      },
-      // eslint-disable-next-line camelcase
-      leaf_certificate: {
-        description: 'PEM-formatted SSL certificate (filename)'.yellow
-      },
-      // eslint-disable-next-line camelcase
-      certificate_chain: {
-        description: 'PEM-formatted trust chain:'.yellow
-      },
-      // eslint-disable-next-line camelcase
-      dns_names: {
-        description: 'Domain names (Let\'s Encrypt) (comma separated)'.yellow,
-        before: util.csvToArray
-      },
-      type: {
-        description: 'Certificate type [custom|lets_encrypt]'.yellow,
-        pattern: /(^custom$)|(^lets_encrypt$)/,
-        required: true
-      }
-    }
-  }, (error, result) => {
-    client.certificates.create(result, (clientError, certificate) => {
-      util.handleError(clientError)
-      display.displayMessage('Certificate created.')
-      display.displayCertificate(certificate)
-    })
+  const args = util.filterOptions(argv, OPTIONS)
+  client.certificates.create(args, (error, certificate) => {
+    util.handleError(error)
+    display.displayMessage('Certificate created.')
+    display.displayCertificate(certificate)
   })
 }
