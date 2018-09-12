@@ -11,7 +11,7 @@ const OPTIONS = [
   'entry_protocol', 'entry_port', 'target_protocol', 'target_port'
 ]
 
-exports.command = 'remove-rule <load balancer id> <entry> <target>'
+exports.command = 'remove-rule <load balancer id>'
 
 exports.description = 'Remove a forwarding rule'.yellow
 
@@ -29,10 +29,10 @@ exports.builder = yargs => {
     description: 'Set the port to send backend traffic to'.yellow,
     required: true
   }).group(OPTIONS, 'Forwarding Rule Attributes:')
-    .example(`$0 load-balancers remove-rule 1234
-      --entry_protocol http
-      --entry_port 2000
-      --target_protocol http
+    .example(`$0 load-balancers remove-rule 1234 \\
+      --entry_protocol http \\
+      --entry_port 2000 \\
+      --target_protocol http \\
       --target_port 8000`)
 }
 

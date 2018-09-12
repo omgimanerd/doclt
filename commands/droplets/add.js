@@ -54,13 +54,13 @@ exports.builder = yargs => {
     description: 'Set tags to apply'.yellow,
     array: true
   }).group(OPTIONS, 'Droplet Attributes:')
-    .example(`$0 droplets add
-      --name box
-      --region nyc1
-      --size 512mb
-      --image ubuntu-14-04-x32
-      --ipv6
-      --volumes 1234 4356
+    .example(`$0 droplets add \\
+      --name box \\
+      --region nyc1 \\
+      --size 512mb \\
+      --image ubuntu-14-04-x32 \\
+      --ipv6 \\
+      --volumes 1234 4356 \\
       --tags biggestbox bestestbox`)
 }
 

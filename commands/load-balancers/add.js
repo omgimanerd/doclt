@@ -6,6 +6,11 @@
 const display = require('../../lib/display')
 const util = require('../../lib/util')
 
+const OPTIONS = [
+  'name', 'algorithm', 'region', 'forwarding_rules', 'health_check',
+  'sticky_sessions', 'redirect_http_to_https', 'droplet_ids', 'tag'
+]
+
 exports.command = 'add'
 
 exports.aliases = ['create']
@@ -13,7 +18,6 @@ exports.aliases = ['create']
 exports.description = 'Create a new load balancer'.yellow
 
 exports.builder = yargs => {
-  const command = '$0 load-balancers add'
   yargs.option('name', {
     description: 'Set the load balancer name'.yellow,
     required: true
@@ -35,14 +39,12 @@ exports.builder = yargs => {
     description: 'Redirect HTTP requests to HTTPS'.yellow,
     'boolean': true
   }).option('droplet_ids', {
-    description:
-      'Assign droplets to the load balancer'.yellow,
+    description: 'Assign droplets to the load balancer'.yellow,
     array: true
-  }).group([
-    'name', 'algorithm', 'region', 'forwarding_rules', 'health_check',
-    'sticky_sessions', 'redirect_http_to_https', 'droplet_ids'
-  ], 'Load Balancer Options:')
-    .example(`${command} \\
+  }).option('tag', {
+    description: 'Assign a droplet tag to the load balancer'.yellow
+  }).group(OPTIONS, 'Load Balancer Options:')
+    .example(`$0 load-balancers add \\
     --name lb1 \\
     --region nyc1 \\
     --forwarding_rules \\
@@ -52,7 +54,8 @@ exports.builder = yargs => {
 
 exports.handler = argv => {
   const client = util.getClient()
-  client.loadBalancers.create(argv, (error, loadBalancer) => {
+  const args = util.filterOptions(argv, OPTIONS)
+  client.loadBalancers.create(args, (error, loadBalancer) => {
     util.handleError(error)
     display.displayLoadBalancer(loadBalancer)
   })

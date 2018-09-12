@@ -48,9 +48,9 @@ exports.builder = yargs => {
     Required for CAA.`.yellow,
     choices: ['issue', 'issuewild', 'iodef']
   }).group(OPTIONS, 'Domain Record Attributes:')
-    .example(`$0 domains records add google.com
-      --type A
-      --name @
+    .example(`$0 domains records add google.com \\
+      --type A \\
+      --name @ \\
       --data 172.217.6.206`)
 }
 

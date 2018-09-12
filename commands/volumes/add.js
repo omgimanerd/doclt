@@ -38,8 +38,8 @@ exports.builder = yargs => {
     description: 'Set the label to apply to the filesystem'.yellow,
     implies: 'filesystem_type'
   }).group(OPTIONS, 'Volume Attributes:')
-    .example(`$0 volumes add
-      --name volume1
+    .example(`$0 volumes add \\
+      --name volume1 \\
       --size_gigabytes 2048`)
 }
 

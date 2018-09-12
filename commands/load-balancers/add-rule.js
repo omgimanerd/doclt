@@ -12,7 +12,7 @@ const OPTIONS = [
   'certificate_id', 'tls_passthrough'
 ]
 
-exports.command = 'add-rule <load balancer id> <entry> <target>'
+exports.command = 'add-rule <load balancer id>'
 
 exports.description = 'Add a forwarding rule'.yellow
 
@@ -37,10 +37,10 @@ exports.builder = yargs => {
     'boolean': true,
     'default': false
   }).group(OPTIONS, 'Forwarding Rule Attributes:')
-    .example(`$0 load-balancers add-rule 1234
-      --entry_protocol http
-      --entry_port 2000
-      --target_protocol http
+    .example(`$0 load-balancers add-rule 1234 \\
+      --entry_protocol http \\
+      --entry_port 2000 \\
+      --target_protocol http \\
       --target_port 8000`)
 }
 

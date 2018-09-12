@@ -37,9 +37,9 @@ exports.builder = yargs => {
     description: 'Assign tagged droplets to this firewall'.yellow,
     array: true
   }).group(OPTIONS, 'Firewall Attributes:')
-    .example(`$0 firewalls add
-      --name firewall1
-      --inbound_rules protocol:tcp,ports:4500,sources:2355643
+    .example(`$0 firewalls add \\
+      --name firewall1 \\
+      --inbound_rules protocol:tcp,ports:4500,sources:2355643 \\
       --outbound_rules protocol:tcp,ports:8000,destinations:2356437`)
 }
 

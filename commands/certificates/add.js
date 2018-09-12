@@ -40,10 +40,10 @@ exports.builder = yargs => {
     required: true,
     choices: ['custom', 'lets_encrypt']
   }).group(OPTIONS, 'Certificate Attributes:')
-    .example(`$0 certificates add
-      --name cert1
-      --type custom
-      --private_key key1234
+    .example(`$0 certificates add \\
+      --name cert1 \\
+      --type custom \\
+      --private_key key1234 \\
       --leaf_certificate /home/certificate.cert`)
 }
 
