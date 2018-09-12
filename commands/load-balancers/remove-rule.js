@@ -40,7 +40,7 @@ exports.handler = argv => {
   const client = util.getClient()
   const lbId = argv.loadbalancerid
   const args = util.filterOptions(argv, OPTIONS)
-  client.loadBalancers.deleteForwardingRules(lbId, args, error => {
+  client.loadBalancers.deleteForwardingRules(lbId, [args], error => {
     util.handleError(error)
     display.displayMessage(`Forwarding rule added to load balancer ${lbId}.`)
   })

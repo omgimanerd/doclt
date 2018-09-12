@@ -8,6 +8,8 @@ const util = require('../../lib/util')
 
 exports.command = 'remove-droplets <load balancer id> [droplet ids..]'
 
+exports.aliases = ['remove-droplet']
+
 exports.description = 'Remove droplets from a load balancer'.yellow
 
 exports.builder = yargs => {

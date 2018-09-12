@@ -48,7 +48,7 @@ exports.handler = argv => {
   const client = util.getClient()
   const lbId = argv.loadbalancerid
   const args = util.filterOptions(argv, OPTIONS)
-  client.loadBalancers.createForwardingRules(lbId, args, error => {
+  client.loadBalancers.createForwardingRules(lbId, [args], error => {
     util.handleError(error)
     display.displayMessage(`Forwarding rule added to load balancer ${lbId}.`)
   })
