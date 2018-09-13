@@ -5,7 +5,7 @@
 
 exports.command = 'snapshots'
 
-exports.aliases = ['snapshot']
+exports.aliases = ['snapshot', 'snap']
 
 exports.description = 'List and take snapshots of a droplet'.yellow
 

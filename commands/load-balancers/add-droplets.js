@@ -13,7 +13,7 @@ exports.aliases = ['add-droplet']
 exports.description = 'Add droplets to a load balancer'.yellow
 
 exports.builder = yargs => {
-  yargs.example('$0 load-balancers add-droplet 12345 52232 43451 32552')
+  yargs.example('$0 load-balancers add-droplets 12345 52232 43451 32552')
 }
 
 exports.handler = argv => {
@@ -25,7 +25,7 @@ exports.handler = argv => {
     const s = dropletIds.length > 0 ? 's' : ''
     const dropletString = dropletIds.join(', ')
     display.displayMessage(
-      `Droplet${s} ${dropletString} added to load balancer ${lbId}`
+      `Droplet${s} ${dropletString} added to load balancer ${lbId}.`
     )
   })
 }
