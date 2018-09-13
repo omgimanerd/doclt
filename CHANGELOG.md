@@ -32,3 +32,4 @@
   - Implemented nicer error catching
   - Completed a major refactor to clean up internal utility library
   - Removed dependency on prompt.js, all options are now specified via flags
+  - Added unit tests for some functions in the utility library
