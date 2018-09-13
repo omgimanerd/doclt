@@ -24,3 +24,11 @@
 
 ### 1.5.0
   - Implemented certificate subcommand after contributing it upstream
+
+### 2.0.0
+  - Implemented firewall subcommands
+  - Implemented load balancer subcommands
+  - Implemented bash completion
+  - Implemented nicer error catching
+  - Completed a major refactor to clean up internal utility library
+  - Removed dependency on prompt.js, all options are now specified via flags
